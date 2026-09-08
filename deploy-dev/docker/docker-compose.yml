@@ -1,0 +1,68 @@
+services:
+  # 1. Database: PostgreSQL + PostGIS
+  db:
+    image: postgis/postgis:16-3.4
+    restart: always
+    container_name: goldpet-db
+    environment:
+      TZ: Asia/Seoul
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432" # localhost만 허용
+    networks:
+      - goldpet-net
+    shm_size: 1g
+    deploy:
+      resources:
+        limits:
+          memory: 8g
+          cpus: '6'
+
+  # 2. Redis Cache
+  redis:
+    image: redis:7-alpine
+    restart: always
+    container_name: goldpet-redis
+    command: redis-server --appendonly yes --maxmemory 1gb --maxmemory-policy allkeys-lru --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - ./data/redis:/data
+    ports:
+      - "127.0.0.1:6379:6379" # localhost만 허용
+    networks:
+      - goldpet-net
+    deploy:
+      resources:
+        limits:
+          memory: 2g
+          cpus: '2'
+
+  # 3. Object Storage: MinIO
+  minio:
+    image: minio/minio
+    restart: always
+    container_name: goldpet-minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+      MINIO_BROWSER_REDIRECT_URL: https://minio.mannamsquare.com
+    volumes:
+      - ./data/minio:/data
+    ports:
+      - "127.0.0.1:9000:9000" # S3 API (localhost만)
+      - "127.0.0.1:9001:9001" # Console (localhost만)
+    networks:
+      - goldpet-net
+    deploy:
+      resources:
+        limits:
+          memory: 2g
+          cpus: '2'
+
+networks:
+  goldpet-net:
+    driver: bridge

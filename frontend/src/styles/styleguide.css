@@ -1,0 +1,480 @@
+/* GoldPet Design System Tokens - Figma Source of Truth */
+
+:root {
+  /* === Colors === */
+
+  /* Primary */
+  --color-primary: #614108;
+
+  /* Background */
+  --color-bg: #FFF7E6;
+  --color-bg-white: #FFFFFF;
+
+  /* Border / Divider */
+  --color-border: #EFE1C4;
+
+  /* Text */
+  --color-text-primary: #614108;
+  --color-text-secondary: #505050;
+  --color-text-placeholder: #AAAAAA;
+  --color-text-white: #FFFFFF;
+
+  /* Accent */
+  --color-accent-red: #FF5005;
+
+  /* Notification / Settings specific */
+  --color-text-tertiary: #A58A54;
+  --color-bg-warm: #F9ECD2;
+  --color-toggle-off: #D9D9D9;
+  --color-text-disabled: #ABABAB;
+
+  /* Legacy aliases (backward compat) */
+  --secondaryfff-7e-6: rgba(255, 247, 230, 1);
+  --primary-614108: rgba(97, 65, 8, 1);
+  --whiteffffff: rgba(255, 255, 255, 1);
+  --secondaryefe-1c-4: rgba(239, 225, 196, 1);
+
+  /* === Typography === */
+  --font-family: 'Pretendard', sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --letter-spacing: -0.02em;
+
+  /* Font Sizes */
+  --font-size-caption: 12px;
+  --font-size-body-sm: 14px;
+  --font-size-body: 16px;
+  --font-size-sub-heading: 18px;
+  --font-size-heading: 22px;
+  --font-size-page-title: 24px;
+  --font-size-h1: 32px;
+
+  /* === Spacing === */
+  --content-padding: 16px;
+  --header-content-height: 56px;
+  --bottom-nav-height: 56px;
+
+  /* === Shapes === */
+  --radius-button: 1000px;
+  --radius-card: 16px;
+  --radius-input: 16px;
+  --button-height: 48px;
+
+  /* === TypeA Layout === */
+  --typea-header-height: 56px;
+  --typea-header-padding-x: 16px;
+  --typea-header-padding-top: 0px;
+
+  /* Group A: Logo-only pages (large title) */
+  --typea-group-a-title-top: 24px;
+  --typea-group-a-title-size: 32px;
+  --typea-group-a-title-weight: 800;
+
+  /* Group B/C: Back/Close pages (standard title) */
+  --typea-group-bc-title-top: 0px;
+  --typea-group-bc-title-size: 24px;
+  --typea-group-bc-title-weight: 700;
+}
+
+/* === Layout === */
+
+.gp-layout-page {
+  background-color: var(--color-bg);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* === Buttons === */
+
+.gp-btn-full {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: var(--button-height);
+  border-radius: var(--radius-button);
+  background-color: var(--color-primary);
+  color: var(--color-text-white);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-body);
+  letter-spacing: var(--letter-spacing);
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.gp-btn-full:active {
+  opacity: 0.8;
+}
+.gp-btn-full:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.gp-btn-half-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: var(--button-height);
+  border-radius: var(--radius-button);
+  background-color: var(--color-primary);
+  color: var(--color-text-white);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-body);
+  letter-spacing: var(--letter-spacing);
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.gp-btn-half-primary:active {
+  opacity: 0.8;
+}
+
+.gp-btn-half-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: var(--button-height);
+  border-radius: var(--radius-button);
+  background-color: var(--color-border);
+  color: var(--color-primary);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-body);
+  letter-spacing: var(--letter-spacing);
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.gp-btn-half-secondary:active {
+  opacity: 0.8;
+}
+
+.gp-btn-basic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: var(--radius-button);
+  background-color: transparent;
+  color: var(--color-primary);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body-sm);
+  letter-spacing: var(--letter-spacing);
+  border: 1px solid var(--color-primary);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.gp-btn-basic:active {
+  opacity: 0.8;
+}
+
+/* === Input Groups === */
+
+.gp-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+}
+
+.gp-input-field {
+  width: 100%;
+  height: var(--button-height);
+  padding: 0 var(--content-padding);
+  background-color: var(--color-bg-white);
+  border: none;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  letter-spacing: var(--letter-spacing);
+  color: var(--color-text-secondary);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.gp-input-field:first-child {
+  border-radius: var(--radius-input) var(--radius-input) 0 0;
+}
+
+.gp-input-field:last-child {
+  border-radius: 0 0 var(--radius-input) var(--radius-input);
+}
+
+.gp-input-field:only-child {
+  border-radius: var(--radius-input);
+}
+
+.gp-input-field::placeholder {
+  color: var(--color-text-placeholder);
+  font-weight: var(--font-weight-medium);
+}
+
+/* === Google Maps Control Override === */
+.gm-control-active,
+.gm-fullscreen-control,
+.gm-bundled-control,
+.gm-svpc {
+  display: none !important;
+}
+
+/* === Alert Modal === */
+
+.gp-alert-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gp-alert-container {
+  width: 320px;
+  background: var(--color-bg);
+  border-radius: var(--radius-card);
+  padding: 40px 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.gp-alert-message {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body-sm);
+  color: var(--color-text-secondary);
+  text-align: center;
+  line-height: 1.5;
+  white-space: pre-line;
+  word-break: keep-all;
+}
+
+.gp-alert-buttons {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+/* === Snackbar / Toast === */
+
+.gp-snackbar-container {
+  position: fixed;
+  bottom: 100px; /* above bottom nav (76px bar + 24px safe area) */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+  width: 100%;
+  align-items: center;
+}
+
+.gp-snackbar {
+  background: rgba(97, 65, 8, 0.9); /* --color-primary at 90% opacity */
+  color: var(--color-text-white);
+  padding: var(--content-padding); /* 16px */
+  border-radius: var(--radius-card); /* 16px */
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-sm); /* 14px */
+  font-weight: var(--font-weight-medium); /* 500 */
+  letter-spacing: -0.28px;
+  line-height: 1.4;
+  width: 328px;
+  text-align: center;
+  box-shadow: 0px 8px 16px rgba(97, 65, 8, 0.24);
+  pointer-events: auto;
+  cursor: pointer;
+  word-break: keep-all;
+  animation: gp-snackbar-in 0.3s forwards, gp-snackbar-out 0.3s 2.7s forwards;
+}
+
+@keyframes gp-snackbar-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gp-snackbar-out {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(10px); }
+}
+
+/* === TypeA Title Groups === */
+
+/* TypeA Group A: Large centered title (onboarding, permissions, benefits) */
+.typea-title-group-a {
+  width: 100%;
+  padding: var(--typea-group-a-title-top) var(--content-padding);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.typea-title-group-a .typea-title {
+  font-family: var(--font-family);
+  font-weight: var(--typea-group-a-title-weight);
+  font-size: var(--typea-group-a-title-size);
+  line-height: 1;
+  color: var(--color-primary);
+  letter-spacing: -0.64px;
+  margin: 0;
+}
+.typea-title-group-a .typea-subtitle {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+  letter-spacing: -0.32px;
+  margin: 0;
+}
+
+/* TypeA Group B/C: Standard title (signup, terms, account pages) */
+.typea-title-group-bc {
+  width: 100%;
+  padding: var(--typea-group-bc-title-top) var(--content-padding) 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.typea-title-group-bc .typea-title {
+  font-family: var(--font-family);
+  font-weight: var(--typea-group-bc-title-weight);
+  font-size: var(--typea-group-bc-title-size);
+  line-height: 1.4;
+  color: var(--color-primary);
+  letter-spacing: -0.48px;
+  margin: 0;
+}
+.typea-title-group-bc .typea-subtitle {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+  letter-spacing: -0.32px;
+  margin: 0;
+}
+
+/* === Maintenance Page (Figma 676:96406) === */
+
+.gp-maintenance-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+}
+
+.gp-maintenance-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+  width: 312px;
+}
+
+.gp-maintenance-branding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.gp-maintenance-tagline {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  letter-spacing: -0.32px;
+  line-height: 1.4;
+  text-align: center;
+  margin: 0;
+}
+
+.gp-maintenance-logo {
+  width: 90px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.gp-maintenance-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 40px 16px;
+  width: 100%;
+}
+
+.gp-maintenance-icon-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--color-bg-warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.gp-maintenance-icon-img {
+  width: 120px;
+  height: 120px;
+}
+
+.gp-maintenance-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  text-align: center;
+}
+
+.gp-maintenance-title {
+  font-family: var(--font-family);
+  font-size: var(--font-size-page-title);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  letter-spacing: -0.48px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.gp-maintenance-desc {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  letter-spacing: -0.32px;
+  line-height: 1.5;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.gp-maintenance-footer {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  letter-spacing: -0.28px;
+  line-height: 1.4;
+  margin: 0;
+}

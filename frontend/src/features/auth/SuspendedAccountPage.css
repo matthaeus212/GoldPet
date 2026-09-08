@@ -1,0 +1,76 @@
+.suspended-account-body {
+  width: 100%;
+  padding: 24px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.suspended-account-description {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.suspended-account-description p {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.32px;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.suspended-account-notice {
+  text-align: center;
+}
+
+.suspended-account-notice p {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.32px;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.suspended-account-button-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+  background-color: var(--color-bg);
+}
+
+.suspended-account-button {
+  width: 100%;
+  height: 48px;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 1000px;
+  color: var(--color-text-white);
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.suspended-account-button:hover {
+  background-color: #4A3206;
+}
+
+.suspended-account-button:active {
+  transform: scale(0.98);
+}

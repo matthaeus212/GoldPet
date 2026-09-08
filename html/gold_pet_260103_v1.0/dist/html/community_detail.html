@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>골든 펫</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="format-detection" content="email=no">
+
+    <meta name="Description" content="골든 펫">
+    <meta name="Keywords" content="골든 펫">
+    <meta name="Author" content="골든 펫">
+    <meta name="robots" content="noindex">
+    <meta property="og:title" content="골든 펫">
+    <meta property="og:description" content="골든 펫">
+    <meta property="og:image" content="">
+    <meta property="og:site_name" content="골든 펫">
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+</head>
+<body>
+<div id="wrap">
+    <!--header-->
+	<header id="header">
+	    <div class="header_wrap">
+	        <a href=""><img src="../assets/images/layout/logo.svg" alt="골든 펫 로고"></a>
+	        <ul class="header_util">
+	            <li><button type="button"><img src="../assets/images/layout/header_icon01.svg" alt="G아이콘"></button></li>
+	            <li><button type="button"><img src="../assets/images/layout/header_icon02.svg" alt="알림"></button></li>
+	            <li><button type="button"><img src="../assets/images/layout/header_icon03.svg" alt="프로필"></button></li>
+	        </ul>
+	    </div>
+	</header>
+	<!--//header-->
+    <div id="communityContainer">
+	    <div class="history_util">
+	        <button type="button" class="back_btn"><img src="../assets/images/common/more_btn.svg" alt=""></button>
+	        <button type="button" class="option_btn"><img src="../assets/images/common/option_icon.svg" alt=""></button>
+	    </div>
+	    <div class="detail_wrap">
+	        <div class="view_contents">
+	            <div class="detail_profile">
+	                <div class="profile_img"><img src="../assets/images/main/main_slide_butler01.jpg" alt=""></div>
+	                <div class="txt_wrap">
+	                    <strong>막시</strong>
+	                    <p>1시간 전</p>
+	                </div>
+	            </div>
+	            <div class="detail_txt">
+	                <strong>12월 24일 보라매 공원에서 산책 하실 분?</strong>
+	                <p>
+	                    우리 댕댕이들과 같이 놀면서 친해져요! ^^ <br>
+	                    아래는 제가 키우고 있는 스피츠 인데요<br>
+	                    이름은 절미라고 해유 왜냐하면<br>
+	                    절미는 항상 절 미치도록 사랑하거등여 ㅋㅋㅋㅋㅋㅋ<br>
+	                    어때유? 기엽쥬? 사랑스럽쥬? 행복해보이쥬?
+	                    <br><br>
+	                    우리 귀여운 절미랑 같이 보라매 공원 근처 느좋 카페에서 처음처럼 한잔 때리실 분! 선착순 78명 입니닷!
+	                </p>
+	            </div>
+
+	            <div class="img_wrap">
+	                <img src="../assets/images/community/upload_img02.jpg" alt="">
+	                <img src="../assets/images/community/upload_img02.jpg" alt="">
+	                <img src="../assets/images/community/upload_img02.jpg" alt="">
+	            </div>
+
+	            <!--좋아요 아이콘, 댓글 아이콘 변환 like_icon, comment_icon class에 active 추가 삭제-->
+	            <div class="like_comment_count">
+	                <div class="count_wrap"><div class="icon_img like_icon active"></div> 31</div>
+	                <div class="count_wrap"><div class="icon_img comment_icon active" ></div> 31</div>
+	            </div>
+	        </div>
+
+	        <div class="comment_wrap">
+	            <strong class="comment_count">댓글 0</strong>
+
+	            <!-- 등록된 댓글 없을때 style로 출력 조절-->
+	            <div class="comment_none" style="display:none">
+	                <img src="../assets/images/common/comment_icon03.svg" alt="">
+	                등록된 댓글이 없어요ㅠ
+	            </div>
+	            <!-- //등록된 댓글 없을때 -->
+
+	            <!--대댓글은 li 에 class re_comment 추가-->
+	            <ul class="comment_list">
+	                <li>
+	                    <div class="detail_profile">
+	                        <div class="profile_img"><img src="../assets/images/main/main_slide_butler01.jpg" alt=""></div>
+	                    </div>
+	                    <div class="comment_info">
+	                        <div class="profile_txt">
+	                            <strong>냥냥뇽뇽</strong>
+	                            <p>40분 전</p>
+	                        </div>
+	                        <p class="comment_txt">
+	                            어우~ 너무 귀여워요 ㅠㅠ <br>
+	                            카페 어디로 가실건가요??
+	                        </p>
+	                        <!--좋아요 아이콘, 댓글 아이콘 변환 like_icon, comment_icon class에 active 추가 삭제-->
+	                        <div class="like_comment_count">
+	                            <div class="count_wrap"><div class="icon_img like_icon active"></div> 31</div>
+	                            <div class="count_wrap"><div class="icon_img comment_icon active" ></div> 31</div>
+	                            <button type="button">답글 쓰기</button>
+	                        </div>
+	                    </div>
+	                    <button type="button" class="comment_util_btn"><img src="../assets/images/common/option_icon02.svg" alt=""></button>
+	                </li>
+
+	                <!--삭제된 댓글-->
+	                <li class="re_comment">
+	                    <div class="detail_profile">
+	                        <div class="profile_img"><img src="../assets/images/main/main_slide_butler01.jpg" alt=""></div>
+	                    </div>
+	                    <div class="comment_info">
+	                        <p class="del_comment">삭제된 댓글이에요.</p>
+	                    </div>
+	                </li>
+
+	                <!--대댓글-->
+	                <li class="re_comment">
+	                    <div class="detail_profile">
+	                        <div class="profile_img"><img src="../assets/images/main/main_slide_butler01.jpg" alt=""></div>
+	                    </div>
+	                    <div class="comment_info">
+	                        <div class="profile_txt">
+	                            <strong>냥냥뇽뇽</strong>
+	                            <p>40분 전</p>
+	                        </div>
+	                        <p class="comment_txt">
+	                            골드는 황금이다 미야옹 하우스라고 고양이 묘주 전용 카페가 있어요! 여기로 갈까 합니다!
+	                        </p>
+	                        <!--좋아요 아이콘, 댓글 아이콘 변환 like_icon, comment_icon class에 active 추가 삭제-->
+	                        <div class="like_comment_count">
+	                            <div class="count_wrap"><div class="icon_img like_icon active"></div> 31</div>
+	                            <div class="count_wrap"><div class="icon_img comment_icon active" ></div> 31</div>
+	                            <button type="button">답글 쓰기</button>
+	                        </div>
+	                    </div>
+	                    <button type="button" class="comment_util_btn"><img src="../assets/images/common/option_icon02.svg" alt=""></button>
+	                </li>
+	                <!--삭제된 댓글-->
+	                <li>
+	                    <div class="detail_profile">
+	                        <div class="profile_img"><img src="../assets/images/main/main_slide_butler01.jpg" alt=""></div>
+	                    </div>
+	                    <div class="comment_info">
+	                        <p class="del_comment">삭제된 댓글이에요.</p>
+	                    </div>
+	                </li>
+	            </ul>
+
+	            <div class="comment_submit">
+	                <input type="text" placeholder="댓글을 남겨보세요">
+	                <button type="button">전송</button>
+	            </div>
+	        </div>
+
+	        <!--댓글 수정/삭제 하단 모달 팝업-->
+	        <div class="comment_edit_modal">
+	            <div class="modal_wrap">
+	                <ul>
+	                    <li><button type="button" class="comment_edit_btn">수정</button></li>
+	                    <li><button type="button" class="comment_del_btn">삭제</button></li>
+	                </ul>
+	                <button type="button" class="close_btn">닫기</button>
+	            </div>
+	        </div>
+
+	        <!--댓글 수정 모달 팝업-->
+	        <div class="edit_modal">
+	            <div class="modal_wrap">
+	                <textarea></textarea>
+	                <div class="btn_wrap">
+	                    <button type="button" class="cancel_btn">취소</button>
+	                    <button type="button" class="submit_btn">확인</button>
+	                </div>
+	                <button type="button" class="modal_close_btn"><img src="../assets/images/common/close_icon.svg" alt=""></button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+	<!--기본 모달-->
+	<div class="alert_modal">
+	    <div class="alert_wrap">
+	        <div class="txt_wrap">
+	            <p>정말 삭제하시겠습니까?</p>
+	        </div>
+	        <div class="btn_wrap">
+	            <button type="button" class="brown2">아니오</button>
+	            <button type="button" class="brown1">네</button>
+	        </div>
+	    </div>
+	</div>
+
+	<!--모달 테스트-->
+	<script>
+	    /*/!*글쓰기 모달*!/
+	    document.getElementById("writeBtn").addEventListener("click", () => {
+	        document.getElementById("writeModal").style.display = "block";
+	    });
+	    document.querySelector(".modal_close_btn").addEventListener("click", () => {
+	        document.getElementById("writeModal").style.display = "none";
+	    });*/
+
+	    /*댓글 수정/삭제 버튼*/
+	    document.querySelector(".comment_util_btn").addEventListener("click", () => {
+	        document.querySelector(".comment_edit_modal").style.display = "block";
+	    });
+	    document.querySelector(".comment_edit_btn").addEventListener("click", () => {
+	        document.querySelector(".edit_modal").style.display = "block";
+	    });
+	    document.querySelector(".edit_modal .modal_close_btn").addEventListener("click", () => {
+	        document.querySelector(".edit_modal").style.display = "none";
+	    });
+	    document.querySelector(".comment_del_btn").addEventListener("click", () => {
+	        document.querySelector(".alert_modal").style.display = "flex";
+	    });
+	    /*document.querySelector(".alert_modal .btn_wrap button").addEventListener("click", () => {
+	        document.querySelector(".alert_modal").style.display = "none";
+	        document.getElementById("writeModal").style.display = "none";
+	    });*/
+	</script>
+	    
+    <!--bottom nav-->
+	<!--현재 페이지 button에 active 추가-->
+	<div id="bottomNav">
+	    <ul>
+	        <li><button type="button" class="b_nav01 active">친구찾기</button></li>
+	        <li><button type="button" class="b_nav02">채팅</button></li>
+	        <li class="ai_btn"><button type="button"><img src="../assets/images/layout/b_fix_center_icon.png" alt="AI"></button></li>
+	        <li><button type="button" class="b_nav03">산책</button></li>
+	        <li><button type="button" class="b_nav04">커뮤니티</button></li>
+	    </ul>
+	</div>
+	<!--//bottom nav-->
+</div>
+<script src="../assets/javascripts/plugin.js"></script>
+<script src="../assets/javascripts/design_common.js"></script>
+</body>
+</html>

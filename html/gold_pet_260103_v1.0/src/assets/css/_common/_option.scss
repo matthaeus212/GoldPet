@@ -1,0 +1,40 @@
+
+/* Font style setting */
+$preten: Pretendard, Arial, Apple SD Gothic Neo, sans-serif;
+
+/* Point color setting */
+$black : #000;
+$white : #fff;
+
+$brown1 : #614108;
+$brown2 : #EFE1C4;
+
+$gray1 : #505050;
+$gray2 : #D2D6DA;
+$gray3 : #B9BFC6;
+
+$gray4 : #9aa4ac;
+$gray5 : #6e7b86;
+$gray6 : #5c6770;
+$gray7 : #4a525a;
+$gray8 : #373d43;
+$gray9 : #23262a;
+
+$green : #1eb442;
+$orange : #eb9611;
+$red : #FF5005;
+
+
+/**
+ * BASE SETTING
+ */
+$base-font:$preten;
+$base-font-size:16px;
+$base-font-color : $gray1;
+$letter-spacing : -0.08vw;
+
+$light : 300;
+$regular : 400;
+$medium : 500;
+$semi : 600;
+$bold : 700;

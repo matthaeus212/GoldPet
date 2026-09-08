@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+cd frontend
+npm run lint || exit 1
+npx tsc --noEmit || { echo "[pre-push] ✗ tsc failed — fix type errors (likely schema.d.ts drift)"; exit 1; }
+npm run test -- --run WalkPhotoGalleryViewer || exit 1
+echo "[pre-push] ✓ lint + tsc + walk-photo viewer gates passed"

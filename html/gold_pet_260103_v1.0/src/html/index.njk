@@ -1,0 +1,146 @@
+{%- extends "_templates/_layout.njk" -%}
+{% block content %}
+<div id="mainContainer">
+    <div class="talk_wrap">
+        <p>
+            나에게 호감 있는 친구들이에요. <br>
+            ‘조하멍' 선택하고 대화 나눠보세요.
+        </p>
+        <button type="button"><img src="../assets/images/common/pin_icon.svg" alt="지도 마커">서울 강남구</button>
+    </div>
+    <div class="main_slide">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="img_wrap">
+                    <!--사진 상단 왼쪽 아이콘-->
+                    <img src="../assets/images/main/main_slide_icon01.svg" data-swiper-parallax="-500" class="icon_img" alt="">
+                    <!--메인 반려동물 이미지-->
+                    <div class="main_slide_inside">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="../assets/images/main/main_slide_img01.png" class="pet_img" alt=""></div>
+                            <div class="swiper-slide"><img src="../assets/images/main/main_slide_img01.png" class="pet_img" alt=""></div>
+                            <div class="swiper-slide"><img src="../assets/images/main/main_slide_img01.png" class="pet_img" alt=""></div>
+                        </div>
+                        <div class="swiper-inside-prev"></div>
+                        <div class="swiper-inside-next"></div>
+                    </div>
+                    <!--사진 하단 오른쪽 집사 이미지-->
+                    <div class="butler_img"  data-swiper-parallax="-400">
+                        <img src="../assets/images/main/main_slide_butler01.jpg" alt="집사 이미지">
+                    </div>
+                </div>
+                <div class="txt_wrap" data-swiper-parallax="-200">
+                    <!--남자의 경우 img src ../assets/images/main/man_icon.svg -->
+                    <h2>멍텅구리 <img src="../assets/images/main/woman_icon.svg" alt="여자 icon"></h2>
+                    <!-- neutering_on 붙이면 중성화 ok 노출 -->
+                    <p>중성화 OK</p>
+                </div>
+                <div class="pet_detail">
+                    <p  data-swiper-parallax="-300">
+                        5개월 ∙ 코숏 치즈 <br>
+                        서울 강남구 ∙ 1km 이내
+                    </p>
+                    <!-- class 없으면 default, active 추가 하면 좋아요-->
+                    <div class="like_wrap" data-swiper-parallax="-200">
+                        <button type="button">싫어요</button>
+                        <button type="button" class="active">좋아요</button>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="img_wrap">
+                    <img src="../assets/images/main/main_slide_icon02.svg" data-swiper-parallax="-500" class="icon_img" alt="">
+                    <!--메인 반려동물 이미지-->
+                    <div class="main_slide_inside">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="../assets/images/main/main_slide_img02.png" class="pet_img" alt=""></div>
+                            <div class="swiper-slide"><img src="../assets/images/main/main_slide_img02.png" class="pet_img" alt=""></div>
+                            <div class="swiper-slide"><img src="../assets/images/main/main_slide_img02.png" class="pet_img" alt=""></div>
+                        </div>
+                        <div class="swiper-inside-prev"></div>
+                        <div class="swiper-inside-next"></div>
+                    </div>
+                    <div class="butler_img"  data-swiper-parallax="-400">
+                        <img src="../assets/images/main/main_slide_butler02.png" alt="집사 이미지">
+                    </div>
+                </div>
+                <div class="txt_wrap" data-swiper-parallax="-200">
+                    <h2>멍텅구리 <img src="../assets/images/main/woman_icon.svg" alt="여자 icon"></h2>
+                    <p class="neutering_on">중성화 OK</p>
+                </div>
+                <div class="pet_detail">
+                    <p  data-swiper-parallax="-300">
+                        5개월 ∙ 코숏 치즈 <br>
+                        서울 강남구 ∙ 1km 이내
+                    </p>
+                    <div class="like_wrap" data-swiper-parallax="-200">
+                        <button type="button">싫어요</button>
+                        <button type="button" class="active">좋아요</button>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="img_wrap">
+                    <img src="../assets/images/main/main_slide_icon03.svg" data-swiper-parallax="-500" class="icon_img" alt="">
+                    <!--메인 반려동물 이미지-->
+                    <div class="main_slide_inside">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img src="../assets/images/main/main_slide_img03.png" class="pet_img" alt=""></div>
+                            <div class="swiper-slide"><img src="../assets/images/main/main_slide_img03.png" class="pet_img" alt=""></div>
+                            <div class="swiper-slide"><img src="../assets/images/main/main_slide_img03.png" class="pet_img" alt=""></div>
+                        </div>
+                        <div class="swiper-inside-prev"></div>
+                        <div class="swiper-inside-next"></div>
+                    </div>
+                    <div class="butler_img"  data-swiper-parallax="-400">
+                        <img src="../assets/images/main/main_slide_butler03.png" alt="집사 이미지">
+                    </div>
+                </div>
+                <div class="txt_wrap" data-swiper-parallax="-200">
+                    <h2>멍텅구리 <img src="../assets/images/main/man_icon.svg" alt="남자 icon"></h2>
+                    <p class="neutering_on">중성화 OK</p>
+                </div>
+                <div class="pet_detail">
+                    <p  data-swiper-parallax="-300">
+                        5개월 ∙ 코숏 치즈 <br>
+                        서울 강남구 ∙ 1km 이내
+                    </p>
+                    <div class="like_wrap" data-swiper-parallax="-200">
+                        <button type="button">싫어요</button>
+                        <button type="button" class="active">좋아요</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 중간 배너 -->
+    <section class="ai_profile_banner">
+        <a href="">
+            <img src="../assets/images/main/ai_banner_img.png" alt="블러 처리된 사진">
+            <div class="txt_wrap">
+                <h2>아직 AI 프로필이 없으시네요?</h2>
+                <p>멍텅구리의 다양한 모습을 지금 만나 보세요!</p>
+            </div>
+        </a>
+    </section>
+
+    <!-- 산책 기록-->
+    <section class="walk_wrap">
+        <div class="tit_wrap">
+            <h2>산책 기록을 남겨보세요</h2>
+            <p><img src="../assets/images/main/time_icon.svg" alt="시간 icon">3일 20시간 전</p>
+        </div>
+        <div class="txt_wrap">
+            <div class="img_wrap">
+                <img src="../assets/images/main/walk_img.jpg" alt="">
+            </div>
+            <p>
+                🐶 <span>멍텅구리</span>와 <br>
+                📍️ <span>안돌이지돌이다래미한숨바우</span>에서 <br>
+                📏 <span>3km</span> 산책하셨네요.
+            </p>
+        </div>
+    </section>
+</div>
+{%- endblock %}

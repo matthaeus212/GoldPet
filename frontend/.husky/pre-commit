@@ -1,0 +1,49 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# OpenAPI drift guard — cwd is the repo root when git runs the hook.
+# (이 세션에서 openapi.json/schema.d.ts drift 로 커밋을 2번 더 했던 문제 예방.)
+STAGED=$(git diff --cached --name-only)
+
+# 1) openapi.json 이 스테이징됐으면 frontend/admin schema.d.ts 를 즉시 재생성·재스테이징
+#    (openapi-typescript ~100ms — Spring boot 불필요. "openapi 는 갱신했는데 타입은 깜빡" 케이스 차단.)
+if printf '%s\n' "$STAGED" | grep -q '^api/openapi.json$'; then
+  echo "[pre-commit] api/openapi.json changed — syncing schema.d.ts…"
+  if (cd frontend && npm run --silent generate:api >/dev/null 2>&1); then
+    git add frontend/src/api/schema.d.ts 2>/dev/null
+  else
+    echo "[pre-commit] ⚠ frontend generate:api failed (run it manually); continuing"
+  fi
+  if (cd admin && npm run --silent generate:api >/dev/null 2>&1); then
+    git add admin/src/api/schema.d.ts 2>/dev/null
+  else
+    echo "[pre-commit] ⚠ admin generate:api failed (run it manually); continuing"
+  fi
+  echo "[pre-commit] ✓ schema.d.ts synced to openapi.json"
+fi
+
+# 2) API 컨트롤러/DTO 가 바뀌었는데 openapi.json 은 스테이징 안 됐으면 경고(차단 X — CI verifyOpenApiSpec 이 하드 게이트)
+if printf '%s\n' "$STAGED" | grep -qE '^api/src/main/.*(Controller|Dto|Dtos|Request|Response)\.kt$' \
+   && ! printf '%s\n' "$STAGED" | grep -q '^api/openapi.json$'; then
+  echo "[pre-commit] ⚠ API 코드가 변경됐지만 api/openapi.json 이 스테이징되지 않았습니다."
+  echo "[pre-commit]   엔드포인트/DTO 를 추가·변경했다면:  (cd api && ./gradlew generateOpenApiDocs)  후 openapi.json + schema.d.ts 재스테이징"
+  echo "[pre-commit]   (계속 진행 — CI verifyOpenApiSpec 이 최종 게이트)"
+fi
+
+# 3) 시크릿 재발방지 — 새로 stage 된 변경에서만 스캔한다(기존 커밋값·히스토리·.env 정책값은 제외).
+#    .gitleaks.toml 이 .env 등 정책상 허용 위치를 allowlist 한다.
+#    gitleaks 미설치면 skip(경고). 활성화:  brew install gitleaks
+if command -v gitleaks >/dev/null 2>&1; then
+  if gitleaks protect --staged --no-banner --redact --config .gitleaks.toml 2>/tmp/goldpet-gitleaks.err; then
+    echo "[pre-commit] ✓ gitleaks: staged 변경에 새 시크릿 없음"
+  else
+    echo "[pre-commit] ✗ staged 변경에서 새 시크릿이 감지됐습니다 — 커밋을 중단합니다."
+    cat /tmp/goldpet-gitleaks.err
+    echo "[pre-commit]   오탐이면 .gitleaks.toml allowlist 에 추가한 뒤 다시 커밋하세요."
+    exit 1
+  fi
+else
+  echo "[pre-commit] ⚠ gitleaks 미설치 — 시크릿 스캔 건너뜀 (brew install gitleaks 로 활성화)"
+fi
+
+exit 0

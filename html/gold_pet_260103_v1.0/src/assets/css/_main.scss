@@ -1,0 +1,136 @@
+
+#wrap {padding:vw1(92) 0 vw1(110); background-color:#FFF7E6; min-height:100vh; overflow:hidden;}
+
+#mainContainer {
+	@include backgroundSoltC(50%, vw1(10), no-repeat, 100% auto);
+	.talk_wrap {
+		padding:0 vw1(16); display:flex; justify-content:space-between; align-items:center; position:relative; z-index:10;
+		p {font-size:vw1(13); font-weight:$medium;}
+		button {
+			padding:vw1(8) vw1(16); background-color:$white; gap:vw1(4); border-radius:vw1(10); display:flex; justify-content:space-between;
+			font-size:vw1(13); font-weight:$semi; color:$brown1;
+			img {width:vw1(16);}
+		}
+	}
+	.main_slide {
+		position:relative; overflow:hidden; margin:vw1(-45) 0 0;
+		.img_wrap {
+			width:100%; position:relative;
+			.icon_img {width:vw1(48); position:absolute; top:vw1(70); left:5%; z-index:10;}
+			.pet_img {width:100%;}
+			.butler_img {
+				width:vw1(80); height:vw1(80); position:absolute; right:5%; bottom:0; z-index:10; background-color:$white;
+				border-radius:57% 50% 58% 49% / 38% 40% 43% 48%; overflow:hidden;
+				img {width:100%; height:100%; object-fit:cover}
+			}
+		}
+		.main_slide_inside {
+			position:relative; padding:vw1(60) 0 0 vw1(16);
+			&:after {
+				width:100%; height:vw1(584); display:block; content:""; position:absolute; bottom:0; left:0; z-index:1;
+				background-image:url(../../assets/images/main/main_slide_mask.png);
+				@include backgroundSoltC(0, 100%, no-repeat, 100% auto);
+			}
+		}
+		.txt_wrap {
+			display:flex; justify-content:start; gap:vw1(8); align-items:center; padding:0 5%;
+			h2 {
+				font-size:vw1(24); font-weight:$bold; display:flex; align-items:center; color:$brown1; gap:vw1(8);
+				img {width:vw1(24); }
+			}
+			p {
+				font-size:vw1(12); font-weight:$medium; padding:vw1(2) vw1(9); background-image:url(../../assets/images/main/underline_dot.svg);
+				@include backgroundSoltC(50%, 100%, no-repeat, 100% auto);
+			}
+		}
+		.pet_detail {
+			font-size:vw1(14); padding:vw1(12) 5% 0; display:flex; justify-content:space-between;
+			.like_wrap {display:flex; gap:vw1(8);}
+			button {
+				width:vw1(60); height:vw1(48); background-image:url(../../assets/images/main/wish_icon.svg); text-indent:-9999px;
+				@include backgroundSoltC;
+				@include transition(background-image, .2s);
+				&.active {background-image:url(../../assets/images/main/wish_icon_active.svg);}
+			}
+		}
+	}
+	.swiper-slide {
+		width:vw1(324); overflow:hidden; position:relative;
+		img {width:100%; object-fit:cover;}
+	}
+	.swiper-slide-active {z-index:3;}
+	.swiper-inside-prev,
+	.swiper-inside-next {
+		width:vw1(24); height:vw1(24); position:absolute; background-image:url(../../assets/images/main/slide_arrow.svg); z-index:10; top:vw1(170);
+		@include backgroundSoltC;
+	}
+	.swiper-inside-prev {left:vw1(20);}
+	.swiper-inside-next {right:vw1(20); rotate:180deg;}
+	
+	//ai 프로필 배너
+	.ai_profile_banner {
+		width:vw1(328); margin:vw1(24) 0 0 vw1(16); padding:0 0 0 vw1(20); background-image:linear-gradient(to left, #BE64CC, #EB77AC);
+		border-radius:vw1(20); background-size:400% 100%; animation:slide-gradient 4s alternate infinite;
+		@keyframes slide-gradient {
+			0% {background-position:0 0;}
+			100% {background-position:100% 0;}
+		}
+		a {display:flex; gap:vw1(16); align-items:center; color:$white;}
+		img {height:vw1(68);}
+		.txt_wrap {
+			h2 {font-size:vw1(14);}
+			p {font-size:vw1(12); font-weight:$medium;}
+		}
+	}
+	
+	//산책기록
+	.walk_wrap {
+		margin:vw1(16) 0 0; padding:0 vw1(16);
+		.tit_wrap {
+			display:flex; justify-content:space-between; align-items:center;
+			h2 {font-size:vw1(16); line-height:vw1(29); color:$brown1;}
+			p {
+				padding:vw1(2) vw1(8); background-color:$white; gap:vw1(4); border-radius:vw1(10); display:flex; justify-content:space-between;
+				font-size:vw1(12); font-weight:$medium; line-height:vw1(26);
+				img {width:vw1(16);}
+			}
+		}
+		.txt_wrap {
+			border-radius:vw1(20); background-image:url(../../assets/images/main/walk_bg.svg); margin:vw1(8) 0 0;
+			display:flex; padding:vw1(6) 0 vw1(6) vw1(16); gap:vw1(16); align-items:center;
+			@include backgroundSoltC;
+			.img_wrap {
+				width:vw1(68); height:vw1(68); position:relative; border:1px solid $white; overflow:hidden; border-radius:100%;
+				img {width:100%; height:100%; object-fit:cover;}
+			}
+			p {
+				font-size:vw1(14); line-height:160%;
+				span {
+					position:relative; font-weight:$bold;
+					&:after {width:100%; height:1px; display:block; content:""; position:absolute; bottom:0; left:0; background-color:$gray1;}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

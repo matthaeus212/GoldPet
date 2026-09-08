@@ -1,0 +1,45 @@
+{%- extends "_templates/_layout.njk" -%}
+{% block content %}
+<div id="aiMake">
+	<div class="ai_txt_wrap">
+		<strong>간단하게 만들기</strong>
+		<p>내 프로필 사진과 성향으로 편하게 만들기</p>
+	</div>
+	<div class="simple_wrap">
+		<div class="profile_img_edit">
+			<!--
+				profile_img 내에 img 태그 src와 같이 넣으면 대표사진 텍스트 노출,
+				대표 이미지 없으면 img 태그 지우고 class / img_none 추가
+			   -->
+			<div class="profile_img"><img src="../assets/images/main/main_slide_butler02.png" alt=""></div>
+			<!--<div class="profile_img img_none"></div>-->
+		</div>
+		<div class="img_upload_wrap">
+			<ul>
+				<li><button type="button" class="img_upload_btn"><span class="upload_img"><img src="../assets/images/community/upload_img.jpg" alt=""></span></button></li>
+				<li><button type="button" class="img_upload_btn"><span class="upload_img"><img src="../assets/images/community/upload_img.jpg" alt=""></span></button></li>
+				<li><button type="button" class="img_upload_btn"><span class="upload_img"><img src="../assets/images/community/upload_img.jpg" alt=""></span></button></li>
+			</ul>
+		</div>
+		
+		<div class="more_wrap">
+			<strong>추가 정보</strong>
+			<div class="list_wrap">
+				<dl>
+					<dt>MBTI</dt>
+					<dd>ENFJ</dd>
+				</dl>
+				<dl>
+					<dt>관심사</dt>
+					<dd>만남, 음악</dd>
+				</dl>
+				<dl>
+					<dt>취미</dt>
+					<dd>러닝, 스포츠, 명상/요가, 여행</dd>
+				</dl>
+			</div>
+		</div>
+		<button type="button" class="submit_btn">프로필 생성하기</button>
+	</div>
+</div>
+{%- endblock %}

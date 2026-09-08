@@ -1,0 +1,52 @@
+{%- extends "_templates/_layout.njk" -%}
+{% block content %}
+<div id="chatOne">
+    <!-- button class - active로 전환-->
+    <div class="group_tab">
+        <button type="button" class="active">1:1</button>
+        <button type="button">그룹</button>
+        <button type="button">대화요청</button>
+    </div>
+    <ul class="chat_list">
+        <li>
+            <button type="button">
+                <div class="profile_img"><img src="/assets/images/main/main_slide_butler01.jpg" alt=""></div>
+                <div class="txt_wrap">
+                    <strong>방구석여포</strong>
+                    <p>그럼 내일 제가 나가면서 채팅할게요 :) 그럼 내일 제가 나가면서 채팅할게요 :)</p>
+                </div>
+                <div class="day_txt">
+                    <p class="count_num">99</p>
+                    <p class="last_day">1시간 전</p>
+                </div>
+            </button>
+        </li>
+        <li>
+            <button type="button">
+                <div class="profile_img"><img src="/assets/images/main/main_slide_butler01.jpg" alt=""></div>
+                <div class="txt_wrap">
+                    <strong>방구석여포</strong>
+                    <p>그럼 내일 제가 나가면서 채팅할게요 :) 그럼 내일 제가 나가면서 채팅할게요 :)</p>
+                </div>
+                <div class="day_txt">
+                    <p class="count_num">1</p>
+                    <p class="last_day">어제</p>
+                </div>
+            </button>
+        </li>
+        <li>
+            <button type="button">
+                <div class="profile_img"><img src="/assets/images/main/main_slide_butler01.jpg" alt=""></div>
+                <div class="txt_wrap">
+                    <strong>방구석여포</strong>
+                    <p>그럼 내일 제가 나가면서 채팅할게요 :) 그럼 내일 제가 나가면서 채팅할게요 :)</p>
+                </div>
+                <div class="day_txt">
+                    <p class="count_num">100</p>
+                    <p class="last_day">한달 전</p>
+                </div>
+            </button>
+        </li>
+    </ul>
+</div>
+{%- endblock %}

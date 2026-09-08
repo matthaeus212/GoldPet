@@ -1,0 +1,12 @@
+[Unit]
+Description=GoldPet backup pickup runner (PENDING only)
+After=postgresql.service
+
+[Service]
+Type=oneshot
+User=root
+Environment="BACKUP_MODE=pickup"
+EnvironmentFile=/etc/goldpet/backup.env
+ExecStart=/opt/goldpet/scripts/run-backup.sh
+StandardOutput=journal
+StandardError=journal

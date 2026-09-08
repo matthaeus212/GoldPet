@@ -1,0 +1,132 @@
+/* ===== Backdrop ===== */
+
+.walk-alert-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== Modal ===== */
+
+.walk-alert-modal {
+  width: 320px;
+  background-color: var(--color-bg);
+  border-radius: 16px;
+  padding: 40px 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+/* ===== Content ===== */
+
+.walk-alert-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+}
+
+.walk-alert-title {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--letter-spacing);
+  line-height: 1.4;
+  text-align: center;
+  margin: 0;
+}
+
+.walk-alert-info-card {
+  background-color: var(--color-bg-warm); /* #F9ECD2 */
+  border-radius: 8px;
+  padding: 16px;
+  width: 204px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.walk-alert-condition {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--letter-spacing);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.walk-alert-current {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--letter-spacing);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.walk-alert-question {
+  font-family: var(--font-family);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--letter-spacing);
+  line-height: 1.4;
+  text-align: center;
+  margin: 0;
+}
+
+/* ===== Buttons ===== */
+
+.walk-alert-buttons {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.walk-alert-btn-cancel {
+  flex: 1;
+  height: 48px;
+  background-color: var(--color-border);
+  color: var(--color-primary);
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing);
+  border: none;
+  border-radius: var(--radius-button);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.walk-alert-btn-cancel:active {
+  opacity: 0.7;
+}
+
+.walk-alert-btn-continue {
+  flex: 1;
+  height: 48px;
+  background-color: var(--color-primary);
+  color: var(--color-text-white);
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing);
+  border: none;
+  border-radius: var(--radius-button);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.walk-alert-btn-continue:active {
+  opacity: 0.7;
+}

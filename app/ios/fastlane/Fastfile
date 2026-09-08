@@ -1,0 +1,70 @@
+default_platform(:ios)
+
+platform :ios do
+
+  desc "TestFlight에 베타 빌드 업로드 (빌드번호 자동 증가)"
+  lane :beta do |options|
+    env = options[:env] || "dev"
+
+    # App Store Connect에서 최신 빌드번호 조회 → +1
+    current = latest_testflight_build_number(
+      api_key: api_key,
+      app_identifier: "com.mannam.goldpet",
+    )
+    new_build_number = current.to_i + 1
+    UI.message("빌드번호: #{current} → #{new_build_number}")
+
+    # Flutter 빌드 (빌드번호 주입)
+    Dir.chdir("../..") do
+      sh("flutter", "build", "ios",
+         "--release",
+         "--dart-define=ENV=#{env}",
+         "--build-number=#{new_build_number}")
+    end
+
+    # Xcode 아카이브 + 자동 서명
+    build_app(
+      workspace: "Runner.xcworkspace",
+      scheme: "Runner",
+      export_method: "app-store",
+      output_directory: "../build/ios",
+      output_name: "GoldPet.ipa",
+      xcargs: "-allowProvisioningUpdates",
+      export_options: {
+        signingStyle: "automatic",
+        teamID: "D99344V928",
+      },
+    )
+
+    # TestFlight 업로드
+    upload_to_testflight(
+      skip_waiting_for_build_processing: true,
+      api_key: api_key,
+    )
+
+    UI.success("TestFlight 업로드 완료! (빌드번호: #{new_build_number})")
+  end
+
+  # App Store Connect API Key 로드
+  def api_key
+    fastlane_dir = File.expand_path(__dir__)
+    key_path = Dir.glob(File.join(fastlane_dir, "AuthKey_*.p8")).first
+    if key_path.nil?
+      UI.user_error!("API Key 파일을 찾을 수 없습니다. fastlane/AuthKey_<KEY_ID>.p8 파일을 넣어주세요.")
+    end
+
+    key_id = File.basename(key_path, ".p8").sub("AuthKey_", "")
+    issuer_id = ENV["ASC_ISSUER_ID"]
+
+    if issuer_id.nil? || issuer_id.empty?
+      UI.user_error!("ASC_ISSUER_ID 환경변수를 설정해주세요.\nexport ASC_ISSUER_ID=\"your-issuer-id\"")
+    end
+
+    app_store_connect_api_key(
+      key_id: key_id,
+      issuer_id: issuer_id,
+      key_filepath: key_path,
+      in_house: false,
+    )
+  end
+end

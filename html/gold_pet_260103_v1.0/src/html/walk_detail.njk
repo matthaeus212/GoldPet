@@ -1,0 +1,47 @@
+{%- extends "_templates/_layout.njk" -%}
+{% block content %}
+<div id="walkContainer">
+    <div class="talk_wrap">
+        <p>
+            골드펫과 함께 <br>
+            즐거운 산책을 즐겨보세요.
+        </p>
+        <button type="button"><img src="../assets/images/common/pin_icon.svg" alt="지도 마커">서울 강남구</button>
+    </div>
+
+    <!--상단 카드-->
+    <div class="walk_tit">
+        <div class="walk_card">
+            <p>오늘</p>
+            <div class="card_detail">
+                <dl>
+                    <dt>산책 거리(km)</dt>
+                    <dd>1.25</dd>
+                </dl>
+                <dl>
+                    <dt>소요 칼로리(Kcal)</dt>
+                    <dd>1,250</dd>
+                </dl>
+            </div>
+        </div>
+        <button type="button" class="walk_go_link">지금 바로 산책을 시작해볼까요?</button>
+    </div>
+
+    <div class="record_wrap">
+        <ul class="record_tab">
+            <li><button type="button" class="active">우리의 산책 기록</button></li>
+            <li><button type="button">베스트 랭킹</button></li>
+        </ul>
+
+        <!--상세-->
+        <div class="record_detail">
+            <p>산책거리</p>
+            <div class="detail_tab">
+                <button type="button" class="active">일</button>
+                <button type="button">주</button>
+                <button type="button">월</button>
+            </div>
+        </div>
+    </div>
+</div>
+{%- endblock %}

@@ -1,0 +1,58 @@
+.find-account-tabs {
+    display: flex;
+    width: 100%;
+    padding: 16px 24px 0 24px;
+    position: relative;
+    background-color: transparent;
+    gap: 2px;
+    align-items: flex-end;
+}
+
+.find-account-tab {
+    flex: 1;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-border);
+    border: none;
+    border-radius: 16px 16px 0 0;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.4;
+    letter-spacing: -0.32px;
+    color: var(--color-primary);
+    cursor: pointer;
+    padding: 0 8px;
+    padding-top: 2px;
+    position: relative;
+    z-index: 1;
+}
+
+.find-account-tab.active {
+    height: 48px;
+    background-color: var(--color-bg);
+    border: 2px solid var(--color-primary);
+    border-bottom: none;
+    border-left: 2px solid var(--color-primary);
+    border-right: 2px solid var(--color-primary);
+    border-top: 2px solid var(--color-primary);
+    font-weight: 700;
+    z-index: 2;
+    margin-bottom: -2px;
+    padding-top: 0;
+}
+
+/* The bottom line */
+/* The bottom line */
+.find-account-tabs::after {
+    content: '';
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    bottom: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    z-index: 1;
+}

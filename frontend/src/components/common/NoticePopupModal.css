@@ -1,0 +1,129 @@
+.notice-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: flex-end;
+  z-index: 9999;
+}
+
+.notice-popup-modal {
+  background: #EFE1C4;
+  border-radius: 16px 16px 0 0;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 16px;
+  min-height: 200px;
+  position: relative;
+  animation: notice-slide-up 0.3s ease-out;
+}
+
+@keyframes notice-slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.notice-popup-content-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.notice-popup-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.notice-popup-dismiss-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.notice-popup-dismiss-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #614108;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.notice-popup-dismiss-label {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #505050;
+  cursor: pointer;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notice-popup-close-btn {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.notice-popup-close-btn:active {
+  opacity: 0.7;
+}
+
+.notice-popup-images {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.notice-popup-images-track {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.notice-popup-image {
+  min-width: 100%;
+  width: 100%;
+  flex: 0 0 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.notice-popup-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  width: 100%;
+}
+
+.notice-popup-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(97, 65, 8, 0.3);
+  cursor: pointer;
+}
+
+.notice-popup-dot.active {
+  background: #614108;
+}

@@ -1,0 +1,21 @@
+.header-back-button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: -8px;
+  transition: opacity 0.2s ease;
+}
+
+.header-back-button:hover {
+  opacity: 0.7;
+}
+
+.header-back-button:active {
+  transform: scale(0.95);
+}

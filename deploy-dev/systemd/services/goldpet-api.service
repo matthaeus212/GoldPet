@@ -1,0 +1,33 @@
+[Unit]
+Description=GoldPet API Server
+After=network.target docker.service
+Wants=docker.service
+[Service]
+Type=simple
+User=dev
+WorkingDirectory=/home/dev/www/mannam/goldpet/api
+EnvironmentFile=-/home/dev/www/mannam/goldpet/api/goldpet-api.env
+ExecStart=/usr/bin/java -Xms2g -Xmx4g -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -Duser.timezone=Asia/Seoul -jar /home/dev/www/mannam/goldpet/api/goldpet-api.jar
+Restart=always
+RestartSec=10
+LimitNOFILE=65536
+# 환경변수 (SPRING_PROFILES_ACTIVE는 Jenkins가 goldpet-api.env에 설정)
+Environment="SPRING_JPA_HIBERNATE_DDL_AUTO=validate"
+Environment="SERVER_PORT=8081"
+Environment="SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/goldpet_db"
+Environment="SPRING_DATASOURCE_USERNAME=goldpet"
+Environment="SPRING_DATASOURCE_PASSWORD=doF149zVzj2kGfKVvT6CQddd/F2Pn1xDJCrnDD2vPBU="
+Environment="SPRING_DATA_REDIS_HOST=localhost"
+Environment="SPRING_DATA_REDIS_PORT=6379"
+Environment="SPRING_DATA_REDIS_PASSWORD=8nzzakgY5XMHODTQZFQBa047+uRkfzAsBbGJ0TybDnU="
+Environment="JWT_SECRET=XhRnFTPUHOIU+OflhDsQiZDLjfGsl6eeItBD76hxTYg="
+Environment="MINIO_ENDPOINT=http://localhost:9000"
+Environment="MINIO_PUBLIC_ENDPOINT=https://s3.mannamsquare.com"
+Environment="MINIO_ACCESS_KEY=minioadmin"
+Environment="MINIO_SECRET_KEY=RSMVMnhzAVWPQkItTyV6QyJuA4OmJVL6tZ74V1i6De0="
+Environment="OPENAI_API_KEY=${OPENAI_API_KEY}"
+# 로그
+StandardOutput=append:/home/dev/www/mannam/goldpet/api/logs/api.log
+StandardError=append:/home/dev/www/mannam/goldpet/api/logs/error.log
+[Install]
+WantedBy=multi-user.target

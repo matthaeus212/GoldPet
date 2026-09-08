@@ -1,0 +1,105 @@
+#aiMake {
+  padding:vw1(24) vw1(16) 0;
+  .ai_txt_wrap {
+	text-align:center;
+	strong {font-size:vw1(24); color:$brown1;}
+	p {font-size:vw1(16); font-weight:$medium; padding:vw1(16) 0 0;}
+  }
+  .make_intro {
+	.img_wrap {
+	  margin:vw1(40) 0 0; overflow:hidden; border-radius:vw1(16);
+	  img {width:100%;}
+	}
+	.btn_wrap {
+	  display:flex; gap:vw1(8); justify-content:space-between; margin:vw1(24) 0 0;
+	  button {width:50%; height:vw1(48); border-radius:22% 23% 23% 26%/57% 67% 67% 60%; background-color:$brown1; color:$white; font-size:vw1(16); font-weight:$medium;}
+	}
+  }
+  .simple_wrap {
+	margin:vw1(40) 0 0;
+	.profile_img_edit {
+	  display:flex; justify-content:center; position:relative;
+	  .profile_img {
+		width:vw1(126); height:vw1(126); z-index:10; background-color:$white; position:relative;
+		border-radius:57% 50% 58% 49% / 38% 40% 43% 48%; overflow:hidden;
+		background-image:url(../../assets/images/common/profile_none_img.svg);
+		@include backgroundSoltC;
+		&.pet_none {background-image:url(../../assets/images/common/pet_none_img.svg);}
+		img {width:100%; height:100%; object-fit:cover}
+		&:after {
+		  width:100%; height:vw1(32); display:block; content:"대표사진"; position:absolute; bottom:0; left:0; color:$white; text-align:center; line-height:vw1(32); font-size:vw1(12);
+		  background-color:rgba(97, 65, 8, .9);
+		}
+		&.img_none:after {display:none;}
+	  }
+	}
+	.img_upload_wrap {
+	  padding:vw1(16) 0 0;
+	  p {
+		font-size:vw1(16); font-weight:$bold; padding:0 0 vw1(8); display:block; color:$brown1;
+		span {font-weight:$medium;}
+	  }
+	  ul {
+		display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:vw1(13);
+		.img_upload_btn,
+		.more_btn {
+		  width:vw1(76); height:vw1(76); background-color:$white; border-radius:vw1(16); display:block;
+		  @include backgroundSoltC(50%, 50%, no-repeat, vw1(33) auto)
+		}
+		.img_upload_btn {background-image:url(../../assets/images/common/camera_icon.svg); position:relative;}
+		.upload_img {
+		  width:100%; height:100%; position:absolute; top:0; left:0; display:block; border-radius:vw1(16); overflow:hidden;
+		  img {width:100%; height:100%; object-fit:cover;}
+		}
+	  }
+	}
+	.more_wrap {
+	  margin:vw1(40) 0 0;
+	  strong {font-size:vw1(16); color:$brown1;}
+	  .list_wrap {margin:vw1(16) 0 0; display:flex; flex-direction:column; gap:vw1(8);}
+	  dl {border-radius:vw1(16); background-color:$white; display:flex; justify-content:start; gap:vw1(16); padding:vw1(16); align-items:baseline;}
+	  dt {font-size:vw1(12); font-weight:$medium;}
+	  dd {color:$brown1; font-size:vw1(14); font-weight:$semi;}
+	}
+	.submit_btn {
+	  width:100%; height:vw1(48); margin:vw1(40) 0 0; background-color:$brown1; color:$white; font-weight:$semi; font-size:vw1(16);
+	  border-radius:vw1(48);
+	}
+  }
+  
+  .make_input {
+	margin:vw1(40) 0 0;
+	.pet_type_btn {
+	  display:flex; justify-content:space-between; gap:vw1(8);
+	  button {
+		width:33%; height:vw1(42); background-color:#F9ECD2; border:2px solid #F9ECD2; color:$brown1; font-weight:$medium; border-radius:vw1(16); transition:all .3s; font-size:vw1(14);
+		&.active {background-color:#FFFDF1; font-weight:$semi; border-color:$brown1;}
+	  }
+	}
+	.prompt_txt {
+	  width:100%; height:vw1(330); margin:vw1(24) 0 0; resize:none; padding:vw1(13) vw1(16); color:$brown1; font-size:vw1(16); border-radius:vw1(16); border:1px solid $white;
+	  &:focus {border-color:$brown1;}
+	}
+	.submit_btn {
+	  width:100%; height:vw1(48); margin:vw1(40) 0 0; background-color:$brown1; color:$white; font-weight:$semi; font-size:vw1(16);
+	  border-radius:vw1(48);
+	}
+  }
+  
+  .make_complete {
+	.img_wrap {
+	  margin:vw1(40) 0 0; overflow:hidden; border-radius:vw1(16);
+	  img {width:100%;}
+	}
+	p {margin:vw1(24) 0 0; color:$brown1; font-size:vw1(16); font-weight:$medium; padding:vw1(13) vw1(16); background-color:$white; border-radius:vw1(16)}
+	
+	.btn_wrap {
+	  display:flex; gap:vw1(8); justify-content:space-between; margin:vw1(24) 0 0;
+	  button {width:50%; height:vw1(48); border-radius:22% 23% 23% 26%/57% 67% 67% 60%; background-color:$brown1; color:$white; font-size:vw1(16); font-weight:$medium;}
+	  .remake_btn {
+		background-color:#EFE1C4; color:$brown1; display:flex; justify-content:center; gap:vw1(4); align-items:center;
+		img {width:vw1(24);}
+	  }
+	}
+  }
+}

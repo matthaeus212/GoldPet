@@ -1,0 +1,50 @@
+{
+  "$comment": "ARCH-001 — 하이브리드 브리지 계약의 단일 진실 소스(SSoT). Flutter(app/lib/core/bridge/bridge_protocol.dart)와 React(frontend/src/bridge/bridgeTypes.ts)가 이 목록과 일치하는지 양쪽 테스트가 강제한다. 메서드를 추가/삭제하려면 이 파일을 먼저 고치고, 두 쪽 테스트를 그린으로 만들어라.",
+  "methods": [
+    "requestPushPermission",
+    "getPushToken",
+    "subscribeToTopic",
+    "registerFcmToken",
+
+    "requestLocationPermission",
+    "getCurrentLocation",
+    "startLocationTracking",
+    "stopLocationTracking",
+
+    "requestCameraPermission",
+    "requestPhotoPermission",
+    "openCamera",
+    "openPhotoLibrary",
+    "pickImage",
+
+    "getAppVersion",
+    "getDeviceInfo",
+    "requestAllPermissions",
+
+    "setOverlayColor",
+    "clearOverlayColor",
+
+    "login",
+    "syncAuthToken",
+    "clearAuthToken",
+
+    "startWalk",
+    "startCourseWalk",
+
+    "setCurrentChatRoom",
+    "shareContent",
+    "downloadFile",
+    "openExternalUrl"
+  ],
+  "events": [
+    "pushNotificationReceived",
+    "pushNotificationClicked",
+    "locationUpdated",
+    "permissionStatusChanged",
+    "appStateChanged",
+    "authExpired",
+    "tokenSync",
+    "walkCompleted",
+    "deviceRegistered"
+  ]
+}

@@ -1,0 +1,53 @@
+/* Common Page Layout Styles for Authentication Pages */
+
+/* Page Container - Header + Safe Area */
+.page-container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    position: relative;
+    padding: 0;
+    padding-top: 56px;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Title Section */
+.page-title-section {
+    width: 100%;
+    padding: 24px 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.page-title {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.33;
+    color: var(--color-primary);
+    letter-spacing: -0.48px;
+    margin: 0;
+}
+
+.page-subtitle {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--color-text-secondary);
+    letter-spacing: -0.32px;
+    margin: 0;
+}
+
+/* Body Container */
+.page-body {
+    width: 100%;
+    padding: 16px 16px 40px;
+    display: flex;
+    flex-direction: column;
+}

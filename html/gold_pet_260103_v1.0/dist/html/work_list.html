@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi" />
+	<title>골든 펫</title>
+	<style type="text/css">
+		body{width:100%; height:100%;  font-family:vernada; margin:20px auto;}
+		#secretWrapper{width :98%; margin:0 auto;}
+		#secretWrapper h1{font-size:30px; text-align:center; margin:0 0 119px;}
+		#secretWrapper h2{font-size:20px; margin:30px 0 20px;}
+		#secretWrapper table{width:100%; border-top:1px solid #99948e; border-left:1px solid #99948e; border-collapse:collapse;}
+		#secretWrapper table .title1{background-color:#e6002d; color:#fff; padding:7px 0 5px; text-align:center;}
+		#secretWrapper table .title2{background-color:#f7f7f7; color:#707070; padding:7px 0 5px; text-align:center;}
+		#secretWrapper table .title3{background-color:#dfdfdf; color:#707070; padding:7px 0 5px; text-align:center;}
+		#secretWrapper table th{border-right:1px solid #99948e; border-bottom:1px solid #99948e; padding:5px 0;}
+		#secretWrapper table td{border-right:1px solid #99948e; border-bottom:1px solid #99948e;}
+		#secretWrapper table tbody td{padding:8px 20px; font-size:12px;}
+		#secretWrapper table tbody tr td a {color:#333; text-decoration:underline;}
+
+		#secretWrapper table tbody tr.ok th,
+		#secretWrapper table tbody tr.ok td{background:#9f9f95; color:#fff;}
+		#secretWrapper table tbody tr.ok td.dev{background:#9f9f95; color:#fff;}
+		#secretWrapper table tbody tr.ok td a{color:#fff;}
+
+		#secretWrapper table tbody tr.ok2 td{background:#c62b4a; color:#fff;}
+		#secretWrapper table tbody tr.ok2 td.dev {background:#c62b4a; color:#fff;}
+		#secretWrapper table tbody tr.ok2 td a{color:#fff;}
+
+		#secretWrapper table tbody tr.ok3 td{background:#6e58c6; color:#fff;}
+		#secretWrapper table tbody tr.ok3 td.dev {background:#a07fff; color:#333}
+		#secretWrapper table tbody tr.ok3 td a{color:#fff;}
+		#secretWrapper table tbody tr.del td{background:#999; color:#333;}
+
+		.caution {background-color:lightblue;}
+
+		body *{margin:0; padding:0;}
+		#secretWrapper .depth_info { width:98%; position:absolute; top:83px;}
+		#secretWrapper .depth_info.fix { position:fixed; top:0;}
+
+		.ia_guide {padding:30px 0 0;}
+		.ia_guide strong {font-size:20px;}
+		.ia_guide div {padding:20px 0 20px 30px; color:#fff; margin:20px 0 0;}
+		.ia_guide .ok {background-color:#9f9f95;}
+		.ia_guide .ok3 {background-color:#c62b4a;}
+		.ia_guide .ok2 {background-color:#6e58c6;}
+		.last_update {position:absolute; right:1%; top:40px;}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<script>
+		$(function () {
+			var $table = $("table"),
+				$tbody = $table.find("tbody");
+			$table.each(function () {
+				var _this = $(this);
+				var divisionDepth = _this.find("tbody > tr");
+				var divisionLength = divisionDepth.length;
+
+				divisionDepth.eq(0).find("td").eq(0).attr("rowspan", divisionLength);
+			});
+
+			var $depthInfo = $(".depth_info");
+			$(window).scroll(function () {
+				var st = $(this).scrollTop();
+				if(st > 83){
+					$depthInfo.addClass("fix");
+				} else {
+					$depthInfo.removeClass("fix");
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+<div id="secretWrapper">
+	<table class="depth_info">
+		<colgroup>
+			<col width="10%">
+			<col width="15%">
+			<col width="15%">
+			<col width="10%">
+			<col width="10%">
+			<col>
+		</colgroup>
+		<thead>
+		<tr class="title1">
+			<th colspan="3">DEPTH</th>
+			<th colspan="2">코딩현황</th>
+			<th>개발현황</th>
+		</tr>
+		<tr class="title2">
+			<th></th>
+			<th>1depth</th>
+			<th>2depth</th>
+			<th colspan="2">마크업 파일명</th>
+			<th>작업처리</th>
+		</tr>
+		<tr class="title3">
+			<th>구분</th>
+			<th>Label</th>
+			<th>Label</th>
+			<th>Folder</th>
+			<th>File</th>
+			<th>상태</th>
+		</tr>
+		</thead>
+	</table>
+
+	<h1>골든 펫</h1>
+	<div class="ia_guide">
+		<strong>테이블에 색에 따른 진행 상태 분류</strong>
+		<div class="ok">퍼블 완료</div>
+		<div class="ok2">컨펌 완료</div>
+	</div>
+    <h2>홈</h2>
+	<table>
+		<colgroup>
+			<col width="10%">
+			<col width="15%">
+			<col width="15%">
+			<col width="10%">
+			<col width="10%">
+			<col>
+		</colgroup>
+		<tbody>
+		<tr class="ok3">
+			<td>홈</td>
+			<td></td>
+			<td></td>
+			<td>/</td>
+			<td><a href="./index.html" target="_blank">index</a></td>
+			<td class=""></td>
+		</tr>
+		</tbody>
+	</table>
+    <h2>인트로</h2>
+    <table>
+        <colgroup>
+            <col width="10%">
+            <col width="15%">
+            <col width="15%">
+            <col width="10%">
+            <col width="10%">
+            <col>
+        </colgroup>
+        <tbody>
+        <tr class="ok3">
+            <td>인트로</td>
+            <td></td>
+            <td></td>
+            <td>/</td>
+            <td><a href="./intro.html" target="_blank">intro</a></td>
+            <td class=""></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2>친구찾기</h2>
+    <table>
+        <colgroup>
+            <col width="10%">
+            <col width="15%">
+            <col width="15%">
+            <col width="10%">
+            <col width="10%">
+            <col>
+        </colgroup>
+        <tbody>
+        <tr class="ok3">
+            <td>친구찾기</td>
+            <td></td>
+            <td></td>
+            <td>/</td>
+            <td><a href="./friend_find.html" target="_blank">friend_find</a></td>
+            <td class=""></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2>채팅</h2>
+    <table>
+        <colgroup>
+            <col width="10%">
+            <col width="15%">
+            <col width="15%">
+            <col width="10%">
+            <col width="10%">
+            <col>
+        </colgroup>
+        <tbody>
+        <tr class="ok3">
+            <td>채팅</td>
+            <td>1:1</td>
+            <td></td>
+            <td>/</td>
+            <td><a href="./chat_one.html" target="_blank">chat_one</a></td>
+            <td class=""></td>
+        </tr>
+        <tr class="ok3">
+            <td>대화요청</td>
+            <td></td>
+            <td>/</td>
+            <td><a href="./chat_contact.html" target="_blank">chat_contact</a></td>
+            <td class=""></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2>산책</h2>
+    <table>
+        <colgroup>
+            <col width="10%">
+            <col width="15%">
+            <col width="15%">
+            <col width="10%">
+            <col width="10%">
+            <col>
+        </colgroup>
+        <tbody>
+        <tr class="ok3">
+            <td>산책</td>
+            <td>리스트</td>
+            <td></td>
+            <td>/</td>
+            <td><a href="./walk_list.html" target="_blank">walk_list</a></td>
+            <td class=""></td>
+        </tr>
+        <tr class="ok3">
+            <td>상세</td>
+            <td></td>
+            <td>/</td>
+            <td><a href="./walk_detail.html" target="_blank">walk_detail</a></td>
+            <td class=""></td>
+        </tr>
+        <tr class="ok3">
+            <td>베스트 랭킹</td>
+            <td></td>
+            <td>/</td>
+            <td><a href="./walk_ranking.html" target="_blank">walk_ranking</a></td>
+            <td class=""></td>
+        </tr>
+        <tr class="ok3">
+            <td>지도</td>
+            <td></td>
+            <td>/</td>
+            <td><a href="./walk_map.html" target="_blank">walk_map</a></td>
+            <td class=""></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2>커뮤니티</h2>
+    <table>
+        <colgroup>
+            <col width="10%">
+            <col width="15%">
+            <col width="15%">
+            <col width="10%">
+            <col width="10%">
+            <col>
+        </colgroup>
+        <tbody>
+        <tr class="ok3">
+            <td>커뮤니티</td>
+            <td>전체 리스트</td>
+            <td></td>
+            <td>/</td>
+            <td><a href="./community.html" target="_blank">community</a></td>
+            <td class=""></td>
+        </tr>
+        <tr class="ok3">
+            <td>글쓰기</td>
+            <td></td>
+            <td>/</td>
+            <td><a href="./community_write.html" target="_blank">community_write</a></td>
+            <td class=""></td>
+        </tr>
+        <tr class="ok3">
+            <td>게시글 보기</td>
+            <td></td>
+            <td>/</td>
+            <td><a href="./community_detail.html" target="_blank">community_detail</a></td>
+            <td class=""></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2>프로필</h2>
+    <table>
+        <colgroup>
+            <col width="10%">
+            <col width="15%">
+            <col width="15%">
+            <col width="10%">
+            <col width="10%">
+            <col>
+        </colgroup>
+        <tbody>
+        <tr class="ok3">
+            <td>프로필</td>
+            <td>반려인</td>
+            <td></td>
+            <td>/</td>
+            <td><a href="./profile_owner_info.html" target="_blank">profile_owner_info</a></td>
+            <td class=""></td>
+        </tr>
+        <tr class="ok3">
+            <td>반려동물</td>
+            <td></td>
+            <td>/</td>
+            <td><a href="./profile_pet_info.html" target="_blank">profile_pet_info</a></td>
+            <td class=""></td>
+        </tr>
+        <tr class="ok3">
+            <td>반려동물</td>
+            <td>미등록</td>
+            <td>/</td>
+            <td><a href="./profile_pet_info_not.html" target="_blank">profile_pet_info_not</a></td>
+            <td class=""></td>
+        </tr>
+        <tr class="ok3">
+            <td>반려인 프로필 작성 및 수정</td>
+            <td></td>
+            <td>/</td>
+            <td><a href="./profile_owner_write.html" target="_blank">profile_owner_write</a></td>
+            <td class=""></td>
+        </tr>
+        <tr class="ok3">
+            <td>반려동물 프로필 작성 및 수정</td>
+            <td></td>
+            <td>/</td>
+            <td><a href="./profile_pet_write.html" target="_blank">profile_pet_write</a></td>
+            <td class=""></td>
+        </tr>
+        <tr class="ok3">
+            <td>프로필 위치정보 수정</td>
+            <td></td>
+            <td>/</td>
+            <td><a href="./profile_location.html" target="_blank">profile_location</a></td>
+            <td class=""></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2>AI 펫 만들기</h2>
+    <table>
+        <colgroup>
+            <col width="10%">
+            <col width="15%">
+            <col width="15%">
+            <col width="10%">
+            <col width="10%">
+            <col>
+        </colgroup>
+        <tbody>
+        <tr class="">
+            <td>AI 펫 만들기</td>
+            <td>최초 화면</td>
+            <td></td>
+            <td>/</td>
+            <td><a href="./ai_pet_make.html" target="_blank">ai_pet_make</a></td>
+            <td class=""></td>
+        </tr>
+        <tr class="">
+            <td>간단하게 만들기</td>
+            <td></td>
+            <td>/</td>
+            <td><a href="./ai_pet_make_simple.html" target="_blank">ai_pet_make_simple</a></td>
+            <td class=""></td>
+        </tr>
+        <tr class="">
+            <td>원하는 대로 만들기</td>
+            <td>입력 전/입력 후</td>
+            <td>/</td>
+            <td><a href="./ai_pet_make_input.html" target="_blank">ai_pet_make_input</a></td>
+            <td class=""></td>
+        </tr>
+        <tr class="">
+            <td>생성 완료 화면</td>
+            <td></td>
+            <td>/</td>
+            <td><a href="./ai_pet_make_complete.html" target="_blank">ai_pet_make_complete</a></td>
+            <td class=""></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

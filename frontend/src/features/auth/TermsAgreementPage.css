@@ -1,0 +1,196 @@
+/* Header styles removed - using shared Header component */
+/* Page container and title styles moved to page-layout.css */
+
+/* Body */
+.terms-body {
+  width: 100%;
+  padding: 16px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.terms-agreement-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+}
+
+.terms-agreement-item {
+  width: 100%;
+  padding: 18px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.terms-agreement-all {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 12px;
+  padding-bottom: 20px;
+}
+
+.terms-divider {
+  display: none;
+}
+
+.terms-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  flex: 1;
+}
+
+.terms-checkbox {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--color-text-secondary);
+  border-radius: 2px;
+  cursor: pointer;
+  appearance: none;
+  position: relative;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  background-color: transparent;
+}
+
+.terms-checkbox:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.terms-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 5px;
+  width: 4px;
+  height: 8px;
+  border: solid var(--color-text-white);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.terms-checkbox-text {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #727272;
+  letter-spacing: -0.32px;
+  transition: color 0.2s ease;
+}
+
+.terms-checkbox-label.checked .terms-checkbox-text {
+  color: #727272;
+}
+
+.terms-agreement-all .terms-checkbox-text {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+  letter-spacing: -0.36px;
+}
+
+.terms-required {
+  color: #ABABAB;
+  font-size: 14px;
+  font-weight: 400;
+  transition: color 0.2s ease;
+}
+
+.terms-checkbox-label.checked .terms-required {
+  color: #4F4F4F;
+}
+
+.terms-optional {
+  color: #ABABAB;
+  font-size: 14px;
+  font-weight: 400;
+  transition: color 0.2s ease;
+}
+
+.terms-checkbox-label.checked .terms-optional {
+  color: #4F4F4F;
+}
+
+.terms-view-button {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  color: #ABABAB;
+  transition: color 0.2s ease;
+}
+
+.terms-view-button.checked {
+  color: #4F4F4F;
+}
+
+.terms-view-button:hover {
+  color: var(--color-primary);
+}
+
+.terms-view-button svg {
+  width: 100%;
+  height: 100%;
+}
+
+.terms-button-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.terms-button {
+  width: 100%;
+  height: 48px;
+  background-color: #ABABAB;
+  border: none;
+  border-radius: 1000px;
+  color: #FFFFFF;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.32px;
+  cursor: not-allowed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 20px;
+  transition: all 0.2s ease;
+}
+
+.terms-button.active {
+  background-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.terms-button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.terms-button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.terms-button:disabled {
+  cursor: not-allowed;
+}
+

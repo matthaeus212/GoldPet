@@ -1,0 +1,62 @@
+spring:
+  config:
+    activate:
+      on-profile: codegen
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    open-in-view: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        format_sql: false
+        # Skip JDBC metadata probing — codegen has no running Postgres.
+        # Without this Hibernate still opens a connection to detect dialect,
+        # which floods the log with SQL 08001 errors on a clean agent.
+        boot:
+          allow_jdbc_metadata_access: false
+
+  flyway:
+    enabled: false
+
+  # Prevent HikariCP from eagerly probing the DB at startup.
+  datasource:
+    hikari:
+      initialization-fail-timeout: -1
+      connection-timeout: 1000
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: goldpet123
+
+app:
+  encryption:
+    key-primary: "codegen-dummy-key-32chars-padded!"
+    key-secondary: ""
+  frontend:
+    url: http://localhost:5173
+  admin:
+    url: http://localhost:5174
+  cors:
+    allowed-origins: "*"
+  # codegen 은 OpenAPI spec 만 생성 — Bucket4j+Redis 필요 없음. bean 생성 자체 skip
+  # (Jenkins agent 로컬 Redis 의 비번이 빌드마다 달라 WRONGPASS 로 기동 실패하는 문제 회피).
+  rate-limit:
+    user-profile:
+      enabled: false
+
+S3_ENDPOINT: http://localhost:9100
+S3_PUBLIC_ENDPOINT: http://localhost:9100
+S3_ACCESS_KEY: codegen-access-key
+S3_SECRET_KEY: codegen-secret-key
+S3_PUBLIC_BUCKET_NAME: goldpet-public
+S3_PRIVATE_BUCKET_NAME: goldpet-private
+
+# codegen 은 DB 없이 dialect 를 명시해야 하므로 HHH90000025 는 불가피 → 억제.
+logging:
+  level:
+    org.hibernate.orm.deprecation: ERROR

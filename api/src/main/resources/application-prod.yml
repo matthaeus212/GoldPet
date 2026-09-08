@@ -1,0 +1,67 @@
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  jpa:
+    hibernate:
+      ddl-auto: validate # 운영 환경에서는 스키마 자동 변경 방지
+    show-sql: false
+
+  flyway:
+    # V68 이 V69/V70 보다 늦게 추가돼 스킵된 환경에서도 back-apply 되도록 허용.
+    # V68/V71 모두 IF NOT EXISTS 라 재적용/순서 무관하게 안전. schema_history 정합 + validate 실패 방지.
+    out-of-order: true
+
+# BLOCKER #9 — Sentry. SENTRY_DSN_API 미설정 시 dsn 공백 → SDK no-op (이벤트 미전송).
+sentry:
+  dsn: ${SENTRY_DSN_API:}
+  environment: prod
+  release: ${SENTRY_RELEASE:goldpet-api@0.0.1-SNAPSHOT}
+  traces-sample-rate: ${SENTRY_TRACES_SAMPLE_RATE:0.1}
+
+# 상용 서버 환경 URL 설정 (goldpet.com)
+app:
+  encryption:
+    key: "${ENCRYPTION_KEY}"
+  frontend:
+    url: https://app.goldpet.com
+  admin:
+    url: https://admin.goldpet.com
+  cors:
+    allowed-origins:
+      - https://app.goldpet.com
+      - https://admin.goldpet.com
+      - https://goldpet.com
+      - https://www.goldpet.com
+
+# Production S3/MinIO Configuration
+S3_ENDPOINT: ${MINIO_ENDPOINT}
+S3_PUBLIC_ENDPOINT: ${MINIO_PUBLIC_ENDPOINT}
+S3_ACCESS_KEY: ${MINIO_ACCESS_KEY}
+S3_SECRET_KEY: ${MINIO_SECRET_KEY}
+S3_PUBLIC_BUCKET_NAME: ${MINIO_PUBLIC_BUCKET}
+S3_PRIVATE_BUCKET_NAME: ${MINIO_PRIVATE_BUCKET}
+
+# DeepL Translation
+deepl:
+  api-key: ${DEEPL_API_KEY}
+
+openai:
+  api-key: ${OPENAI_API_KEY}
+
+# NCloud SENS SMS (휴대폰 인증 발송). 비밀키는 서버 env 에서만 주입 — 값 하드코딩 금지.
+ncloud:
+  sms:
+    host: ${NCLOUD_SMS_HOST:https://sens.apigw.ntruss.com}
+    access-key: ${NCLOUD_SMS_ACCESS_KEY:}
+    secret-key: ${NCLOUD_SMS_SECRET_KEY:}
+    service-id: ${NCLOUD_SMS_SERVICE_ID:}
+    sender-number: ${NCLOUD_SMS_FROM:}
+
+# OPS-003: API 를 전체 인터페이스(*:8081)에 바인딩하고 있었다. ufw 가 외부를 막고 있지만
+# 심층방어로 루프백만 바인딩한다 — nginx 가 http://localhost:8081 로 프록시하므로 영향 없다.
+# (방화벽 규칙 하나가 잘못 열리는 순간 API 가 그대로 노출되던 구조를 없앤다.)
+# 필요 시 SERVER_ADDRESS 로 덮어쓸 수 있다.
+server:
+  address: ${SERVER_ADDRESS:127.0.0.1}

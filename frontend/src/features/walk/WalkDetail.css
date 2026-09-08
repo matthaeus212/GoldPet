@@ -1,0 +1,462 @@
+/* WalkDetailPage styles */
+
+.walk_detail_page {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--color-bg, #FFF7E6);
+}
+
+
+.walk_detail_container {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--color-bg, #FFF7E6);
+  padding-bottom: 80px;
+}
+
+/* Body content area */
+.walk_detail_body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Map section */
+.walk_detail_map_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.walk_detail_date {
+  font-family: Pretendard, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #505050;
+  letter-spacing: -0.36px;
+}
+
+.walk_detail_share_btn {
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border-radius: 100px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.walk_detail_share_btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Map box */
+.walk_detail_map_box {
+  width: 100%;
+  height: 266px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #D9FFA7;
+  position: relative;
+}
+
+.walk_detail_map_failed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 12px;
+  color: #8B8B8B;
+  font-size: 14px;
+  font-family: Pretendard, sans-serif;
+}
+
+.walk_detail_map_expand_btn {
+  position: absolute;
+  right: 8px;
+  bottom: 48px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border-radius: 8px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Data card (white card wrapping chart + tabs + nav) */
+.walk_detail_data_card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.walk_detail_data_title {
+  font-family: Pretendard, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #614108;
+  letter-spacing: -0.32px;
+}
+
+/* Period tabs (일/주/월) */
+.walk_detail_period_tabs {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.walk_detail_period_tab {
+  flex: 1;
+  padding: 8px 16px;
+  border-radius: 16px;
+  border: none;
+  background: #F5F5F5;
+  font-family: Pretendard, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #505050;
+  letter-spacing: -0.28px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.walk_detail_period_tab.active {
+  background: #FFE5FA;
+  color: #8A497D;
+  font-weight: 700;
+}
+
+/* Date navigation */
+.walk_detail_date_nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.walk_detail_date_nav_btn {
+  width: 16px;
+  height: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: #505050;
+}
+
+.walk_detail_date_nav_btn svg {
+  width: 8px;
+  height: 12px;
+}
+
+.walk_detail_date_nav_label {
+  font-family: Pretendard, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #505050;
+  letter-spacing: -0.28px;
+  text-align: center;
+  min-width: 120px;
+}
+
+/* Chart area */
+.walk_detail_chart_area {
+  width: 100%;
+  height: 200px;
+  position: relative;
+}
+
+/* Summary stats cards */
+.walk_detail_stats_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+.walk_detail_stat_card {
+  background: #F5F5F5;
+  border-radius: 12px;
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.walk_detail_stat_label {
+  font-family: Pretendard, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #8B8B8B;
+  letter-spacing: -0.24px;
+}
+
+.walk_detail_stat_value {
+  font-family: Pretendard, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #614108;
+  letter-spacing: -0.4px;
+}
+
+.walk_detail_stat_unit {
+  font-size: 13px;
+  font-weight: 500;
+  color: #A58A54;
+  margin-left: 2px;
+}
+
+/* No data state */
+.walk_detail_no_data {
+  text-align: center;
+  padding: 40px 0;
+  color: #AAAAAA;
+  font-family: Pretendard, sans-serif;
+  font-size: 14px;
+}
+
+/* Reload button for map */
+.walk_detail_reload_btn {
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid #D4A574;
+  background: #F9ECD2;
+  color: #614108;
+  font-size: 13px;
+  font-family: Pretendard, sans-serif;
+  cursor: pointer;
+}
+
+/* Spot markers (PEE, POOP, PHOTO, PROBLEM, OTHER) */
+.walk_spot_marker {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  position: relative;
+}
+
+.walk_spot_marker::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 6px solid;
+}
+
+.walk_spot_marker span {
+  font-size: 10px;
+  font-weight: 600;
+  font-family: Pretendard, sans-serif;
+}
+
+.walk_spot_marker--pee {
+  border-color: #4A90D9;
+  background: #E8F4FD;
+}
+.walk_spot_marker--pee::after { border-top-color: #4A90D9; }
+.walk_spot_marker--pee span { color: #4A90D9; }
+
+.walk_spot_marker--poop {
+  border-color: #8B6914;
+  background: #FFF3D6;
+}
+.walk_spot_marker--poop::after { border-top-color: #8B6914; }
+.walk_spot_marker--poop span { color: #8B6914; }
+
+.walk_spot_marker--photo {
+  border-color: #8A497D;
+  background: #FFE5FA;
+}
+.walk_spot_marker--photo::after { border-top-color: #8A497D; }
+.walk_spot_marker--photo span { color: #8A497D; }
+
+.walk_spot_marker--problem {
+  border-color: #D94A4A;
+  background: #FFE5E5;
+}
+.walk_spot_marker--problem::after { border-top-color: #D94A4A; }
+.walk_spot_marker--problem span { color: #D94A4A; }
+
+.walk_spot_marker--other {
+  border-color: #8B8B8B;
+  background: #F5F5F5;
+}
+.walk_spot_marker--other::after { border-top-color: #8B8B8B; }
+.walk_spot_marker--other span { color: #8B8B8B; }
+
+/* Spot Detail Bottom Sheet */
+.walk_spot_sheet_backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 9999;
+  animation: walkSheetFadeIn 200ms ease-out;
+}
+
+@keyframes walkSheetFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.walk_spot_sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  background: #EFE1C4;
+  border-radius: 16px 16px 0 0;
+  padding: 8px 20px;
+  padding-bottom: max(40px, calc(env(safe-area-inset-bottom) + 24px));
+  min-height: 160px;
+  max-height: 70vh;
+  overflow-y: auto;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.12);
+  animation: walkSheetSlideUp 250ms ease-out;
+}
+
+@keyframes walkSheetSlideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.walk_spot_sheet_handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: #D9D9D9;
+  margin: 0 auto 12px;
+}
+
+.walk_spot_sheet_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.walk_spot_sheet_type {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.walk_spot_sheet_icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.walk_spot_sheet_label {
+  font-family: Pretendard, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.36px;
+}
+
+.walk_spot_sheet_close {
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.walk_spot_sheet_close:active {
+  background: #F5F5F5;
+}
+
+.walk_spot_sheet_time {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.walk_spot_sheet_time span {
+  font-family: Pretendard, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #A58A54;
+  letter-spacing: -0.28px;
+}
+
+.walk_spot_sheet_note {
+  background: #FFF7E6;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+}
+
+.walk_spot_sheet_note p {
+  font-family: Pretendard, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #505050;
+  line-height: 1.5;
+  margin: 0;
+  word-break: break-word;
+}
+
+.walk_spot_sheet_photo {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.walk_spot_sheet_photo img {
+  width: 100%;
+  max-height: 240px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+.walk_spot_sheet_photo_placeholder {
+  width: 100%;
+  height: 160px;
+  background: #F5F5F5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.walk_spot_sheet_photo_placeholder span {
+  font-family: Pretendard, sans-serif;
+  font-size: 13px;
+  color: #AAAAAA;
+}

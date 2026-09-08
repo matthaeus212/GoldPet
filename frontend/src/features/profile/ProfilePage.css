@@ -1,0 +1,29 @@
+.profile-bottom-bar {
+  position: sticky;
+  bottom: 16px;
+  display: flex;
+  gap: 8px;
+  padding: 0 16px;
+  z-index: 5;
+  margin-top: 24px;
+}
+
+.profile-bottom-btn {
+  flex: 1;
+  height: 48px;
+  border-radius: 48px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.profile-bottom-btn.confirm {
+  background-color: #F5E6C8;
+  color: #614108;
+}
+
+.profile-bottom-btn.edit {
+  background-color: #614108;
+  color: #fff;
+}

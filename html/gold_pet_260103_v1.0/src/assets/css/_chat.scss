@@ -1,0 +1,80 @@
+#chatOne {
+	padding:vw1(10) 0 0;
+	.group_tab {
+		width:vw1(328); margin:0 0 0 vw1(16); position:relative; display:flex; justify-content:center; gap:vw1(2);
+		&:after {
+			width:100%; height:2px; display:block; content:""; position:absolute; left:0; bottom:0;
+			background-color:$brown1;
+		}
+		button {
+			width:vw1(102); height:vw1(46); box-sizing:border-box; position:relative; background-color:$brown2; font-size:vw1(16); font-weight:$medium; color:$brown1;
+			@include borderTopRadius(vw1(10));
+			&.active {z-index:1; border:2px solid $brown1; border-bottom:0; background-color:#FFF7E6; font-weight:$bold;}
+		}
+	}
+	
+	.chat_list {
+		padding:vw1(25) vw1(16) 0;
+		li {
+			padding:vw1(16) 0; border-top:1px solid #EFE1C4;
+			&:first-child {border-top:0;}
+		}
+		button {
+			width:100%; padding:0 vw1(20) 0 0; display:grid; column-gap:vw1(8); grid-template-columns:vw1(48) 1fr auto; grid-template-rows:auto auto; align-items:center; position:relative;
+			&:after {
+				width:vw1(16); height:vw1(16); display:block; content:""; background-image:url(/assets/images/common/more_btn.svg);
+				position:absolute; top:50%; right:0; translate:0 -50%;
+				@include backgroundSoltC;
+			}
+		}
+		.profile_img {
+			width:vw1(48); height:vw1(48); border-radius:57% 50% 58% 49% / 38% 40% 43% 48%; overflow:hidden; grid-row:1 / span 2;
+			img {width:100%; height:100%; object-fit:cover}
+		}
+		.txt_wrap {
+			width:vw1(200); text-align:left;
+			strong {font-size:vw1(18); color:$brown1;}
+			p {
+				font-size:vw1(14); font-weight:$medium;
+				@include text-overflow;
+			}
+		}
+		.day_txt {
+			height:90%; margin-left: auto; text-align:right; grid-column: 3; grid-row: 1 / span 2; display:flex; align-items:flex-end; flex-direction:column; justify-content: space-between;
+			.count_num {padding:vw1(2) vw1(6); background-color:#ff5005; border-radius:vw1(22); color:$white; font-weight:$bold; font-size:vw1(12);}
+			.last_day {font-size:vw1(12); font-weight:$medium;}
+		}
+	}
+	
+	/* 대화요청 */
+	.contact_list {
+		padding:vw1(25) vw1(16) 0;
+		li {
+			width:100%; padding:vw1(16) 0; border-top:1px solid #EFE1C4; display:flex; column-gap:vw1(8); justify-content:start; flex-wrap: wrap;
+			&:first-child {border-top:0;}
+		}
+		.profile_img {
+			width:vw1(48); height:vw1(48); border-radius:57% 50% 58% 49% / 38% 40% 43% 48%; overflow:hidden; grid-row:1 / span 2; flex: 0 0 auto;
+			img {width:100%; height:100%; object-fit:cover}
+		}
+		.txt_wrap {
+			width:vw1(150); text-align:left; flex:1;
+			strong {font-size:vw1(18); color:$brown1;}
+			p {
+				font-size:vw1(14); font-weight:$medium;
+				@include text-overflow;
+			}
+		}
+		.contact_btn_wrap {
+			flex: 0 0 auto; display:flex; gap:vw1(8); align-items:center;
+			button {
+				width:vw1(55); height:vw1(42); background-color:$brown1; color:$white; border-radius:vw1(18); font-size:vw1(13); font-weight:$semi;
+				&:first-child {background-color:$brown2; color:$brown1;}
+			}
+			
+		}
+		.last_day {
+			flex-basis: 100%; text-align:right; font-size:vw1(12); font-weight:$medium; color:#727272;
+		}
+	}
+}

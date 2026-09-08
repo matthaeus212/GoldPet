@@ -1,0 +1,1 @@
+ALTER TABLE walks ADD COLUMN end_address VARCHAR(255);

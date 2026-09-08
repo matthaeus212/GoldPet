@@ -1,0 +1,11 @@
+[Unit]
+Description=GoldPet backup PENDING watcher (1m interval)
+Requires=goldpet-backup-pickup.service
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=1min
+Unit=goldpet-backup-pickup.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,104 @@
+pipeline {
+    agent any
+
+    parameters {
+        choice(name: 'ENV', choices: ['dev', 'prod'], description: '배포 환경 (dev=mannamsquare.com, prod=goldpet.com)')
+    }
+
+    environment {
+        DEPLOY_PATH = '/home/dev/www/mannam/goldpet/admin'
+        NODE_VERSION = '24.13.0'
+    }
+
+    tools {
+        nodejs "NodeJS"
+    }
+
+    stages {
+        stage('Install Dependencies') {
+            steps {
+                dir('admin') {
+                    sh 'npm ci'
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Post-merge smoke — UNSTABLE on fail, does not block deploy.
+                catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
+                    sh 'cd admin && npm run lint'
+                    sh 'cd admin && npm run lint:contract'
+                }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                dir('admin') {
+                    // 환경에 맞는 .env 파일 사용하여 빌드
+                    sh "npm run build -- --mode ${params.ENV}"
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                script {
+                    def checkUrl = params.ENV == 'dev' ? 'https://admin.mannamsquare.com' : 'https://admin.goldpet.com'
+
+                    // 백업
+                    sh """
+                        if [ -d ${DEPLOY_PATH}/dist ]; then
+                            BACKUP_DIR=${DEPLOY_PATH}/dist.backup.\$(date +%Y%m%d_%H%M%S)
+                            mv ${DEPLOY_PATH}/dist \$BACKUP_DIR
+                            echo "Backed up to \$BACKUP_DIR"
+                        fi
+                    """
+
+                    // 새 빌드 배포
+                    sh "cp -r admin/dist ${DEPLOY_PATH}/"
+
+                    // Nginx 재로드
+                    sh 'sudo systemctl reload nginx'
+
+                    // 배포 확인
+                    sh """
+                        echo "Checking deployment at ${checkUrl}..."
+                        if curl -f ${checkUrl} > /dev/null 2>&1; then
+                            echo "✅ Admin panel is accessible!"
+                        else
+                            echo "⚠️ Admin panel might not be accessible"
+                        fi
+                    """
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "✅ Admin 배포 성공! (ENV: ${params.ENV})"
+        }
+        failure {
+            echo "❌ Admin 배포 실패! (ENV: ${params.ENV})"
+            // 롤백
+            sh """
+                if ls -d ${DEPLOY_PATH}/dist.backup.* 1> /dev/null 2>&1; then
+                    LATEST_BACKUP=\$(ls -td ${DEPLOY_PATH}/dist.backup.* | head -1)
+                    rm -rf ${DEPLOY_PATH}/dist
+                    cp -r \$LATEST_BACKUP ${DEPLOY_PATH}/dist
+                    sudo systemctl reload nginx
+                    echo "Rolled back to \$LATEST_BACKUP"
+                fi
+            """
+        }
+        always {
+            // 오래된 백업 정리 (최근 3개만 유지)
+            sh """
+                cd ${DEPLOY_PATH}
+                ls -td dist.backup.* 2>/dev/null | tail -n +4 | xargs rm -rf || true
+            """
+        }
+    }
+}

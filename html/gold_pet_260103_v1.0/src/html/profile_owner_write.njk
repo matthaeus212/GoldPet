@@ -1,0 +1,247 @@
+{%- extends "_templates/_layout.njk" -%}
+{% block content %}
+<div id="profileContainer">
+	<div class="profile_write">
+		<div class="profile_img_edit">
+			<!--
+				profile_img 내에 img 태그 src와 같이 넣으면 대표사진 텍스트 노출,
+				대표 이미지 없으면 img 태그 지우고 class / img_none 추가
+			   -->
+			<div class="profile_img"><img src="../assets/images/main/main_slide_butler02.png" alt=""></div>
+			<!--<div class="profile_img img_none"></div>-->
+		</div>
+		<div class="img_upload_wrap">
+			<p>프로필 사진 <span>(최대 5개)</span></p>
+			<ul>
+				<li>
+					<button type="button" class="img_upload_btn">
+						<span class="upload_img"><img src="../assets/images/community/upload_img.jpg" alt=""></span>
+						<span class="delete_btn"></span>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="img_upload_btn"></button>
+				</li>
+				<li>
+					<button type="button" class="img_upload_btn"></button>
+				</li>
+				<li>
+					<button type="button" class="more_btn"></button>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="guide_box">
+			<dl>
+				<dt>등록 가이드</dt>
+				<dd>최대 5장 등록 가능하며 2장은 필수로 등록해주세요.</dd>
+				<dd>본인의 사진을 등록해주세요.</dd>
+				<dd>가장 먼저 등록한 사진이 대표 사진으로 설정 됩니다.</dd>
+			</dl>
+		</div>
+		
+		<!--버튼은 disabled 빼면 색상 변경-->
+		<div class="profile_write_wrap">
+			<strong>기본 정보</strong>
+			<div class="profile_write_box pink_color">
+				<div class="write_box">
+					<label for="owner_name">이름</label>
+					<input type="text" id="owner_name" placeholder="이름을 입력해주세요.">
+				</div>
+				<div class="btn_write_box">
+					<div class="write_box">
+						<label for="owner_nickname">닉네임</label>
+						<input type="text" id="owner_nickname" placeholder="닉네임을 입력해주세요.">
+					</div>
+					<button type="button" class="disabled">중복 확인</button>
+				</div>
+				<div class="write_box">
+					<label for="owner_birth_day">생년월일</label>
+					<input type="text" id="owner_birth_day" placeholder="생년월일 8자리">
+				</div>
+				<div class="btn_write_box">
+					<div class="write_box">
+						<label for="owner_phone_number">휴대폰 번호</label>
+						<input type="text" id="owner_phone_number" placeholder="휴대폰 11자리">
+					</div>
+					<button type="button" class="disabled">인증번호</button>
+					<div class="write_box">
+						<input type="text" id="owner_phone_verify_code" placeholder="인증번호 6자리">
+					</div>
+					<button type="button" class="disabled">확인</button>
+				</div>
+				
+				<div class="radio_wrap">
+					<p>성별</p>
+					<div class="radio_box">
+						<input type="radio" name="owner_gender" id="owner_gender_man" value="남성">
+						<label for="owner_gender_man">남성</label>
+					</div>
+					<div class="radio_box">
+						<input type="radio" name="owner_gender" id="owner_gender_woman" value="여성">
+						<label for="owner_gender_woman">여성</label>
+					</div>
+				</div>
+				
+				<div class="radio_wrap">
+					<p>반려동물 유무</p>
+					<div class="radio_box">
+						<input type="radio" name="owner_pet" id="owner_pet_Y" value="있음">
+						<label for="owner_pet_Y">있음</label>
+					</div>
+					<div class="radio_box">
+						<input type="radio" name="owner_pet" id="owner_pet_N" value="없음">
+						<label for="owner_pet_N">없음</label>
+					</div>
+					<span>* 비반려인은 친구 찾기에서 반려인 사용자만 매칭 됩니다.</span>
+				</div>
+				
+				<div class="write_box">
+					<label for="pet_special_notes">간단한 자기소개</label>
+					<textarea id="pet_special_notes" placeholder="간단한 자기소개을 적어주세요."></textarea>
+				</div>
+			</div>
+			
+			<strong>추가 정보</strong>
+			<div class="profile_write_box purple_color">
+				<div class="write_box write_select">
+					<label for="owner_mbti">MBTI</label>
+					<select name="owner_mbti" id="owner_mbti">
+						<option value="INTJ">INTJ</option>
+						<option value="INTP">INTP</option>
+						<option value="ENTJ">ENTJ</option>
+						<option value="ENTP">ENTP</option>
+						<option value="INFJ">INFJ</option>
+						<option value="INFP">INFP</option>
+						<option value="ENFJ">ENFJ</option>
+						<option value="ENFP">ENFP</option>
+						<option value="ISTJ">ISTJ</option>
+						<option value="ISFJ">ISFJ</option>
+						<option value="ESTJ">ESTJ</option>
+						<option value="ESFJ">ESFJ</option>
+						<option value="ISTP">ISTP</option>
+						<option value="ISFP">ISFP</option>
+						<option value="ESTP">ESTP</option>
+						<option value="ESFP">ESFP</option>
+					</select>
+				</div>
+				
+				<div class="txt_check_wrap">
+					<p>관심사 (다중 선택 가능)</p>
+					
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_interest_meetup" name="owner_interest" value="만남">
+						<label for="owner_interest_meetup">만남</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_interest_travel" name="owner_interest" value="여행">
+						<label for="owner_interest_travel">여행</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_interest_health" name="owner_interest" value="건강">
+						<label for="owner_interest_health">건강</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_interest_fashion_beauty" name="owner_interest" value="패션/뷰티">
+						<label for="owner_interest_fashion_beauty">패션/뷰티</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_interest_economy_invest" name="owner_interest" value="경제/투자">
+						<label for="owner_interest_economy_invest">경제/투자</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_interest_sports" name="owner_interest" value="스포츠">
+						<label for="owner_interest_sports">스포츠</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_interest_culture_art" name="owner_interest" value="문화/예술">
+						<label for="owner_interest_culture_art">문화/예술</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_interest_music" name="owner_interest" value="음악">
+						<label for="owner_interest_music">음악</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_interest_game" name="owner_interest" value="게임">
+						<label for="owner_interest_game">게임</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_interest_walk" name="owner_interest" value="산책">
+						<label for="owner_interest_walk">산책</label>
+					</div>
+				</div>
+				
+				<div class="txt_check_wrap">
+					<p>취미 (다중 선택 가능)</p>
+					
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_hobby_running" name="owner_hobby" value="러닝">
+						<label for="owner_hobby_running">러닝</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_hobby_cooking" name="owner_hobby" value="요리">
+						<label for="owner_hobby_cooking">요리</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_hobby_camping" name="owner_hobby" value="캠핑">
+						<label for="owner_hobby_camping">캠핑</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_hobby_movie" name="owner_hobby" value="영화감상">
+						<label for="owner_hobby_movie">영화감상</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_hobby_photography" name="owner_hobby" value="사진촬영">
+						<label for="owner_hobby_photography">사진촬영</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_hobby_bicycle" name="owner_hobby" value="자전거">
+						<label for="owner_hobby_bicycle">자전거</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_hobby_leisure" name="owner_hobby" value="레저">
+						<label for="owner_hobby_leisure">레저</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_hobby_sports" name="owner_hobby" value="스포츠">
+						<label for="owner_hobby_sports">스포츠</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_hobby_meditation_yoga" name="owner_hobby" value="명상/요가">
+						<label for="owner_hobby_meditation_yoga">명상/요가</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_hobby_dance" name="owner_hobby" value="댄스">
+						<label for="owner_hobby_dance">댄스</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_hobby_instrument" name="owner_hobby" value="악기연주">
+						<label for="owner_hobby_instrument">악기연주</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_hobby_boardgame" name="owner_hobby" value="보드게임">
+						<label for="owner_hobby_boardgame">보드게임</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_hobby_diy_craft" name="owner_hobby" value="DIY/공예">
+						<label for="owner_hobby_diy_craft">DIY/공예</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_hobby_game" name="owner_hobby" value="게임">
+						<label for="owner_hobby_game">게임</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_hobby_travel" name="owner_hobby" value="여행">
+						<label for="owner_hobby_travel">여행</label>
+					</div>
+					<div class="txt_check_box">
+						<input type="checkbox" id="owner_hobby_drawing" name="owner_hobby" value="그리기">
+						<label for="owner_hobby_drawing">그리기</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button type="button" class="submit_btn">확인</button>
+	</div>
+</div>
+{%- endblock %}

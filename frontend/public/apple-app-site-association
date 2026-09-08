@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [
+          "D99344V928.com.mannam.goldpet"
+        ],
+        "paths": [
+          "/w/*",
+          "/c/*",
+          "/pet/*/health",
+          "/health/*",
+          "/post/*"
+        ]
+      }
+    ]
+  }
+}

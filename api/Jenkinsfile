@@ -1,0 +1,153 @@
+pipeline {
+    agent any
+    
+    parameters {
+        choice(name: 'PROFILE', choices: ['dev', 'prod'], description: 'Select the profile to deploy (dev/prod)')
+    }
+    
+    environment {
+        DEPLOY_PATH = '/home/dev/www/mannam/goldpet/api'
+        JAR_NAME = 'goldpet-api.jar'
+    }
+    
+    stages {
+        stage('OpenAPI Spec Drift Gate') {
+            steps {
+                // Phase 2 / 4 — verifyOpenApiSpec regenerates the spec and fails
+                // the build if the sha256 differs from the committed version.
+                // The task expects a stashed copy at build/openapi-committed.json
+                // because its own `generateOpenApiDocs` dep overwrites openapi.json
+                // during execution. Stash BEFORE invoking gradle.
+                dir('api') {
+                    sh 'mkdir -p build && cp openapi.json build/openapi-committed.json'
+                    sh './gradlew verifyOpenApiSpec'
+                }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                dir('api') {
+                    sh './gradlew clean bootJar'
+                }
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                script {
+                    echo "Deploying with profile: ${params.PROFILE}"
+                    
+                    // 백업
+                    sh """
+                        if [ -f ${DEPLOY_PATH}/${JAR_NAME} ]; then
+                            cp ${DEPLOY_PATH}/${JAR_NAME} ${DEPLOY_PATH}/${JAR_NAME}.backup.\$(date +%Y%m%d_%H%M%S)
+                        fi
+                    """
+                    
+                    // 환경 변수 파일 업데이트 — SPRING_PROFILES_ACTIVE만 교체하고
+                    // ENCRYPTION_KEY* 등 나머지 비밀키는 보존. `>` 덮어쓰기를 쓰면
+                    // 매 배포마다 비밀키가 사라져 센티넬 가드가 앱 기동을 거부함.
+                    sh """
+                        ENV_FILE=${DEPLOY_PATH}/goldpet-api.env
+                        TMP=\$(mktemp)
+                        if [ -f \$ENV_FILE ]; then
+                            grep -v '^SPRING_PROFILES_ACTIVE=' \$ENV_FILE > \$TMP || true
+                        fi
+                        echo 'SPRING_PROFILES_ACTIVE=${params.PROFILE}' >> \$TMP
+                        mv \$TMP \$ENV_FILE
+                    """
+                    
+                    // 서비스 중지
+                    sh 'sudo systemctl stop goldpet-api || true'
+
+                    // JVM 완전 종료 대기 + Postgres JDBC 잔류 세션 정리.
+                    // systemctl stop 은 SIGTERM 만 보내고 리턴하므로 구 JVM 이 잠시 더 살아있을 수 있다.
+                    // 구 JVM 의 HikariCP connection 이 Postgres 에 남으면 새 bootRun 의 Flyway
+                    // `CREATE INDEX CONCURRENTLY` 가 자기 자신의 tx 를 기다리다 무한 hang →
+                    // health check fail → 자동 롤백이 재현된다 (2026-04-21 V57 배포 사고).
+                    // 참고: V57__Chat_Performance_Indexes.sql 상단 runbook.
+                    sh '''#!/bin/bash
+                        echo "⏳ Waiting for old JVM to terminate..."
+                        for _ in $(seq 1 30); do
+                            pgrep -f "$DEPLOY_PATH/$JAR_NAME" > /dev/null 2>&1 || break
+                            sleep 1
+                        done
+                        if pgrep -f "$DEPLOY_PATH/$JAR_NAME" > /dev/null 2>&1; then
+                            echo "⚠️  JVM did not terminate in 30s — forcing SIGKILL"
+                            sudo pkill -9 -f "$DEPLOY_PATH/$JAR_NAME" || true
+                            sleep 2
+                        fi
+
+                        echo "🧹 Terminating leftover PostgreSQL JDBC sessions..."
+                        # goldpet-db 컨테이너 안에서 unix socket + peer auth 로 바로 psql 호출.
+                        # 이전 구현은 quoted heredoc (<<'INNER_EOF') 으로 $POSTGRES_USER 등 변수가
+                        # container 내부에 전달되지 못해 psql -U '' 로 실패 → silent skip 되어
+                        # idle JDBC 세션이 그대로 남아 V58 CREATE INDEX CONCURRENTLY 지연의 원인이 됨.
+                        # Jenkins ENV 또는 기본값(goldpet/goldpet_db) 사용.
+                        DB_USER="${POSTGRES_USER:-goldpet}"
+                        DB_NAME="${POSTGRES_DB:-goldpet_db}"
+                        TERMINATED=$(sudo docker exec goldpet-db psql -U "$DB_USER" -d "$DB_NAME" -tAc "
+                            SELECT count(pg_terminate_backend(pid))
+                              FROM pg_stat_activity
+                             WHERE datname = current_database()
+                               AND application_name = 'PostgreSQL JDBC Driver'
+                               AND pid <> pg_backend_pid();
+                        " 2>&1) || TERMINATED="ERROR: $TERMINATED"
+                        echo "  -> terminated JDBC sessions: $TERMINATED"
+                    '''
+
+                    // JAR 복사
+                    sh "cp api/build/libs/*.jar ${DEPLOY_PATH}/${JAR_NAME}"
+                    
+                    // 서비스 시작
+                    sh 'sudo systemctl start goldpet-api'
+                    
+                    // 헬스체크
+                    sh '''#!/bin/bash
+                        echo "Waiting for API to start..."
+                        sleep 3
+                        for i in $(seq 1 60); do
+                            HTTP_CODE=$(curl -s -o /dev/null -w '%{http_code}' http://localhost:8081/actuator/health)
+                            if [ "$HTTP_CODE" = "200" ]; then
+                                echo "✅ API is up and running! (HTTP $HTTP_CODE)"
+                                exit 0
+                            fi
+                            echo "Attempt $i/60 (HTTP $HTTP_CODE)..."
+                            sleep 2
+                        done
+                        echo "❌ API failed to start"
+                        # 로그 출력 (디버깅용)
+                        journalctl -u goldpet-api -n 50 --no-pager
+                        exit 1
+                    '''
+                }
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo "✅ Backend 배포 성공! (Profile: ${params.PROFILE})"
+        }
+        failure {
+            echo "❌ Backend 배포 실패! (Profile: ${params.PROFILE})"
+            // 롤백
+            sh """
+                if ls ${DEPLOY_PATH}/${JAR_NAME}.backup.* 1> /dev/null 2>&1; then
+                    LATEST_BACKUP=\$(ls -t ${DEPLOY_PATH}/${JAR_NAME}.backup.* | head -1)
+                    cp \$LATEST_BACKUP ${DEPLOY_PATH}/${JAR_NAME}
+                    sudo systemctl restart goldpet-api
+                    echo "Rolled back to \$LATEST_BACKUP"
+                fi
+            """
+        }
+        always {
+            // 오래된 백업 파일 정리 (최근 3개만 유지)
+            sh """
+                cd ${DEPLOY_PATH}
+                ls -t ${JAR_NAME}.backup.* 2>/dev/null | tail -n +4 | xargs rm -f || true
+            """
+        }
+    }
+}

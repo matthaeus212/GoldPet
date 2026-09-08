@@ -1,0 +1,11 @@
+[Unit]
+Description=GoldPet daily backup timer
+Requires=goldpet-backup.service
+
+[Timer]
+OnCalendar=*-*-* 03:00:00
+Persistent=true
+Unit=goldpet-backup.service
+
+[Install]
+WantedBy=timers.target

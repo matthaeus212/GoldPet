@@ -1,0 +1,72 @@
+.account-link-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.account-link-container {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 28px 24px 20px;
+  max-width: 320px;
+  width: calc(100% - 48px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+.account-link-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 16px;
+  text-align: center;
+}
+
+.account-link-body {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #444444;
+  margin: 0 0 24px;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.account-link-email {
+  color: #f4a100;
+  font-weight: 600;
+}
+
+.account-link-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.account-link-btn-cancel,
+.account-link-btn-confirm {
+  flex: 1;
+  height: 44px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.account-link-btn-cancel:active,
+.account-link-btn-confirm:active {
+  opacity: 0.75;
+}
+
+.account-link-btn-cancel {
+  background: #f2f2f2;
+  color: #555555;
+}
+
+.account-link-btn-confirm {
+  background: #f4a100;
+  color: #ffffff;
+}
