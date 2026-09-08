@@ -1,0 +1,337 @@
+/* Place Card */
+.place-card {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 16px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.place-card:active {
+  transform: scale(0.98);
+}
+
+.place-card .place-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background-color: #f5f5f5;
+}
+
+.place-card .place-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.place-card .place-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.place-card .place-category {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 8px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.place-card .place-address {
+  font-size: 12px;
+  color: #727272;
+}
+
+.place-card .place-stats {
+  font-size: 12px;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+/* Place Detail Info */
+.place-detail-info {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 24px 16px;
+  margin-bottom: 16px;
+}
+
+.place-detail-info .place-detail-image {
+  width: 100%;
+  height: 200px;
+  border-radius: 16px;
+  object-fit: cover;
+  margin-bottom: 16px;
+  background-color: #f5f5f5;
+}
+
+.place-detail-info .place-detail-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  margin-bottom: 8px;
+}
+
+.place-detail-info .place-detail-category {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.place-detail-info .place-detail-address {
+  font-size: 14px;
+  color: #727272;
+  margin-bottom: 8px;
+}
+
+.place-detail-info .place-detail-description {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.place-detail-info .place-detail-stats {
+  font-size: 14px;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Check-in Button */
+.checkin-btn {
+  width: 100%;
+  height: 48px;
+  border-radius: 48px;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.checkin-btn:hover {
+  background-color: #4d3306;
+}
+
+.checkin-btn:active {
+  transform: scale(0.98);
+}
+
+.checkin-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Category Colors */
+.category-cafe {
+  background-color: #ffe5fa;
+  color: #8a497d;
+}
+
+.category-hospital {
+  background-color: #e5f0ff;
+  color: #4a7db5;
+}
+
+.category-park {
+  background-color: #e5ffe9;
+  color: #4a8a5d;
+}
+
+.category-shop {
+  background-color: #fff3e5;
+  color: #8a6b4a;
+}
+
+/* Search Bar */
+.place-search {
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  border: 1px solid var(--color-border);
+  padding: 0 16px;
+  font-size: 16px;
+  background-color: #fff;
+  margin-bottom: 16px;
+}
+
+.place-search:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+/* Category Filter */
+.category-filter {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.category-filter::-webkit-scrollbar {
+  display: none;
+}
+
+.category-filter button {
+  height: 32px;
+  padding: 0 16px;
+  border-radius: 32px;
+  border: 1px solid var(--color-border);
+  background-color: #fff;
+  font-size: 14px;
+  color: #727272;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.category-filter button.active {
+  background-color: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.category-filter button:hover {
+  border-color: var(--color-primary);
+}
+
+/* Check-in History */
+.checkin-history {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.checkin-history-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 12px;
+}
+
+.checkin-history-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.checkin-history-item:last-child {
+  border-bottom: none;
+}
+
+.checkin-history-item .checkin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkin-history-item .nickname {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.checkin-history-item .time {
+  font-size: 12px;
+  color: #727272;
+}
+
+.checkin-history-item .memo {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* Container */
+.checkin-container {
+  padding: 0 16px;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+}
+
+/* Place List */
+.place-list {
+  padding-bottom: 16px;
+}
+
+.place-list-empty {
+  text-align: center;
+  padding: 48px 0;
+  color: #727272;
+  font-size: 16px;
+}
+
+/* Place Marker */
+.place-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.place-marker:active {
+  transform: scale(0.95);
+}
+
+.place-marker-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.place-marker-icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.place-marker-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background-color: #fff;
+  padding: 4px 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+}
+
+/* Loading */
+.checkin-loading {
+  text-align: center;
+  padding: 48px 0;
+  color: #727272;
+  font-size: 16px;
+}
+
+/* Error */
+.checkin-error {
+  text-align: center;
+  padding: 48px 0;
+  color: #ff4444;
+  font-size: 16px;
+}

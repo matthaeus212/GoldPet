@@ -1,0 +1,113 @@
+#friendFind {
+	padding:vw1(10) 0 0;
+	.group_tab {
+		width:vw1(328); margin:0 0 0 vw1(16); position:relative; display:flex; justify-content:center; gap:vw1(2);
+		&:after {
+			width:100%; height:2px; display:block; content:""; position:absolute; left:0; bottom:0;
+			background-color:$brown1;
+		}
+		button {
+			width:vw1(155); height:vw1(46); box-sizing:border-box; position:relative; background-color:$brown2; font-size:vw1(16); font-weight:$medium; color:$brown1;
+			@include borderTopRadius(vw1(10));
+			&.active {z-index:1; border:2px solid $brown1; border-bottom:0; background-color:#FFF7E6; font-weight:$bold;}
+		}
+	}
+	.find_filter {
+		padding:vw1(40) vw1(16) 0;
+		ul {padding:vw1(8) vw1(16); background-color:$white; border-radius:vw1(10);}
+		li {
+			display:flex; justify-content:space-between; align-items:start; border-top:1px solid #E9E9E9; padding:vw1(16) 0;
+			&:first-child {border-top:0;}
+			p {width:vw1(60); font-size:vw1(16); font-weight:$bold;}
+			.filter_list {width:vw1(220); display:flex; flex-wrap:wrap; gap:vw1(8) vw1(16)}
+			.check_wrap {
+				input {
+					position:absolute; left:-9999px;
+					&:checked ~ label:after {opacity:1;}
+				}
+				label {
+					position:relative; padding:0 0 0 vw1(18); font-size:vw1(16);
+					&:after,
+					&:before {
+						width:vw1(12); height:vw1(12); display:block; content:""; position:absolute; left:0; top:50%; translate:0 -50%;
+						border:1px solid $gray1; border-radius:vw1(3); box-sizing:border-box;
+					}
+					&:after {
+						background-image:url(../../assets/images/common/checkbox_icon.svg); opacity:0; transition:opacity .2s; border-color:$brown1;
+						@include backgroundSoltC;
+					}
+				}
+			}
+		}
+		.btn_wrap {
+			display:flex; justify-content:center; gap:vw1(16); padding:vw1(16) 0 0;
+			button {width:vw1(80); height:vw1(40); border-radius:vw1(20); font-weight:$semi; color:$brown1; border:1px solid $brown1;}
+		}
+	}
+	
+	.friend_list {
+		padding:vw1(40) vw1(16) 0; display:flex; gap:vw1(40); flex-direction:column;
+		.list_wrap {
+			position:relative; overflow:hidden;
+			.img_wrap {
+				width:100%; position:relative;
+			  .pet_img_wrap {height:vw1(232); border-radius:57% 50% 58% 49% / 38% 40% 43% 48%; overflow:hidden;}
+				.icon_img {width:vw1(48); position:absolute; top:0; left:0; z-index:10;}
+				.pet_img {width:100%;}
+				.butler_img {
+					width:vw1(80); height:vw1(80); position:absolute; right:0; bottom:0; z-index:10; background-color:$white;
+					border-radius:  57% 50% 58% 49% / 38% 40% 43% 48%; overflow:hidden;
+					img {width:100%; height:100%; object-fit:cover}
+				}
+				.swiper-pet-prev,
+				.swiper-pet-next {
+					width:vw1(24); height:vw1(24); position:absolute; background-image:url(../../assets/images/main/slide_arrow.svg); z-index:10; top:50%; translate:0 -50%;
+					@include backgroundSoltC;
+				}
+				.swiper-pet-prev {left:vw1(10);}
+				.swiper-pet-next {right:vw1(10); rotate:180deg;}
+			}
+			.txt_wrap {
+				display:flex; justify-content:start; gap:vw1(8); align-items:center; padding:vw1(4) 0 0;
+				h2 {
+					font-size:vw1(24); font-weight:$bold; display:flex; align-items:center; color:$brown1; gap:vw1(8);
+					img {width:vw1(24); }
+				}
+				p {
+					font-size:vw1(14); font-weight:$medium; padding:vw1(2) vw1(9); background-image:url(../../assets/images/main/underline_dot.svg);
+					@include backgroundSoltC(50%, 100%, no-repeat, 100% auto);
+				}
+			}
+			.pet_detail {
+				padding:vw1(12) 0 0;
+				> p {font-size:vw1(14);}
+				.wish_dot {
+					display:flex; gap:vw1(4); flex-wrap:wrap; font-size:vw1(12); font-weight:$medium; padding:vw1(8) 0 0;
+					p {
+						border-radius:vw1(10); padding:vw1(4) vw1(8);
+						&.label1 {background-color:#FFE5FA; color:#8A497D;}
+						&.label2 {background-color:#F0EDFF; color:#403285;}
+						&.label3 {background-color:#E5F4FF; color:#004B82;}
+						&.label4 {background-color:#E5FFEC; color:#19592A;}
+					}
+				}
+				.like_wrap {
+					padding:vw1(16) 0 0; display:flex; justify-content:space-between;
+					button {
+						width:vw1(160); height:vw1(48); border-radius:vw1(20); font-weight:$medium; display:flex; align-items:center; justify-content:center; gap:vw1(4); font-size:vw1(16);
+						&.dislike_btn {background-color:#EFE1C4; color:$brown1;}
+						&.like_btn {background-color:$brown1; color:$white;}
+						&.now_chat {width:100%; background-color:$brown1; color:$white;}
+					}
+				}
+			}
+		}
+	}
+	.more_wrap {
+		padding:vw1(40) 0 0; display:flex; justify-content:center;
+		button {
+			display:flex; justify-content:center; gap:vw1(4); font-size:vw1(14); font-weight:$bold; color:$brown1;
+			img {width:vw1(16);}
+		}
+	}
+}

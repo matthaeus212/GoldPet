@@ -1,0 +1,156 @@
+/* Gold Container */
+.gold-container { padding: 0 16px; }
+
+/* Gold Balance Card - hero card */
+.gold-balance-card { height: 136px; border-radius: 16px; background-color: var(--color-primary); padding: 24px 16px; color: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; margin-bottom: 24px; }
+.gold-balance-card .balance-amount { font-size: 32px; font-weight: 700; }
+.gold-balance-card .balance-label { font-size: 16px; font-weight: 500; opacity: 0.8; margin-bottom: 8px; }
+
+/* Quick Actions */
+.gold-actions { display: flex; gap: 16px; margin-bottom: 24px; }
+.gold-actions button { flex: 1; height: 48px; border-radius: 48px; font-size: 16px; font-weight: 600; border: none; cursor: pointer; }
+.gold-actions .action-primary { background-color: var(--color-primary); color: #fff; }
+.gold-actions .action-secondary { background-color: var(--color-border); color: var(--color-primary); }
+
+/* Gold Tabs */
+.gold-tabs { display: flex; margin-bottom: 20px; border-bottom: 1px solid var(--color-border); }
+.gold-tab { flex: 1; height: 44px; font-size: 15px; font-weight: 600; color: #999; background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+.gold-tab.active { color: #614108; border-bottom-color: #614108; }
+
+/* Charge Content */
+.gold-charge-content { padding: 16px 0; }
+.gold-charge-btn { width: 100%; height: 52px; border-radius: 48px; background: #614108; color: #fff; font-size: 16px; font-weight: 700; border: none; cursor: pointer; }
+
+/* Product Cards */
+.gold-product-card { background-color: #fff; border-radius: 16px; padding: 24px 16px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; }
+.gold-product-card .product-info { }
+.gold-product-card .product-name { font-size: 16px; font-weight: 600; color: var(--color-text-secondary); }
+.gold-product-card .product-amount { font-size: 14px; font-weight: 500; color: #727272; margin-top: 4px; }
+.gold-product-card .product-price { font-size: 16px; font-weight: 700; color: var(--color-primary); }
+.gold-product-card .product-buy-btn { height: 32px; padding: 0 16px; border-radius: 32px; background-color: var(--color-primary); color: #fff; font-size: 14px; font-weight: 600; border: none; }
+
+/* Transaction Items */
+.transaction-item { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid var(--color-border); }
+.transaction-item .tx-info { }
+.transaction-item .tx-desc { font-size: 16px; font-weight: 500; color: var(--color-text-secondary); }
+.transaction-item .tx-date { font-size: 12px; font-weight: 500; color: #727272; margin-top: 4px; }
+.transaction-item .tx-amount { font-size: 16px; font-weight: 700; }
+.transaction-item .tx-amount.earn { color: var(--color-primary); }
+.transaction-item .tx-amount.spend { color: var(--color-accent-red); }
+
+/* Filter Tabs */
+.gold-filter-tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+.gold-filter-tabs button { height: 32px; padding: 0 16px; border-radius: 32px; border: 1px solid var(--color-border); background-color: #fff; font-size: 14px; color: #727272; }
+.gold-filter-tabs button.active { background-color: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+
+/* Section Title */
+.gold-section-title { font-size: 16px; font-weight: 700; color: var(--color-primary); margin-bottom: 16px; }
+
+/* Load More */
+.gold-load-more { text-align: center; padding: 16px 0; }
+.gold-load-more-btn { height: 36px; padding: 0 24px; border-radius: 36px; border: 1px solid var(--color-border); background-color: #fff; font-size: 14px; color: var(--color-primary); cursor: pointer; }
+
+/* Small Balance Display */
+.gold-balance-small { background-color: var(--color-bg); border-radius: 16px; padding: 16px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; }
+.gold-balance-small .label { font-size: 14px; color: #727272; }
+.gold-balance-small .amount { font-size: 16px; font-weight: 700; color: var(--color-primary); }
+
+/* Profile Boost */
+.boost-section { padding: 16px 0; }
+
+.boost-active-card,
+.boost-inactive-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.boost-active-card { border: 2px solid var(--color-primary); }
+
+.boost-active-icon,
+.boost-inactive-icon { font-size: 48px; line-height: 1; }
+
+.boost-active-title,
+.boost-inactive-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.boost-active-countdown {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.boost-active-expires {
+  font-size: 13px;
+  font-weight: 500;
+  color: #727272;
+  margin: 0;
+}
+
+.boost-inactive-desc {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  word-break: keep-all;
+}
+
+.boost-purchase-btn {
+  margin-top: 8px;
+  width: 100%;
+  height: 48px;
+  border-radius: 48px;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+.boost-purchase-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Store Page */
+.store-page { padding-bottom: 80px; }
+.store-title { font-size: 18px; font-weight: 700; color: #614108; padding: 16px 16px 0; }
+
+/* Balance Card */
+.store-balance-card { background: #f9ecd2; border-radius: 16px; padding: 20px; margin: 0 16px 24px; display: flex; align-items: center; gap: 12px; }
+.store-balance-card .gold-icon { width: 40px; height: 40px; }
+.store-balance-card .balance-text { font-size: 14px; color: #614108; }
+.store-balance-card .balance-number { font-size: 24px; font-weight: 700; color: #614108; }
+
+/* Section */
+.store-section { padding: 0 16px; margin-bottom: 24px; }
+.store-section-title { font-size: 16px; font-weight: 700; color: #614108; margin-bottom: 12px; }
+
+/* Product Grid */
+.store-product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* Product Card */
+.store-product-card { position: relative; border-radius: 16px; padding: 20px 16px; cursor: pointer; border: 1.5px solid transparent; transition: border-color 0.2s; }
+.store-product-card.subscription { background: #fce67c; }
+.store-product-card.one-time { background: #fff; border-color: #e5e5e5; }
+.store-product-card.selected { border-color: #614108; }
+.store-product-card .product-duration { font-size: 16px; font-weight: 700; color: #614108; margin-bottom: 8px; }
+.store-product-card .product-price { font-size: 14px; font-weight: 600; color: #614108; }
+.store-product-card .product-monthly { font-size: 12px; color: #8a6d3b; margin-top: 4px; }
+.store-product-card .product-gold-amount { font-size: 16px; font-weight: 700; color: #614108; margin-bottom: 4px; }
+
+/* Discount Badge */
+.store-discount-badge { position: absolute; top: -6px; right: -6px; width: 36px; height: 36px; border-radius: 50%; background: #e53e3e; color: #fff; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+
+/* Purchase Button */
+.store-purchase-btn { position: fixed; bottom: 24px; left: 16px; right: 16px; height: 52px; border-radius: 48px; background: #614108; color: #fff; font-size: 16px; font-weight: 700; border: none; cursor: pointer; z-index: 10; }
+.store-purchase-btn:disabled { opacity: 0.5; cursor: not-allowed; }

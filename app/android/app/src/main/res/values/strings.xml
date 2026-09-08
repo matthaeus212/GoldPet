@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="naver_client_id">DcUxJg2b276bWaLQCCXe</string>
+    <string name="naver_client_secret">_3WyWuvzxF</string>
+    <string name="naver_client_name">GoldPet</string>
+    <string name="kakao_app_key">0d1faed93f83b48a4c1ce04f8583d345</string>
+</resources>

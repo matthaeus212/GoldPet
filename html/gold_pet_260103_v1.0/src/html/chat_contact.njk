@@ -1,0 +1,47 @@
+{%- extends "_templates/_layout.njk" -%}
+{% block content %}
+<div id="chatOne">
+    <!-- button class - active로 전환-->
+    <div class="group_tab">
+        <button type="button">1:1</button>
+        <button type="button">그룹</button>
+        <button type="button" class="active">대화요청</button>
+    </div>
+    <ul class="contact_list">
+        <li>
+            <div class="profile_img"><img src="../assets/images/main/main_slide_butler01.jpg" alt=""></div>
+            <div class="txt_wrap">
+                <strong>멍멍이</strong>
+                <p>채팅을 요청했어요.</p>
+            </div>
+            <div class="contact_btn_wrap">
+                <button type="button">거절</button>
+                <button type="button">수락</button>
+            </div>
+            <p class="last_day">1시간 전</p>
+        </li>
+        <li>
+            <div class="profile_img"><img src="../assets/images/main/main_slide_butler01.jpg" alt=""></div>
+            <div class="txt_wrap">
+                <strong>멍멍이</strong>
+                <p>채팅 요청을 거절했어요.</p>
+            </div>
+            <div class="contact_btn_wrap">
+                <button type="button">삭제</button>
+            </div>
+            <p class="last_day">1시간 전</p>
+        </li>
+        <li>
+            <div class="profile_img"><img src="../assets/images/main/main_slide_butler01.jpg" alt=""></div>
+            <div class="txt_wrap">
+                <strong>멍멍이</strong>
+                <p>채팅 요청을 거절했어요.</p>
+            </div>
+            <div class="contact_btn_wrap">
+                <button type="button">삭제</button>
+            </div>
+            <p class="last_day">1시간 전</p>
+        </li>
+    </ul>
+</div>
+{%- endblock %}

@@ -1,0 +1,10 @@
+.env
+.env.*
+*.env
+admin/.env.*
+frontend/.env.*
+deploy-dev/docker/.env
+deploy-local/.env
+keys/client_secret*.json
+
+app/android/app/google-services.json

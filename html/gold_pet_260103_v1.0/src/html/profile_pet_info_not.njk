@@ -1,0 +1,90 @@
+{%- extends "_templates/_layout.njk" -%}
+{% block content %}
+<div id="profileContainer">
+    <div class="talk_wrap">
+        <p>
+            반려동물과 함께하는 <br>
+            행복한 일상을 같이 공유하고 싶어요
+        </p>
+        <button type="button"><img src="../assets/images/common/pin_icon.svg" alt="지도 마커">서울 강남구</button>
+    </div>
+    
+    <div class="group_tab">
+        <button type="button">반려인</button>
+        <button type="button" class="active">반려동물</button>
+    </div>
+    
+    <div class="profile_info_wrap">
+        <div class="profile_name_info">
+            <div class="couple_img">
+                
+                <!--
+                AI 프로필 생성하기 버튼 노출은
+                profile_img_wrap 슬라이더 부분 전체 삭제
+                -->
+                
+                <div class="profile_img_wrap">
+                    <!--
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="../assets/images/main/main_slide_img01.png" class="pet_img" alt=""></div>
+                        <div class="swiper-slide"><img src="../assets/images/main/main_slide_butler01.jpg" class="pet_img" alt=""></div>
+                        <div class="swiper-slide"><img src="../assets/images/main/main_slide_img01.png" class="pet_img" alt=""></div>
+                    </div>
+                    <div class="swiper-profile-prev"></div>
+                    <div class="swiper-profile-next"></div>
+                    -->
+                    <!-- ai 프로필 생성 -->
+                    <div class="ai_generation_wrap">
+                        <button type="button"><img src="../assets/images/common/ai_profile_icon.svg" alt="">프로필 생성하기</button>
+                    </div>
+                    <!-- //ai 프로필 생성 -->
+                </div>
+                <!--사진 하단 오른쪽 펫 이미지 등록된 이미지 없으면 img src만 삭제-->
+                <div class="butler_img pet_img">
+                    <img src="../assets/images/main/main_slide_img01.png" alt="펫 이미지">
+                </div>
+            </div>
+            <strong class="name_txt">망고</strong>
+            <div class="count_wrap">
+                <dl>
+                    <dt>매칭</dt>
+                    <dd>0</dd>
+                </dl>
+                <div></div>
+                <dl>
+                    <dt>좋아요</dt>
+                    <dd>0</dd>
+                </dl>
+                <div></div>
+                <dl>
+                    <dt>친구</dt>
+                    <dd>0</dd>
+                </dl>
+            </div>
+        </div>
+        
+        <div class="guide_box">
+            <p>반려동물 프로필을 등록해 주세요!</p>
+        </div>
+        
+        <div class="check_wrap">
+            <button type="button" class="submit_btn">수정하기</button>
+        </div>
+    </div>
+</div>
+{%- endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

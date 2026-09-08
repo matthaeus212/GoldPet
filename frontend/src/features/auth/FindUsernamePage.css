@@ -1,0 +1,353 @@
+.find-username-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 56px;
+  /* Space for absolute header */
+
+  position: relative;
+}
+
+/* Header styles removed - using shared Header component */
+/* Page container styles moved to page-layout.css */
+
+/* Title Section */
+.find-username-title-section {
+  width: 100%;
+  padding: 24px 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 0;
+}
+
+.find-username-logo-container {
+  width: 100%;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.find-username-logo {
+  height: 27px;
+  width: 100.45px;
+  object-fit: contain;
+}
+
+.find-username-subtitle {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+  letter-spacing: -0.32px;
+  margin: 0;
+}
+
+/* Body */
+.find-username-body {
+  width: 100%;
+  padding: 16px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  flex: 1;
+}
+
+.find-username-body.centered {
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 60px;
+}
+
+/* Intro Section */
+.find-username-intro-section {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 40px;
+  /* Adjust based on design spacing from tabs */
+}
+
+.find-username-intro-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.find-username-intro-title {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.32px;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.find-username-intro-subtitle {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.32px;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Signup Section (Bottom) */
+.find-username-signup-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.find-username-signup-text {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin: 0;
+}
+
+.find-username-signup-button {
+  width: 160px;
+  height: 40px;
+  background: none;
+  border: 1px solid var(--color-primary);
+  /* Outline style based on SVG path stroke */
+  border-radius: 1000px;
+  /* Assuming rounded based on SVG */
+  color: var(--color-primary);
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.4;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+}
+
+.find-username-signup-button:hover {
+  background-color: rgba(97, 65, 8, 0.05);
+}
+
+/* Form */
+.find-username-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.find-username-input-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.find-username-input {
+  width: 100%;
+  height: 48px;
+  background-color: var(--color-bg-white);
+  border: none;
+  border-radius: 16px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--color-text-primary);
+  letter-spacing: -0.32px;
+  padding: 0 16px;
+  outline: none;
+}
+
+.find-username-input:focus {
+  border: 1px solid var(--color-primary);
+}
+
+.find-username-input::placeholder {
+  color: var(--color-text-placeholder);
+}
+
+.find-username-button-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.find-username-button-group.bottom {
+  margin-top: auto;
+  width: 100%;
+}
+
+.find-username-button {
+  width: 100%;
+  height: 48px;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 1000px;
+  color: var(--color-text-white);
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 20px;
+  transition: background-color 0.2s ease;
+}
+
+.find-username-button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.find-username-button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.find-username-button:disabled {
+  background-color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+.find-username-button.outlined {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.find-username-button.outlined:hover {
+  background-color: rgba(97, 65, 8, 0.05);
+}
+
+.find-username-button.secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.find-username-button.secondary:hover {
+  background-color: rgba(97, 65, 8, 0.05);
+}
+
+.find-username-text-button {
+  width: 100%;
+  height: 48px;
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: -0.28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: underline;
+  margin-top: 8px;
+}
+
+.find-username-text-button:hover {
+  color: var(--color-text-secondary);
+}
+
+/* Result */
+.find-username-result {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 0;
+  flex: 1;
+  justify-content: center;
+}
+
+.find-username-result-icon {
+  font-size: 48px;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.find-username-result-text {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  letter-spacing: -0.32px;
+  text-align: center;
+  margin: 0;
+}
+
+.find-username-result-box {
+  width: 100%;
+  background-color: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  /* Center content in box */
+}
+
+.find-username-result-box .find-username-label {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+  letter-spacing: -0.28px;
+}
+
+.find-username-value {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--color-primary);
+  letter-spacing: -0.36px;
+}
+
+.find-username-sns-info {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: var(--color-bg);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.find-username-sns-text {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-primary);
+  letter-spacing: -0.28px;
+}
+

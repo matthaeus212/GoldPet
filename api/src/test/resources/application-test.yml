@@ -1,0 +1,59 @@
+# 테스트 datasource는 deploy-local의 PostGIS 컨테이너(localhost:5433)를 사용한다.
+# `./deploy-local/scripts/start.sh`로 인프라를 기동한 뒤 테스트를 실행한다.
+#
+# 이전 설정은 jdbc:postgresql://101.250.201.36:5432 (원격 dev DB)를 가리켜
+# 테스트 실행 시마다 실 DB에 row가 누출되는 격리 결함이 있었다.
+# 환경변수 TEST_DB_URL/TEST_DB_USERNAME/TEST_DB_PASSWORD로 오버라이드할 수 있어
+# Jenkins 등 별도 환경에서는 자체 격리된 테스트 DB로 가리킬 수 있다.
+spring:
+  datasource:
+    url: ${TEST_DB_URL:jdbc:postgresql://localhost:5433/goldpet}
+    username: ${TEST_DB_USERNAME:goldpet}
+    password: ${TEST_DB_PASSWORD:goldpet123}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        # T1-1a: 통합 테스트에서 Hibernate Statistics 로 N+1 쿼리 카운트 가능하도록 활성화.
+        # 운영(dev/prod) 은 이 설정 없음 — 테스트 전용.
+        generate_statistics: true
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    validate-on-migrate: false
+    # 공유 테스트 DB에서 병렬 워커가 서로 다른 순번 마이그레이션을 추가할 때
+    # 번호 역전(예: V75 먼저 적용 후 V74 추가)으로 인한 무음 스킵 방지.
+    # dev/prod 와 동일 정책(out-of-order:true). 참고: memory feedback_flyway_out_of_order.
+    out-of-order: true
+  cache:
+    type: simple
+
+app:
+  encryption:
+    key: "test-encryption-key-32-chars!!!"
+    key-primary: "test-encryption-key-32-chars!!!"
+    key-secondary: "test-secondary-key-32-chars!!!!"
+  # Disable Bucket4j rate-limit during integration tests — prevents flaky 429s when
+  # running tight test loops against the same endpoint.
+  rate-limit:
+    user-profile:
+      enabled: false
+  # CORS-DEFAULT (W1a): `@Value` 기본값 `*` 제거로 미설정 시 fail-fast.
+  # test 프로파일도 명시적 origin 목록을 제공해야 컨텍스트가 기동한다.
+  cors:
+    allowed-origins:
+      - http://localhost:5173
+      - http://localhost:5174
+
+jwt:
+  secret: test-secret-key-for-testing-purposes-must-be-at-least-256-bits-long
+  expiration: 3600000
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    com.goldpet: DEBUG

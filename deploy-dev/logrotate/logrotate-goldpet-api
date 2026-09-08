@@ -1,0 +1,13 @@
+/home/dev/www/mannam/goldpet/api/logs/*.log {
+    # parent dir (api/logs/) 소유가 jenkins:dev (Jenkins 배포 경로) 라 group-writable
+    # 이면 logrotate 가 insecure 로 판단해 skip. su root root 로 명시해 우회.
+    su root root
+    daily
+    missingok
+    rotate 30
+    compress
+    delaycompress
+    notifempty
+    create 0640 dev dev
+    copytruncate
+}

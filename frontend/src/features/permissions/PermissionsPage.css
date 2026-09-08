@@ -1,0 +1,121 @@
+.permissions-page {
+  width: 100%;
+  min-height: calc(100vh - var(--typea-header-height));
+  background-color: transparent;
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.permissions-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 24px 16px;
+  gap: 24px;
+}
+
+.permissions-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.permission-item {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.permission-icon-wrap {
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
+  background-color: var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.permission-icon-wrap img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.permission-text {
+  flex: 1;
+}
+
+.permission-text h3 {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--color-primary);
+  margin: 0 0 4px 0;
+}
+
+.permission-text p {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.permissions-footer {
+  width: 100%;
+  padding: 16px 16px 32px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.permissions-button {
+  flex: 1;
+  height: 48px;
+  border: none;
+  border-radius: 1000px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.64px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.permissions-button.primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-white);
+}
+
+.permissions-button.primary:hover {
+  opacity: 0.9;
+}
+
+.permissions-button.primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.permissions-button.secondary {
+  background-color: var(--color-border);
+  color: var(--color-primary);
+  border: none;
+}
+
+.permissions-button.secondary:hover {
+  opacity: 0.9;
+}
+
+.permissions-button:active {
+  transform: scale(0.98);
+}

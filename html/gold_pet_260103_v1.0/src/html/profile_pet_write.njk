@@ -1,0 +1,200 @@
+{%- extends "_templates/_layout.njk" -%}
+{% block content %}
+    <div id="profileContainer">
+        <div class="profile_write">
+            <div class="profile_img_edit">
+                <!--
+					profile_img 내에 img 태그 src와 같이 넣으면 대표사진 텍스트 노출,
+					대표 이미지 없으면 img 태그 지우고 class / img_none 추가
+				-->
+                <div class="profile_img"><img src="../assets/images/main/main_slide_butler02.png" alt=""></div>
+                <!--<div class="profile_img img_none"></div>-->
+            </div>
+            
+            <div class="img_upload_wrap">
+                <p>프로필 사진 <span>(최대 5개)</span></p>
+                <ul>
+                    <li>
+                        <button type="button" class="img_upload_btn">
+                            <span class="upload_img"><img src="../assets/images/community/upload_img.jpg" alt=""></span>
+                            <span class="delete_btn"></span>
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="img_upload_btn"></button>
+                    </li>
+                    <li>
+                        <button type="button" class="img_upload_btn"></button>
+                    </li>
+                    <li>
+                        <button type="button" class="more_btn"></button>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="guide_box">
+                <dl>
+                    <dt>등록 가이드</dt>
+                    <dd>최대 5장 등록 가능하며 2장은 필수로 등록해주세요.</dd>
+                    <dd>본인의 사진을 등록해주세요.</dd>
+                    <dd>가장 먼저 등록한 사진이 대표 사진으로 설정 됩니다.</dd>
+                </dl>
+            </div>
+            
+            <div class="profile_write_wrap">
+                <strong>기본 정보</strong>
+                <div class="profile_write_box pink_color">
+                    <div class="write_box">
+                        <label for="pet_name">이름</label>
+                        <input type="text" id="pet_name" name="pet_name" placeholder="입력해 주세요">
+                    </div>
+                    
+                    <div class="write_box">
+                        <label for="pet_birth_day">생년월일</label>
+                        <div class="unknown_check_box">
+                            <input type="checkbox" id="pet_birth_unknown" name="pet_birth_unknown" value="Y">
+                            <label for="pet_birth_unknown">알 수 없음</label>
+                        </div>
+                        <input type="text" id="pet_birth_day" name="pet_birth_day" placeholder="생년월일 8자리">
+                    </div>
+                    
+                    <div class="write_box write_select">
+                        <label for="pet_breed">품종</label>
+                        <select id="pet_breed" name="pet_breed">
+                            <option value="">선택해 주세요</option>
+                        </select>
+                    </div>
+                    
+                    <div class="radio_wrap">
+                        <p>성별</p>
+                        <div class="radio_box">
+                            <input type="radio" name="pet_gender" id="pet_gender_male" value="남아">
+                            <label for="pet_gender_male">남아</label>
+                        </div>
+                        <div class="radio_box">
+                            <input type="radio" name="pet_gender" id="pet_gender_female" value="여아">
+                            <label for="pet_gender_female">여아</label>
+                        </div>
+                    </div>
+                    
+                    <div class="radio_wrap">
+                        <p>중성화 여부</p>
+                        <div class="radio_box">
+                            <input type="radio" name="pet_neutered" id="pet_neutered_done" value="완료">
+                            <label for="pet_neutered_done">완료</label>
+                        </div>
+                        <div class="radio_box">
+                            <input type="radio" name="pet_neutered" id="pet_neutered_not" value="미완료">
+                            <label for="pet_neutered_not">미완료</label>
+                        </div>
+                    </div>
+                    
+                    <div class="write_box">
+                        <label for="pet_weight_kg">몸무게</label>
+                        <input type="text" id="pet_weight_kg" name="pet_weight_kg" placeholder="입력해 주세요 kg">
+                    </div>
+                </div>
+                
+                <strong>성향</strong>
+                <div class="profile_write_box purple_color">
+                    <div class="write_box write_select">
+                        <label for="pet_trait_activity">활동성</label>
+                        <select id="pet_trait_activity" name="pet_trait_activity">
+                            <option value="">선택해 주세요</option>
+                        </select>
+                    </div>
+                    
+                    <div class="write_box write_select">
+                        <label for="pet_trait_friendliness">친화력</label>
+                        <select id="pet_trait_friendliness" name="pet_trait_friendliness">
+                            <option value="">선택해 주세요</option>
+                        </select>
+                    </div>
+                    
+                    <div class="write_box write_select">
+                        <label for="pet_trait_training">훈련도</label>
+                        <select id="pet_trait_training" name="pet_trait_training">
+                            <option value="">선택해 주세요</option>
+                        </select>
+                    </div>
+                    
+                    <div class="write_box write_select">
+                        <label for="pet_trait_barking">짖음</label>
+                        <select id="pet_trait_barking" name="pet_trait_barking">
+                            <option value="">선택해 주세요</option>
+                        </select>
+                    </div>
+                    
+                    <div class="write_box">
+                        <label for="pet_special_notes">특이사항</label>
+                        <textarea id="pet_special_notes" name="pet_special_notes" placeholder="입력해 주세요"></textarea>
+                    </div>
+                </div>
+                
+                <strong>관심사</strong>
+                <div class="profile_write_box blue_color">
+                    <div class="write_box write_select">
+                        <label for="pet_interest_toy_play">장난감 놀이</label>
+                        <select id="pet_interest_toy_play" name="pet_interest_toy_play">
+                            <option value="">선택해 주세요</option>
+                        </select>
+                    </div>
+                    
+                    <div class="write_box write_select">
+                        <label for="pet_interest_walk">산책</label>
+                        <select id="pet_interest_walk" name="pet_interest_walk">
+                            <option value="">선택해 주세요</option>
+                        </select>
+                    </div>
+                    
+                    <div class="write_box write_select">
+                        <label for="pet_interest_lifespan">수명</label>
+                        <select id="pet_interest_lifespan" name="pet_interest_lifespan">
+                            <option value="">선택해 주세요</option>
+                        </select>
+                    </div>
+                    
+                    <div class="write_box write_select">
+                        <label for="pet_interest_petting">쓰다듬기</label>
+                        <select id="pet_interest_petting" name="pet_interest_petting">
+                            <option value="">선택해 주세요</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <strong>알러지 정보</strong>
+                <div class="profile_write_box green_color">
+                    <div class="write_box write_select">
+                        <label for="pet_allergy_nuts">견과류</label>
+                        <select id="pet_allergy_nuts" name="pet_allergy_nuts">
+                            <option value="">선택해 주세요</option>
+                        </select>
+                    </div>
+                    
+                    <div class="write_box write_select">
+                        <label for="pet_allergy_shellfish">갑각류</label>
+                        <select id="pet_allergy_shellfish" name="pet_allergy_shellfish">
+                            <option value="">선택해 주세요</option>
+                        </select>
+                    </div>
+                    
+                    <div class="write_box write_select">
+                        <label for="pet_allergy_egg_meat">달걀&육류</label>
+                        <select id="pet_allergy_egg_meat" name="pet_allergy_egg_meat">
+                            <option value="">선택해 주세요</option>
+                        </select>
+                    </div>
+                    
+                    <div class="write_box write_select">
+                        <label for="pet_allergy_other">기타</label>
+                        <select id="pet_allergy_other" name="pet_allergy_other">
+                            <option value="">선택해 주세요</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="button" class="submit_btn">확인</button>
+        </div>
+    </div>
+{%- endblock %}

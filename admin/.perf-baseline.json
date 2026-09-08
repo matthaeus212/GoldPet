@@ -1,0 +1,12 @@
+{
+  "capturedAt": "2026-04-17",
+  "phase": "P0 complete",
+  "bundleSizes": {
+    "index.html": { "raw": 450, "gzip": 290 },
+    "index-DZjoqv6t.css": { "raw": 39950, "gzip": 7250 },
+    "index-CS0s3aen.js": { "raw": 582250, "gzip": 165520 }
+  },
+  "totalGzip": 173060,
+  "cssSize": { "raw": 39950, "gzip": 7250 },
+  "notes": "Baseline after shadcn foundation + 9 primitives added. Use this to compare bundle growth at P2 and P4 gates."
+}

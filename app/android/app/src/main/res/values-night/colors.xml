@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 산책 알림 위젯 - 다크 모드 (same as light: branded dark bg) -->
+    <color name="notif_stat_value">#FFFCE67C</color>
+    <color name="notif_stat_label">#FFFFFFFF</color>
+    <color name="notif_divider">#1FFFFFFF</color>
+    <color name="notif_btn_text">#DEFFFFFF</color>
+    <color name="notif_btn_bg">#14FFFFFF</color>
+    <color name="notif_stop_text">#FFFFFFFF</color>
+    <color name="notif_stop_bg">#FFD32F2F</color>
+    <color name="notif_brand_accent">#FFD4A574</color>
+    <color name="notif_widget_bg">#E6614108</color>
+    <color name="notif_icon_bg_beige">#FFF9ECD2</color>
+    <color name="notif_btn_label">#FFFFFFFF</color>
+</resources>

@@ -1,0 +1,58 @@
+services:
+  # 1. Database: PostgreSQL + PostGIS (Local Port 5433)
+  db:
+    image: kartoza/postgis:16-3.4
+    platform: linux/arm64
+    restart: always
+    container_name: goldpet-db-local
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - goldpet-postgres-local-data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432" # Changed to 5433 to avoid conflict with local postgres
+    networks:
+      - goldpet-local-net
+    shm_size: 1g
+
+  # 2. Redis Cache (Local Port 6379)
+  redis:
+    image: redis:7-alpine
+    restart: always
+    container_name: goldpet-redis-local
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - goldpet-redis-local-data:/data
+    ports:
+      - "6379:6379" # Standard Port
+    networks:
+      - goldpet-local-net
+
+  # 3. Object Storage: MinIO (Local Port 9000/9001)
+  minio:
+    image: minio/minio
+    restart: always
+    container_name: goldpet-minio-local
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    volumes:
+      - goldpet-minio-local-data:/data
+    ports:
+      - "9100:9000" # S3 API
+      - "9101:9001" # Console
+    networks:
+      - goldpet-local-net
+
+volumes:
+  goldpet-postgres-local-data:
+  goldpet-redis-local-data:
+  goldpet-minio-local-data:
+
+
+networks:
+  goldpet-local-net:
+    driver: bridge

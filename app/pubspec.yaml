@@ -1,0 +1,91 @@
+name: goldpet_app
+description: "A new Flutter project."
+publish_to: "none"
+version: 1.0.0+4
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_svg: ^2.2.3
+  google_fonts: ^6.3.2
+  permission_handler: ^12.0.1
+  
+  # State Management
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
+  freezed_annotation: ^2.4.4
+  json_annotation: ^4.9.0
+
+  # 하이브리드 앱 필수 패키지
+  webview_flutter: ^4.9.0
+  webview_flutter_android: ^4.0.0
+  webview_flutter_wkwebview: ^3.18.0
+  geolocator: ^14.0.2
+  image_picker: ^1.1.2
+  path_provider: ^2.1.2
+  shared_preferences: ^2.3.2
+  http: ^1.2.2
+  device_info_plus: ^12.2.0
+  url_launcher: ^6.3.2
+  kakao_flutter_sdk_user: ^1.9.7+3
+  flutter_naver_login: ^2.1.1
+  google_sign_in: ^7.2.0
+  firebase_core: ^4.2.1
+  firebase_messaging: ^16.0.4
+  sign_in_with_apple: ^7.0.1
+  flutter_native_splash: ^2.4.7
+  
+  # Networking & Storage
+  dio: ^5.4.0
+  flutter_secure_storage: ^9.0.0
+  
+  # Maps
+  google_maps_flutter: ^2.10.0
+  flutter_local_notifications: ^20.0.0
+  share_plus: ^12.0.1
+  flutter_file_dialog: ^3.0.2
+  package_info_plus: ^8.3.0
+  uuid: ^4.5.1
+  sentry_flutter: 9.21.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+  # Code Generation
+  build_runner: ^2.4.9
+  riverpod_generator: ^2.6.3
+  freezed: ^2.5.7
+  json_serializable: ^6.8.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/splash/
+    - assets/images/common/
+    - assets/images/walk/
+  fonts:
+    - family: Pretendard
+      fonts:
+        - asset: assets/fonts/Pretendard/Pretendard-Thin.otf
+          weight: 100
+        - asset: assets/fonts/Pretendard/Pretendard-ExtraLight.otf
+          weight: 200
+        - asset: assets/fonts/Pretendard/Pretendard-Light.otf
+          weight: 300
+        - asset: assets/fonts/Pretendard/Pretendard-Regular.otf
+          weight: 400
+        - asset: assets/fonts/Pretendard/Pretendard-Medium.otf
+          weight: 500
+        - asset: assets/fonts/Pretendard/Pretendard-SemiBold.otf
+          weight: 600
+        - asset: assets/fonts/Pretendard/Pretendard-Bold.otf
+          weight: 700
+        - asset: assets/fonts/Pretendard/Pretendard-ExtraBold.otf
+          weight: 800
+        - asset: assets/fonts/Pretendard/Pretendard-Black.otf
+          weight: 900

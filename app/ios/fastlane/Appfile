@@ -1,0 +1,13 @@
+app_identifier("com.mannam.goldpet")
+
+# App Store Connect API Key 방식 (2FA 불필요)
+# 1. App Store Connect → 사용자 및 액세스 → 키 → 새 API 키 생성
+# 2. 역할: "App Manager" 선택
+# 3. .p8 파일 다운로드 → app/ios/fastlane/AuthKey_{KEY_ID}.p8 에 저장
+# 4. 아래 값을 실제 값으로 교체
+
+# key_id("YOUR_KEY_ID")
+# issuer_id("YOUR_ISSUER_ID")
+# key_filepath("./fastlane/AuthKey_YOUR_KEY_ID.p8")
+
+team_id("D99344V928")

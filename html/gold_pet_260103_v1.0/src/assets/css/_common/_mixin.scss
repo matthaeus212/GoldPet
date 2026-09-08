@@ -1,0 +1,96 @@
+@use "sass:math";
+@use "sass:string";
+
+@import "./mixin/flex";
+@import "./mixin/text-overflow";
+@import "./mixin/transform";
+@import "./mixin/transition";
+
+
+
+@mixin borderRadius ($size) {
+    -webkit-border-radius: $size;
+       -moz-border-radius: $size;
+            border-radius: $size;
+}
+@mixin borderTopRadius($radi) {
+	border-top-left-radius: $radi;
+	border-top-right-radius: $radi;
+}
+@mixin borderRightRadius($radi) {
+	border-bottom-right-radius: $radi;
+	border-top-right-radius: $radi;
+}
+@mixin borderBottomRadius($radi) {
+	border-bottom-left-radius: $radi;
+	border-bottom-right-radius: $radi;
+}
+@mixin borderLeftRadius($radi) {
+	border-bottom-left-radius: $radi;
+	border-top-left-radius: $radi;
+}
+@mixin boxShadow($p) {
+	-moz-box-shadow:$p;
+	-webkit-box-shadow:$p;
+	box-shadow:$p;
+}
+@mixin boxSizing() {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie);
+}
+@mixin backgroundSolt($x : 50%, $y : 50%, $repeat : no-repeat){
+	-ms-background-position-x:$x; background-position-x:$x;
+	-ms-background-position-y:$y; background-position-y:$y;
+	background-repeat:$repeat;
+}
+@mixin backgroundSoltC($x : 50%, $y : 50%, $repeat : no-repeat, $size : cover){
+	-ms-background-position-x:$x; background-position-x:$x;
+	-ms-background-position-y:$y; background-position-y:$y;
+	-webkit-background-size:$size; background-size:$size;
+	background-repeat:$repeat;
+}
+@mixin borderSet($width : 1px, $style : solid, $color : $gray9){
+	border-width:$width; border-style:solid; border-color:$color;
+}
+%clearfix {
+    &:after {
+        content: " ";
+        display: block;
+        clear: both;
+    }
+}
+@mixin placeholder($font-size, $color, $line-height){
+	&::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+		color: $color;
+		line-height: $line-height;
+		font-size: $font-size;
+	}
+	&::-moz-placeholder { /* Firefox 19+ */
+		color: $color;
+		line-height: $line-height;
+		font-size: $font-size;
+	}
+	&:-ms-input-placeholder { /* IE 10+ */
+		color: $color;
+		line-height: $line-height;
+		font-size: $font-size;
+	}
+	&:-moz-placeholder { /* Firefox 18- */
+		color: $color;
+		line-height: $line-height;
+		font-size: $font-size;
+	}
+}
+
+
+@function vw1($size, $base: 360) {
+	$percent: math.div($size, $base) * 100;
+	$roundedPercent: math.div(math.round($percent * 100), 100);
+	@return string.unquote("#{$roundedPercent}vw");
+}

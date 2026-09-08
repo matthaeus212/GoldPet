@@ -1,0 +1,1044 @@
+/* Walk Page */
+#walkPage {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--color-bg);
+  padding-bottom: 36px;
+}
+
+/* Header - talk_wrap과 동일 */
+.walk_header {
+  padding: 0 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.walk_header p {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.walk_header button {
+  padding: 8px 16px;
+  background-color: #fff;
+  gap: 4px;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-primary);
+  border: none;
+  cursor: pointer;
+}
+
+.walk_header button img {
+  width: 16px;
+}
+
+/* Content */
+.walk_content {
+  width: 100%;
+  padding: 16px;
+  padding-bottom: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Today Stats Section */
+.walk_today_section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 24px;
+}
+
+.walk_today_card {
+  width: calc(100% - 32px);
+  padding: 24px 16px;
+  background: #D9FFA7;
+  background-image: url('/assets/images/walk/BG.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.walk_today_title {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-primary);
+  font-size: 18px;
+  font-family: Pretendard, sans-serif;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.walk_today_stats {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.walk_stat_item {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2px;
+}
+
+.walk_stat_content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.walk_stat_label {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  font-family: Pretendard, sans-serif;
+  font-weight: 500;
+  line-height: 14px;
+}
+
+.walk_stat_value {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: var(--color-primary);
+  font-size: 24px;
+  font-family: Pretendard, sans-serif;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.walk_stat_item svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* Action Buttons */
+.walk_action_btns {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.walk_start_btn {
+  height: 44px;
+  padding: 0 24px;
+  background: var(--color-primary);
+  border-radius: 1000px;
+  border: none;
+  color: white;
+  font-size: 15px;
+  font-family: Pretendard, sans-serif;
+  font-weight: 600;
+}
+
+.walk_course_create_btn {
+  height: 44px;
+  padding: 0 24px;
+  background: white;
+  border-radius: 1000px;
+  border: 1.5px solid var(--color-primary);
+  color: var(--color-primary);
+  font-size: 15px;
+  font-family: Pretendard, sans-serif;
+  font-weight: 600;
+  line-height: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Records Section */
+.walk_records_section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 24px;
+}
+
+.walk_group_tab {
+  width: calc(100% - 32px);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  margin: 0 auto;
+}
+
+.walk_group_tab::after {
+  width: 100%;
+  height: 2px;
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: #614108;
+}
+
+.walk_group_tab button {
+  flex: 1;
+  height: 46px;
+  box-sizing: border-box;
+  position: relative;
+  background-color: #EFE1C4;
+  font-size: 16px;
+  font-weight: 500;
+  color: #614108;
+  border: none;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  cursor: pointer;
+  font-family: Pretendard, sans-serif;
+  line-height: 1.4;
+  padding-top: 2px;
+}
+
+.walk_group_tab button.active {
+  z-index: 1;
+  border: 2px solid #614108;
+  border-bottom: 0;
+  background-color: #FFF7E6;
+  font-weight: 700;
+  height: 48px;
+  padding-top: 0;
+}
+
+.walk_empty_state {
+  width: 100%;
+  color: #81662d;
+  padding: 60px 16px;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  min-height: 300px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.walk_empty_state img {
+  width: 48px;
+}
+
+.walk_courses_list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+
+.walk_courses_card_list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.walk_courses_create_btn_wrap {
+  padding-top: 4px;
+}
+
+.walk_courses_create_btn {
+  width: 100%;
+  padding: 15px;
+  border-radius: var(--radius-button);
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-text-white);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-bold);
+  font-family: Pretendard, sans-serif;
+  letter-spacing: var(--letter-spacing);
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.walk_courses_create_btn:active {
+  opacity: 0.85;
+}
+
+.walk_records_list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+}
+
+.walk_records_card {
+  width: 100%;
+  padding: 24px 16px;
+  background: white;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 16px;
+}
+
+.walk_records_more_btn {
+  width: 100%;
+  padding: 14px 0;
+  background: white;
+  border: 1px solid var(--color-border, #efe1c4);
+  border-radius: 12px;
+  color: var(--color-text-primary, #614108);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: var(--letter-spacing, -0.02em);
+}
+
+.walk_records_more_btn:active {
+  background: var(--color-bg-warm, #efe1c4);
+}
+
+.walk_photo_collection {
+  width: 100%;
+  padding: 20px 16px;
+  background: white;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.walk_photo_collection_title {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111111;
+  cursor: pointer;
+}
+
+.walk_photo_collection_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.walk_photo_collection_item {
+  all: unset;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f2f2f2;
+  cursor: pointer;
+}
+
+.walk_photo_collection_item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.walk_photo_collection_placeholder {
+  width: 100%;
+  height: 100%;
+  background: #e8e8e8;
+}
+
+.walk_record_item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 8px;
+}
+
+/* Top row: avatars + name left, date + share right */
+.walk_record_top_row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.walk_record_user_info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.walk_record_avatars {
+  display: flex;
+  align-items: center;
+  padding-right: 4px;
+}
+
+.walk_record_avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.walk_record_avatars .walk_record_avatar {
+  margin-right: -4px;
+}
+
+.walk_record_avatars .walk_record_avatar:last-child {
+  margin-right: 0;
+}
+
+.walk_record_nickname {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-primary);
+  font-family: Pretendard, sans-serif;
+  letter-spacing: -0.28px;
+  white-space: nowrap;
+}
+
+.walk_record_meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.walk_record_date {
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  font-family: Pretendard, sans-serif;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: -0.28px;
+}
+
+/* Bottom row: map + stats */
+.walk_record_body {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.walk_record_info_col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.walk_record_stats {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
+.walk_record_stats > span {
+  color: var(--color-primary);
+  font-size: 16px;
+  font-family: Pretendard, sans-serif;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: -0.32px;
+  white-space: nowrap;
+}
+
+.walk_record_stats svg {
+  width: 3px;
+  height: 3px;
+  flex-shrink: 0;
+}
+
+.walk_record_location {
+  display: block;
+  color: var(--color-primary);
+  font-size: 14px;
+  font-family: Pretendard, sans-serif;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: -0.28px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.walk_record_actions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
+.walk_record_action_btn {
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border-radius: 100px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.walk_record_action_btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.walk_record_action_btn svg path {
+  stroke: #8A497D;
+}
+
+.walk_record_empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+  color: var(--color-text-placeholder);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-family);
+  letter-spacing: var(--letter-spacing);
+  text-align: center;
+}
+
+.walk_record_divider {
+  width: 100%;
+  height: 1px;
+  position: relative;
+  background: var(--color-border);
+}
+
+.walk_record_divider::before {
+  content: '';
+  width: 296px;
+  height: 1px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: var(--color-border);
+}
+
+/* "나의 산책 기록" Tag Button */
+.walk_my_record_btn_wrap {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0;
+}
+
+.walk_my_record_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 16px;
+  background: #614108;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: Pretendard, sans-serif;
+  line-height: 1.4;
+  letter-spacing: -0.26px;
+  white-space: nowrap;
+  border: none;
+  border-radius: 800px;
+  cursor: pointer;
+}
+
+/* Month Selector */
+.walk_month_selector {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 0 16px;
+}
+
+.walk_month_nav {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.walk_month_label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  min-width: 120px;
+  text-align: center;
+  letter-spacing: -0.28px;
+}
+
+.walk_month_arrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.walk_month_calendar_btn {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Month Picker Bottom Sheet */
+.walk_month_picker_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.walk_month_picker {
+  background: var(--color-bg);
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+  padding: 16px 24px calc(32px + 80px);
+  width: 100%;
+  max-width: 480px;
+  animation: walk_month_picker_slide_up 0.25s ease-out;
+}
+
+.walk_month_picker_handle {
+  width: 40px;
+  height: 4px;
+  background: var(--color-border);
+  border-radius: 2px;
+  margin: 0 auto 16px;
+}
+
+@keyframes walk_month_picker_slide_up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.walk_month_picker_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.walk_month_picker_year {
+  font-size: var(--font-size-sub-heading);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  font-family: var(--font-family);
+}
+
+.walk_month_picker_arrow {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.walk_month_picker_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.walk_month_picker_item {
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background: var(--color-bg-white);
+  color: var(--color-primary);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.walk_month_picker_item:disabled {
+  color: var(--color-text-disabled);
+  cursor: default;
+}
+
+.walk_month_picker_item.selected {
+  background: var(--color-primary);
+  color: var(--color-text-white);
+  font-weight: var(--font-weight-bold);
+}
+
+.walk_month_picker_item:not(:disabled):not(.selected):active {
+  background: var(--color-border);
+}
+
+.walk_ranking_placeholder {
+  width: 100%;
+  padding: 40px;
+  text-align: center;
+  color: #727272;
+  font-size: 16px;
+  font-family: Pretendard, sans-serif;
+}
+
+/* Ranking Tab Wrapper */
+.walk_ranking_wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Best Couple Card */
+.walk_best_couple {
+  width: 100%;
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 24px;
+}
+
+.walk_best_couple_badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 16px;
+  background: #FFE5FA;
+  border-radius: 100px;
+  color: #8A497D;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: Pretendard, sans-serif;
+  box-sizing: border-box;
+}
+
+.walk_best_couple_badge img {
+  width: 24px;
+  height: 24px;
+}
+
+.walk_best_couple_avatars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 8px;
+}
+
+.walk_best_couple_avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 57% 50% 58% 49% / 38% 40% 43% 48%;
+  overflow: hidden;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.walk_best_couple_avatar + .walk_best_couple_avatar {
+  margin-left: -8px;
+}
+
+.walk_best_couple_avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.walk_best_couple_names {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding-left: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #614108;
+  font-family: Pretendard, sans-serif;
+}
+
+.walk_best_couple_names svg {
+  flex-shrink: 0;
+}
+
+.walk_best_couple_stats {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px;
+  background: #F5F5F5;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.walk_best_couple_stats dl {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.walk_best_couple_stats dt {
+  font-size: 12px;
+  font-weight: 500;
+  color: #505050;
+  font-family: Pretendard, sans-serif;
+  text-align: center;
+}
+
+.walk_best_couple_stats dd {
+  font-size: 16px;
+  font-weight: 700;
+  color: #614108;
+  font-family: Pretendard, sans-serif;
+  margin: 0;
+}
+
+.walk_best_couple_divider {
+  width: 1px;
+  align-self: stretch;
+  background: #D9D9D9;
+}
+
+/* Ranking List */
+.walk_ranking_list {
+  width: 100%;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Ranking Card */
+.walk_ranking_card {
+  width: 100%;
+  background: #f9ecd2;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.walk_ranking_card--highlighted {
+  border: 1px solid #614108;
+}
+
+/* Number Badge */
+.walk_ranking_badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  background: #614108;
+  border-radius: 100px;
+  color: #fff;
+  font-size: 12px;
+  font-family: Pretendard, sans-serif;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.walk_ranking_card--highlighted .walk_ranking_badge {
+  top: -1px;
+  left: -1px;
+}
+
+/* Profile Images (overlapping circles) */
+.walk_ranking_profiles {
+  display: flex;
+  align-items: center;
+  padding-right: 12px;
+  flex-shrink: 0;
+}
+
+.walk_ranking_profile_img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: -12px;
+  border: 2px solid #fff;
+  flex-shrink: 0;
+}
+
+.walk_ranking_profile_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Text Section */
+.walk_ranking_info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.walk_ranking_name {
+  font-size: 16px;
+  font-family: Pretendard, sans-serif;
+  font-weight: 700;
+  color: #614108;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.walk_ranking_stats_row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-family: Pretendard, sans-serif;
+  font-weight: 500;
+  color: #614108;
+}
+
+.walk_ranking_stats_row svg {
+  flex-shrink: 0;
+}
+
+.walk_ranking_gold_row {
+  font-size: 14px;
+  font-family: Pretendard, sans-serif;
+  font-weight: 500;
+  color: #614108;
+}
+
+/* More Button */
+.walk_ranking_more_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 16px 20px;
+  background: none;
+  border: none;
+  color: #505050;
+  font-size: 14px;
+  font-family: Pretendard, sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Filter chips row (shown when region filter is active) */
+.walk_filter_chips_row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.walk_filter_chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: #FFF7E6;
+  border: 1px solid var(--color-primary);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-family: Pretendard, sans-serif;
+  letter-spacing: -0.26px;
+}
+
+.walk_filter_chip_value {
+  font-weight: 600;
+}
+

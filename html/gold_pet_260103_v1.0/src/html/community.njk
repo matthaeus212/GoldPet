@@ -1,0 +1,146 @@
+{%- extends "_templates/_layout.njk" -%}
+{% block content %}
+<div id="communityContainer">
+    <div class="community_tab">
+        <ul>
+            <li><button type="button" class="active">전체 <span>99</span></button></li>
+            <li><button type="button">만남 <span>99</span></button></li>
+            <li><button type="button">의료 <span>99</span></button></li>
+            <li><button type="button">쇼핑 <span>99</span></button></li>
+            <li><button type="button">펫그램 <span>99</span></button></li>
+        </ul>
+    </div>
+
+    <ul class="community_list">
+        <!-- 광고 게시물의 경우 li에 class - ad_list 추가-->
+        <li class="ad_list">
+            <div class="list_profile">
+                <div class="profile_img"><img src="../assets/images/main/main_slide_butler01.jpg" alt=""></div>
+                <div class="txt_wrap">
+                    <strong>귀요미동물병원</strong>
+                    <p>광고</p>
+                </div>
+            </div>
+            <strong class="list_tit">VET맨이 찾아가겠습니다!!</strong>
+            <p class="list_txt">
+                강아지가 아프다구요?! 집 밖을 나가기 힘들다구요?! <br>
+                수의사가 직접 왕진갑니다.
+            </p>
+            <div class="list_img">
+                <img src="../assets/images/community/ad_img.png" alt="">
+            </div>
+        </li>
+        <li>
+            <div class="list_profile">
+                <div class="profile_img"><img src="../assets/images/main/main_slide_butler01.jpg" alt=""></div>
+                <div class="txt_wrap">
+                    <strong>귀요미동물병원</strong>
+                    <p>10분 전</p>
+                </div>
+            </div>
+            <strong class="list_tit">VET맨이 찾아가겠습니다!!</strong>
+            <p class="list_txt">
+                강아지가 아프다구요?! 집 밖을 나가기 힘들다구요?! <br>
+                수의사가 직접 왕진갑니다.
+            </p>
+            <div class="list_img">
+                <img src="../assets/images/community/list_img.png" alt="">
+            </div>
+
+            <!--좋아요 아이콘, 댓글 아이콘 변환 like_icon, comment_icon class에 active 추가 삭제-->
+            <div class="like_comment_count">
+                <div class="count_wrap"><div class="icon_img like_icon"></div> 31</div>
+                <div class="count_wrap"><div class="icon_img comment_icon"></div> 31</div>
+            </div>
+        </li>
+        <li>
+            <div class="list_profile">
+                <div class="profile_img"><img src="../assets/images/main/main_slide_butler01.jpg" alt=""></div>
+                <div class="txt_wrap">
+                    <strong>귀요미동물병원</strong>
+                    <p>10분 전</p>
+                </div>
+            </div>
+            <strong class="list_tit">VET맨이 찾아가겠습니다!!</strong>
+            <p class="list_txt">
+                강아지가 아프다구요?! 집 밖을 나가기 힘들다구요?! <br>
+                수의사가 직접 왕진갑니다.
+            </p>
+
+            <div class="like_comment_count">
+                <div class="count_wrap"><div class="icon_img like_icon active"></div> 31</div>
+                <div class="count_wrap"><div class="icon_img comment_icon active" ></div> 31</div>
+            </div>
+        </li>
+    </ul>
+
+    <!--글쓰기-->
+    <button type="button" id="writeBtn">글쓰기</button>
+</div>
+
+<!--글쓰기 모달-->
+<div id="writeModal">
+    <div class="modal_wrap">
+        <div class="input_wrap">
+            <label for="write_title">제목</label>
+            <input type="text" id="write_title" placeholder="제목을 입력해주세요.">
+        </div>
+        <div class="input_wrap">
+            <label for="write_txt">내용</label>
+            <textarea id="write_txt" placeholder="게시글 내용을 입력해주세요."></textarea>
+        </div>
+        <div class="img_upload_wrap">
+            <p>이미지 <span>(선택)</span></p>
+            <ul>
+                <li>
+                    <button type="button" class="img_upload_btn">
+                        <span class="upload_img"><img src="../assets/images/community/upload_img.jpg" alt=""></span>
+                        <span class="delete_btn"></span>
+                    </button>
+                </li>
+                <li><button type="button" class="img_upload_btn"></button></li>
+                <li><button type="button" class="img_upload_btn"></button></li>
+                <li><button type="button" class="more_btn"></button></li>
+            </ul>
+        </div>
+
+        <!--활성화시 class disabled 제거-->
+        <button type="button" class="submit_btn disabled">등록하기</button>
+
+        <button type="button" class="modal_close_btn"><img src="../assets/images/common/close_icon.svg" alt=""></button>
+    </div>
+</div>
+
+<!--기본 모달-->
+<div class="alert_modal">
+    <div class="alert_wrap">
+        <div class="txt_wrap">
+            <p>게시글 작성이 완료 되었습니다.</p>
+        </div>
+        <div class="btn_wrap">
+            <button type="button" class="brown1">확인</button>
+        </div>
+    </div>
+</div>
+
+<!--모달 테스트-->
+<script>
+    /*글쓰기 모달*/
+    document.getElementById("writeBtn").addEventListener("click", () => {
+        document.getElementById("writeModal").style.display = "block";
+    });
+    document.querySelector(".modal_close_btn").addEventListener("click", () => {
+        document.getElementById("writeModal").style.display = "none";
+    });
+
+    /*경고창 모달*/
+    document.querySelector(".submit_btn").addEventListener("click", () => {
+        document.querySelector(".alert_modal").style.display = "flex";
+    });
+    document.querySelector(".alert_modal .btn_wrap button").addEventListener("click", () => {
+        document.querySelector(".alert_modal").style.display = "none";
+        document.getElementById("writeModal").style.display = "none";
+    });
+</script>
+{%- endblock %}
+

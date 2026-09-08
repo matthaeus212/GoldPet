@@ -1,0 +1,39 @@
+{%- macro include(fileName) -%}
+    {%- include fileName ignore missing -%}
+{%- endmacro -%}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>골든 펫</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="format-detection" content="email=no">
+
+    <meta name="Description" content="골든 펫">
+    <meta name="Keywords" content="골든 펫">
+    <meta name="Author" content="골든 펫">
+    <meta name="robots" content="noindex">
+    <meta property="og:title" content="골든 펫">
+    <meta property="og:description" content="골든 펫">
+    <meta property="og:image" content="">
+    <meta property="og:site_name" content="골든 펫">
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+</head>
+<body>
+<div id="wrap">
+    {{ include( "_templates/_header.njk" ) | tabIndent(1) }}
+    {% filter tabIndent(1) %}
+        {% block content %}
+        {% endblock %}
+    {% endfilter %}
+    {{ include( "_templates/_footer.njk" ) | tabIndent(1) }}
+</div>
+<script src="../assets/javascripts/plugin.js"></script>
+<script src="../assets/javascripts/design_common.js"></script>
+</body>
+</html>

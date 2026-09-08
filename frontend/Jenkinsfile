@@ -1,0 +1,134 @@
+pipeline {
+    agent any
+
+    parameters {
+        choice(name: 'ENV', choices: ['dev', 'prod'], description: '배포 환경 (dev=mannamsquare.com, prod=goldpet.com)')
+    }
+
+    environment {
+        DEPLOY_PATH = '/home/dev/www/mannam/goldpet/frontend'
+        NODE_VERSION = '24.13.0'
+    }
+
+    tools {
+        nodejs "NodeJS"
+    }
+
+    stages {
+        stage('Install Dependencies') {
+            steps {
+                dir('frontend') {
+                    sh 'npm ci'
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Post-merge smoke — NOT a merge gate. Husky pre-push is the actual gate
+                // (plan §3.6 Option B). Failures here mark the build UNSTABLE but do not
+                // block deploy; real-device attestation is still required per PR checklist.
+                catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
+                    sh 'cd frontend && npm run lint'
+                    sh 'cd frontend && npm run lint:contract'
+                    sh 'cd frontend && npm run test -- --run'
+                }
+            }
+        }
+
+        stage('OpenAPI Contract Test (dev)') {
+            when { expression { params.ENV == 'dev' } }
+            steps {
+                // Runtime drift check against the live dev API. UNSTABLE on fail —
+                // does NOT block deploy because the build artifact may still be
+                // valid; the alert is for ops to investigate.
+                catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
+                    dir('frontend') {
+                        sh '''
+                            OPENAPI_CONTRACT_BASE=https://api.mannamsquare.com \
+                                npx playwright test api-contract.spec.ts --reporter=line
+                        '''
+                    }
+                }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                dir('frontend') {
+                    // 환경에 맞는 .env 파일 사용하여 빌드
+                    // 주의: `npm run build -- --mode X`는 build 스크립트의 체인 구조상
+                    // --mode 플래그가 vite build에 닿지 않음. build:dev/build:prod 전용 스크립트 사용.
+                    sh "npm run build:${params.ENV}"
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                script {
+                    def checkUrl = params.ENV == 'dev' ? 'https://app.mannamsquare.com' : 'https://app.goldpet.com'
+
+                    // 백업
+                    sh """
+                        if [ -d ${DEPLOY_PATH}/dist ]; then
+                            BACKUP_DIR=${DEPLOY_PATH}/dist.backup.\$(date +%Y%m%d_%H%M%S)
+                            mv ${DEPLOY_PATH}/dist \$BACKUP_DIR
+                            echo "Backed up to \$BACKUP_DIR"
+                        fi
+                    """
+
+                    // 새 빌드 배포
+                    sh "cp -r frontend/dist ${DEPLOY_PATH}/"
+
+                    // Nginx 재로드
+                    sh 'sudo systemctl reload nginx'
+
+                    // 배포 확인
+                    sh """
+                        echo "Checking deployment at ${checkUrl}..."
+                        if curl -f ${checkUrl} > /dev/null 2>&1; then
+                            echo "✅ Frontend is accessible!"
+                        else
+                            echo "⚠️ Frontend might not be accessible"
+                        fi
+                    """
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "✅ Frontend 배포 성공! (ENV: ${params.ENV})"
+        }
+        failure {
+            echo "❌ Frontend 배포 실패! (ENV: ${params.ENV})"
+            // 롤백
+            sh """
+                if ls -d ${DEPLOY_PATH}/dist.backup.* 1> /dev/null 2>&1; then
+                    LATEST_BACKUP=\$(ls -td ${DEPLOY_PATH}/dist.backup.* | head -1)
+                    rm -rf ${DEPLOY_PATH}/dist
+                    cp -r \$LATEST_BACKUP ${DEPLOY_PATH}/dist
+                    sudo systemctl reload nginx
+                    echo "Rolled back to \$LATEST_BACKUP"
+                fi
+            """
+        }
+        always {
+            // 오래된 백업 정리 (최근 3개만 유지)
+            // 소유자가 다른 백업(수동 배포 잔존물)도 안전하게 삭제하기 위해 write 권한 체크
+            sh """
+                cd ${DEPLOY_PATH}
+                ls -td dist.backup.* 2>/dev/null | tail -n +4 | while read d; do
+                    if [ -w "\$d" ]; then
+                        rm -rf "\$d"
+                    else
+                        echo "Skipping \$d (not writable by current user)"
+                    fi
+                done
+                true
+            """
+        }
+    }
+}

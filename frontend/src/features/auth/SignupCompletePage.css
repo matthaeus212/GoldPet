@@ -1,0 +1,77 @@
+.signup-complete-page {
+  width: 100%;
+  min-height: calc(100vh - var(--typea-header-height));
+  background-color: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.signup-complete-content {
+  width: 100%;
+  padding: 40px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.signup-complete-logo {
+  width: 100.45px;
+  height: 27px;
+  object-fit: contain;
+  margin-bottom: 16px;
+}
+
+.signup-complete-message {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+  letter-spacing: -0.32px;
+  text-align: center;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.signup-complete-button-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.signup-complete-button {
+  width: 100%;
+  height: 48px;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 1000px;
+  color: var(--color-text-white);
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 20px;
+  transition: background-color 0.2s ease;
+}
+
+.signup-complete-button:hover {
+  background-color: #4A3206;
+}
+
+.signup-complete-button:active {
+  transform: scale(0.98);
+}
+
+

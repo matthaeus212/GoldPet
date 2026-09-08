@@ -1,0 +1,220 @@
+/* Notification Page Styles */
+
+#notificationContainer {
+	min-height: 100vh;
+	background-color: var(--color-bg);
+}
+
+.mark-all-read-btn {
+	background: none;
+	border: none;
+	font-family: 'Pretendard', sans-serif;
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--color-primary);
+	padding: 0;
+	cursor: pointer;
+}
+
+/* Notification List */
+#notificationContainer .notification_list {
+	padding: 0 16px;
+}
+
+#notificationContainer .notification_list ul {
+	list-style: none;
+}
+
+#notificationContainer .notification_item {
+	display: flex;
+	align-items: flex-start;
+	gap: 16px;
+	padding: 16px 0;
+	border-bottom: 1px solid #EFE1C4;
+	cursor: pointer;
+}
+
+#notificationContainer .notification_item:last-child {
+	border-bottom: none;
+}
+
+/* Profile Image */
+#notificationContainer .notification_profile {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	overflow: hidden;
+	flex-shrink: 0;
+	position: relative;
+}
+
+#notificationContainer .notification_profile img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* 시스템 알림(산책·골드·공지 등): 빈 사람 대신 골드펫 로고 */
+#notificationContainer .notification_profile--system {
+	background-color: #FFF7E6;
+}
+
+#notificationContainer .notification_profile--system img {
+	object-fit: contain;
+	padding: 4px;
+}
+
+#notificationContainer .unread_dot {
+	width: 4px;
+	height: 4px;
+	background-color: #FF5005;
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+/* Content */
+#notificationContainer .notification_content {
+	flex: 1;
+	min-width: 0;
+}
+
+#notificationContainer .notification_title {
+	display: block;
+	font-size: 16px;
+	font-weight: 700;
+	color: #614108;
+	margin-bottom: 4px;
+}
+
+#notificationContainer .notification_message {
+	font-size: 14px;
+	font-weight: 500;
+	color: #505050;
+	line-height: 1.4;
+	margin-bottom: 4px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#notificationContainer .notification_time {
+	font-size: 12px;
+	color: #727272;
+}
+
+/* Empty State */
+#notificationContainer .empty_state {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 60px 16px;
+	gap: 8px;
+	color: var(--color-primary);
+	font-size: 24px;
+	font-weight: 700;
+}
+
+#notificationContainer .empty_state img {
+	width: 48px;
+}
+
+#notificationContainer .empty_state p {
+	font-size: 14px;
+	color: var(--color-text-tertiary);
+	font-weight: 400;
+}
+
+/* Notice Board List (공지/이벤트 게시판 스타일) */
+#notificationContainer .notice_board_list {
+	padding: 0 16px;
+}
+
+#notificationContainer .notice_board_list ul {
+	list-style: none;
+}
+
+#notificationContainer .notice_board_item {
+	display: flex;
+	gap: 16px;
+	padding: 16px 0;
+	border-bottom: 1px solid #EFE1C4;
+	cursor: pointer;
+}
+
+#notificationContainer .notice_board_item:last-child {
+	border-bottom: none;
+}
+
+#notificationContainer .notice_board_thumb {
+	width: 80px;
+	height: 80px;
+	border-radius: 12px;
+	overflow: hidden;
+	flex-shrink: 0;
+}
+
+#notificationContainer .notice_board_thumb img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+#notificationContainer .notice_board_content {
+	flex: 1;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+#notificationContainer .notice_board_title {
+	display: block;
+	font-size: 16px;
+	font-weight: 700;
+	color: #614108;
+	line-height: 1.4;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#notificationContainer .notice_board_desc {
+	font-size: 14px;
+	font-weight: 400;
+	color: #505050;
+	line-height: 1.4;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+#notificationContainer .notice_board_badge {
+	display: inline-block;
+	font-size: 11px;
+	font-weight: 600;
+	color: var(--color-primary);
+	background-color: #FFF5E5;
+	padding: 2px 8px;
+	border-radius: 4px;
+	width: fit-content;
+}
+
+#notificationContainer .notice_board_date {
+	font-size: 12px;
+	color: #727272;
+	margin-top: 2px;
+}
+
+/* Loading */
+#notificationContainer .loading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 50vh;
+	color: var(--color-text-tertiary);
+	font-size: 14px;
+}

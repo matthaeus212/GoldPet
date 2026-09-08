@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>골든 펫</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="format-detection" content="email=no">
+
+    <meta name="Description" content="골든 펫">
+    <meta name="Keywords" content="골든 펫">
+    <meta name="Author" content="골든 펫">
+    <meta name="robots" content="noindex">
+    <meta property="og:title" content="골든 펫">
+    <meta property="og:description" content="골든 펫">
+    <meta property="og:image" content="">
+    <meta property="og:site_name" content="골든 펫">
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+</head>
+<body>
+<div id="wrap">
+    <!--header-->
+	<header id="header">
+	    <div class="header_wrap">
+	        <a href=""><img src="../assets/images/layout/logo.svg" alt="골든 펫 로고"></a>
+	        <ul class="header_util">
+	            <li><button type="button"><img src="../assets/images/layout/header_icon01.svg" alt="G아이콘"></button></li>
+	            <li><button type="button"><img src="../assets/images/layout/header_icon02.svg" alt="알림"></button></li>
+	            <li><button type="button"><img src="../assets/images/layout/header_icon03.svg" alt="프로필"></button></li>
+	        </ul>
+	    </div>
+	</header>
+	<!--//header-->
+    <div id="communityContainer">
+	    <div class="community_tab">
+	        <ul>
+	            <li><button type="button" class="active">전체 <span>99</span></button></li>
+	            <li><button type="button">만남 <span>99</span></button></li>
+	            <li><button type="button">의료 <span>99</span></button></li>
+	            <li><button type="button">쇼핑 <span>99</span></button></li>
+	            <li><button type="button">펫그램 <span>99</span></button></li>
+	        </ul>
+	    </div>
+
+	    <ul class="community_list">
+	        <!-- 광고 게시물의 경우 li에 class - ad_list 추가-->
+	        <li class="ad_list">
+	            <div class="list_profile">
+	                <div class="profile_img"><img src="../assets/images/main/main_slide_butler01.jpg" alt=""></div>
+	                <div class="txt_wrap">
+	                    <strong>귀요미동물병원</strong>
+	                    <p>광고</p>
+	                </div>
+	            </div>
+	            <strong class="list_tit">VET맨이 찾아가겠습니다!!</strong>
+	            <p class="list_txt">
+	                강아지가 아프다구요?! 집 밖을 나가기 힘들다구요?! <br>
+	                수의사가 직접 왕진갑니다.
+	            </p>
+	            <div class="list_img">
+	                <img src="../assets/images/community/ad_img.png" alt="">
+	            </div>
+	        </li>
+	        <li>
+	            <div class="list_profile">
+	                <div class="profile_img"><img src="../assets/images/main/main_slide_butler01.jpg" alt=""></div>
+	                <div class="txt_wrap">
+	                    <strong>귀요미동물병원</strong>
+	                    <p>10분 전</p>
+	                </div>
+	            </div>
+	            <strong class="list_tit">VET맨이 찾아가겠습니다!!</strong>
+	            <p class="list_txt">
+	                강아지가 아프다구요?! 집 밖을 나가기 힘들다구요?! <br>
+	                수의사가 직접 왕진갑니다.
+	            </p>
+	            <div class="list_img">
+	                <img src="../assets/images/community/list_img.png" alt="">
+	            </div>
+
+	            <!--좋아요 아이콘, 댓글 아이콘 변환 like_icon, comment_icon class에 active 추가 삭제-->
+	            <div class="like_comment_count">
+	                <div class="count_wrap"><div class="icon_img like_icon"></div> 31</div>
+	                <div class="count_wrap"><div class="icon_img comment_icon"></div> 31</div>
+	            </div>
+	        </li>
+	        <li>
+	            <div class="list_profile">
+	                <div class="profile_img"><img src="../assets/images/main/main_slide_butler01.jpg" alt=""></div>
+	                <div class="txt_wrap">
+	                    <strong>귀요미동물병원</strong>
+	                    <p>10분 전</p>
+	                </div>
+	            </div>
+	            <strong class="list_tit">VET맨이 찾아가겠습니다!!</strong>
+	            <p class="list_txt">
+	                강아지가 아프다구요?! 집 밖을 나가기 힘들다구요?! <br>
+	                수의사가 직접 왕진갑니다.
+	            </p>
+
+	            <!--좋아요 아이콘, 댓글 아이콘 변환 like_icon, comment_icon class에 active 추가 삭제-->
+	            <div class="like_comment_count">
+	                <div class="count_wrap"><div class="icon_img like_icon active"></div> 31</div>
+	                <div class="count_wrap"><div class="icon_img comment_icon active" ></div> 31</div>
+	            </div>
+	        </li>
+	    </ul>
+
+	    <!--글쓰기-->
+	    <button type="button" id="writeBtn">글쓰기</button>
+	</div>
+
+	<!--글쓰기 모달-->
+	<div id="writeModal" style="display: block;">
+	    <div class="modal_wrap">
+	        <div class="input_wrap">
+	            <label for="write_title">제목</label>
+	            <input type="text" id="write_title" placeholder="제목을 입력해주세요.">
+	        </div>
+	        <div class="input_wrap">
+	            <label for="write_txt">내용</label>
+	            <textarea id="write_txt" placeholder="게시글 내용을 입력해주세요."></textarea>
+	        </div>
+	        <div class="img_upload_wrap">
+	            <p>이미지 <span>(선택)</span></p>
+	            <ul>
+	                <li>
+	                    <button type="button" class="img_upload_btn">
+	                        <span class="upload_img"><img src="../assets/images/community/upload_img.jpg" alt=""></span>
+	                        <span class="delete_btn"></span>
+	                    </button>
+	                </li>
+	                <li><button type="button" class="img_upload_btn"></button></li>
+	                <li><button type="button" class="img_upload_btn"></button></li>
+	                <li><button type="button" class="more_btn"></button></li>
+	            </ul>
+	        </div>
+
+	        <!--활성화시 class disabled 제거-->
+	        <button type="button" class="submit_btn disabled">등록하기</button>
+
+	        <button type="button" class="modal_close_btn"><img src="../assets/images/common/close_icon.svg" alt=""></button>
+	    </div>
+	</div>
+	    
+    <!--bottom nav-->
+	<!--현재 페이지 button에 active 추가-->
+	<div id="bottomNav">
+	    <ul>
+	        <li><button type="button" class="b_nav01 active">친구찾기</button></li>
+	        <li><button type="button" class="b_nav02">채팅</button></li>
+	        <li class="ai_btn"><button type="button"><img src="../assets/images/layout/b_fix_center_icon.png" alt="AI"></button></li>
+	        <li><button type="button" class="b_nav03">산책</button></li>
+	        <li><button type="button" class="b_nav04">커뮤니티</button></li>
+	    </ul>
+	</div>
+	<!--//bottom nav-->
+</div>
+<script src="../assets/javascripts/plugin.js"></script>
+<script src="../assets/javascripts/design_common.js"></script>
+</body>
+</html>

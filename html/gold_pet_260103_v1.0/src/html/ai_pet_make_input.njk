@@ -1,0 +1,18 @@
+{%- extends "_templates/_layout.njk" -%}
+{% block content %}
+<div id="aiMake">
+	<div class="ai_txt_wrap">
+		<strong>원하는 대로 만들기</strong>
+		<p>옵션 선택과 프롬프트를 입력하여 만들기</p>
+	</div>
+	<div class="make_input">
+		<div class="pet_type_btn">
+			<button type="button" class="active">강아지</button>
+			<button type="button">고양이</button>
+			<button type="button">기타</button>
+		</div>
+		<textarea class="prompt_txt" placeholder="프롬프트를 입력를 입력해주세요."></textarea>
+		<button type="button" class="submit_btn">프로필 생성하기</button>
+	</div>
+</div>
+{%- endblock %}

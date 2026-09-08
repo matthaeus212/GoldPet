@@ -1,0 +1,113 @@
+.block-management {
+  padding: 16px;
+}
+
+.block-loading {
+  padding: 40px 0;
+  text-align: center;
+  font-size: var(--font-size-body-sm);
+  color: var(--color-text-placeholder);
+}
+
+/* ===== List ===== */
+
+.block-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.block-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 16px 0;
+}
+
+.block-item + .block-item {
+  border-top: 1px solid var(--color-border);
+}
+
+/* Profile photo */
+.block-item-photo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Info column */
+.block-item-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.block-item-nickname {
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  letter-spacing: var(--letter-spacing);
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.block-item-pet {
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--letter-spacing);
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Right column: button + date */
+.block-item-right {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  padding-top: 4px;
+}
+
+.block-item-unblock {
+  height: 36px;
+  padding: 0 16px;
+  background-color: var(--color-border);
+  color: var(--color-primary);
+  font-size: 13px;
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family);
+  letter-spacing: var(--letter-spacing);
+  border: none;
+  border-radius: 800px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.block-item-unblock:active {
+  opacity: 0.7;
+}
+
+.block-item-unblock:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.block-item-date {
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-medium);
+  color: #727272;
+  letter-spacing: var(--letter-spacing);
+  line-height: 1.4;
+  white-space: nowrap;
+}

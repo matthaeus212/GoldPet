@@ -1,0 +1,63 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  flyway:
+    enabled: true
+    clean-disabled: false # allow flyway clean for local dev
+    baseline-on-migrate: true
+    baseline-version: 0 # PostGIS creates objects in public schema; baseline at 0 so V1+ all run
+
+# 로컬 환경 URL 설정
+app:
+  encryption:
+    key: "local-dev-encryption-key-32ch!!"
+  frontend:
+    url: http://localhost:5173
+  admin:
+    url: http://localhost:5174
+  cors:
+    allowed-origins:
+      - http://localhost:5173
+      - http://localhost:5174
+      - http://10.0.2.2:5173
+      - http://192.168.0.87:5173
+
+# Local MinIO Configuration (Port 9100)
+# S3_ENDPOINT uses localhost (API server connects directly)
+# S3_PUBLIC_ENDPOINT uses LAN IP so Android device can access uploaded images
+S3_ENDPOINT: http://localhost:9100
+S3_PUBLIC_ENDPOINT: http://192.168.0.87:9100
+S3_ACCESS_KEY: goldpet-s3-access-key
+S3_SECRET_KEY: goldpet-s3-secret-key
+S3_PUBLIC_BUCKET_NAME: goldpet-public
+S3_PRIVATE_BUCKET_NAME: goldpet-private
+
+# Google Maps Platform + AI
+google:
+  maps:
+    api-key: AIzaSyDKzJWAKYzLbq5ioILENkscpJNSem8MRDE
+  ai:
+    api-key: AIzaSyBRpIPAYmGHogqxpGjmLspslPhaEKUZuPQ
+
+# DeepL Translation
+deepl:
+  api-key: c1f2b682-3e90-4b90-b821-d17044c4aafc:fx
+
+# AI Profile settings (stored in system_settings table, these are fallback defaults)
+ai:
+  profile:
+    daily-limit: 5
+    placeholder-url: "https://placehold.co/512x512/png?text=AI+Profile"
+
+openai:
+  api-key: ${OPENAI_API_KEY:}

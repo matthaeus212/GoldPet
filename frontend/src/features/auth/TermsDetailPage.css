@@ -1,0 +1,39 @@
+/* Header styles removed - using shared Header component */
+/* Page container and title styles moved to page-layout.css */
+
+/* Body */
+.terms-detail-body {
+  width: 100%;
+  padding: 16px 16px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.terms-detail-content {
+  width: 100%;
+  background-color: transparent;
+  padding: 0;
+  min-height: 400px;
+  max-height: calc(100vh - 280px);
+  overflow-y: auto;
+}
+
+.terms-detail-text {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+  letter-spacing: -0.28px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+}
+
+.terms-article-heading {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--color-text-primary);
+  display: inline;
+}
+

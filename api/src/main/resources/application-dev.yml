@@ -1,0 +1,104 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    # show-sql 은 System.out 으로 찍혀 api.log(stdout 리다이렉트)에 접두사 없는 SQL 이 섞인다.
+    # 대신 org.hibernate.SQL 로거(debug)로 남겨 타임스탬프·로거명이 붙은 한 줄 로그로 출력.
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    baseline-version: 0
+    # V68 가 V69/V70 보다 늦게 추가돼 스킵된 환경에서도 back-apply 되도록 허용.
+    # V68/V71 모두 IF NOT EXISTS 라 재적용/순서 무관하게 안전. schema_history 정합 + validate 실패 방지.
+    out-of-order: true
+
+logging:
+  level:
+    # show-sql 대체 — SQL 을 정식 로그 라인(타임스탬프·로거명 포함)으로 기록. 끌 때는 이 레벨만 info 로.
+    org.hibernate.SQL: debug
+
+# BLOCKER #9 — Sentry. SENTRY_DSN_API 미설정 시 dsn 공백 → SDK no-op (이벤트 미전송).
+sentry:
+  dsn: ${SENTRY_DSN_API:}
+  environment: dev
+  release: ${SENTRY_RELEASE:goldpet-api@0.0.1-SNAPSHOT}
+  traces-sample-rate: 0.1
+
+# 개발 서버 환경 URL 설정 (mannamsquare.com)
+app:
+  encryption:
+    # Legacy; unused under dual-key shape. Remove in follow-up after prod rotation.
+    key: "${ENCRYPTION_KEY:MUST_BE_SET_VIA_ENV_VAR_DO_NOT_COMMIT}"
+    key-primary: "${ENCRYPTION_KEY_PRIMARY:${ENCRYPTION_KEY:MUST_BE_SET_VIA_ENV_VAR_DO_NOT_COMMIT}}"
+    key-secondary: "${ENCRYPTION_KEY_SECONDARY:}"
+  frontend:
+    url: https://app.mannamsquare.com
+  admin:
+    url: https://admin.mannamsquare.com
+  cors:
+    allowed-origins:
+      - https://app.mannamsquare.com
+      - https://admin.mannamsquare.com
+      - https://mannamsquare.com
+      - http://localhost:5173
+      - http://localhost:5174
+
+# Dev MinIO Configuration
+S3_ENDPOINT: ${MINIO_ENDPOINT:http://minio:9000}
+S3_PUBLIC_ENDPOINT: ${MINIO_PUBLIC_ENDPOINT}
+S3_ACCESS_KEY: ${MINIO_ACCESS_KEY}
+S3_SECRET_KEY: ${MINIO_SECRET_KEY}
+S3_PUBLIC_BUCKET_NAME: ${MINIO_PUBLIC_BUCKET:goldpet-public}
+S3_PRIVATE_BUCKET_NAME: ${MINIO_PRIVATE_BUCKET:goldpet-private}
+
+# Google Maps Platform + AI
+google:
+  maps:
+    api-key: AIzaSyDKzJWAKYzLbq5ioILENkscpJNSem8MRDE
+  ai:
+    api-key: ${GOOGLE_AI_API_KEY:AIzaSyBRpIPAYmGHogqxpGjmLspslPhaEKUZuPQ}
+
+# DeepL Translation
+deepl:
+  api-key: ${DEEPL_API_KEY:c1f2b682-3e90-4b90-b821-d17044c4aafc:fx}
+
+# AI Profile settings (stored in system_settings table, these are fallback defaults)
+ai:
+  profile:
+    daily-limit: 5
+    placeholder-url: "https://placehold.co/512x512/png?text=AI+Profile"
+
+openai:
+  api-key: ${OPENAI_API_KEY}
+
+# NCloud SENS SMS (휴대폰 인증 발송). 비밀키는 서버 env(goldpet-api.env)에서만 주입 — 값 하드코딩 금지.
+ncloud:
+  sms:
+    host: ${NCLOUD_SMS_HOST:https://sens.apigw.ntruss.com}
+    access-key: ${NCLOUD_SMS_ACCESS_KEY:}
+    secret-key: ${NCLOUD_SMS_SECRET_KEY:}
+    service-id: ${NCLOUD_SMS_SERVICE_ID:}
+    sender-number: ${NCLOUD_SMS_FROM:}
+
+# T-chat-latency-v2 Step 2 — chat FCM fan-out 비동기 분리 피처 플래그.
+# dev 에서만 true — prod application-prod.yml 은 미설정(기본 false) 유지 → 기존 동기 경로 fallback.
+goldpet:
+  chat:
+    async:
+      enabled: true
+
+# OPS-003: API 를 전체 인터페이스(*:8081)에 바인딩하고 있었다. ufw 가 외부를 막고 있지만
+# 심층방어로 루프백만 바인딩한다 — nginx 가 http://localhost:8081 로 프록시하므로 영향 없다.
+# (방화벽 규칙 하나가 잘못 열리는 순간 API 가 그대로 노출되던 구조를 없앤다.)
+# 필요 시 SERVER_ADDRESS 로 덮어쓸 수 있다.
+server:
+  address: ${SERVER_ADDRESS:127.0.0.1}

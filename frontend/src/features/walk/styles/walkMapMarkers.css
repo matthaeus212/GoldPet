@@ -1,0 +1,24 @@
+/* Pet profile circle markers (start/end) */
+.walk_pet_circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.walk_pet_circle--start {
+  border: 3px solid #4A6CF7;
+}
+
+.walk_pet_circle--end {
+  border: 3px solid #FF6B5C;
+}
+
+.walk_pet_circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #FFF7E6;
+}

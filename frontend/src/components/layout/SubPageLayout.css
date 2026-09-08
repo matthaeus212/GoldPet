@@ -1,0 +1,10 @@
+.sub-page-layout {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    position: relative;
+}
+
+.sub-page-content {
+    padding-top: 56px;
+}

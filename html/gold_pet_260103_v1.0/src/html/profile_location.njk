@@ -1,0 +1,39 @@
+{%- extends "_templates/_layout.njk" -%}
+{% block content %}
+<div id="profileContainer">
+    <div class="talk_wrap">
+        <p>
+            반려동물과 함께하는 <br>
+            행복한 일상을 같이 공유하고 싶어요
+        </p>
+        <button type="button"><img src="../assets/images/common/pin_icon.svg" alt="지도 마커">서울 강남구</button>
+    </div>
+
+    <div class="location_select_wrap">
+        <strong>지역선택</strong>
+        <button type="button" class="location_detail_btn">
+            <span class="location_depth1">강원도</span>
+            <span class="location_depth2">고성시</span>
+        </button>
+        <ul class="location_btn_list">
+            <li><button type="button" class="active">강원</button></li>
+            <li><button type="button">경기</button></li>
+            <li><button type="button">경북</button></li>
+            <li><button type="button">광주</button></li>
+            <li><button type="button">대구</button></li>
+            <li><button type="button">대전</button></li>
+            <li><button type="button">부산</button></li>
+            <li><button type="button">서울</button></li>
+            <li><button type="button">세종시</button></li>
+            <li><button type="button">울산</button></li>
+            <li><button type="button">인천</button></li>
+            <li><button type="button">전남</button></li>
+            <li><button type="button">전북</button></li>
+            <li><button type="button">제주</button></li>
+            <li><button type="button">충남</button></li>
+            <li><button type="button">충북</button></li>
+        </ul>
+    </div>
+    <button type="button" class="submit_btn">확인</button>
+</div>
+{%- endblock %}
